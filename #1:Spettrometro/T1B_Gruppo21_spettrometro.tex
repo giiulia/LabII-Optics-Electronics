@@ -1,0 +1,1259 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Spettrometro}
+\author{Broggi, Cantarini, Falconelli}
+\date{Laboratorio di fisica II}
+
+\usepackage{tabularx}
+\usepackage{natbib}
+%\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+
+%\usepackage[margin=1.0in]{geometry}
+
+\usepackage{hyperref} %per i link
+\usepackage{tikz}
+
+\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{amsmath, amsthm}
+
+\usepackage{mathrsfs}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{caption}
+
+\theoremstyle{definition}
+\newtheorem{rich}{richiamo matematico}[section]
+
+
+%roba che crea comando per centrare immagine dentro immagine piu grande
+%https://tex.stackexchange.com/a/308286
+\newlength{\imagew}
+\newlength{\imageh}
+\newlength{\legendw}
+\newlength{\legendh}
+\newlength{\legendx}
+\newlength{\legendy}
+\newcommand{\graphicswithlegend}[6]{
+	\setlength{\imagew}{#1}
+	\settoheight{\imageh}{\includegraphics[width=\imagew]{#2}}
+	
+	\setlength{\legendw}{#3\imagew}
+	\settoheight{\legendh}{\includegraphics[width=\legendw]{#4}}
+	
+	\setlength{\legendx}{\imagew}
+	\addtolength{\legendx}{-\legendw}
+	\addtolength{\legendx}{-#5\imagew}
+	
+	\setlength{\legendy}{\imageh}
+	\addtolength{\legendy}{-\legendh}
+	\addtolength{\legendy}{-#6\imageh}
+	
+	\includegraphics[width=\imagew]{#2}%
+	\llap{
+		\hspace{-\the\legendx}
+		\raisebox{\legendy}{\includegraphics[width=\legendw]{#4}}
+		\hspace{\the\legendx}
+	}
+}
+
+
+
+\begin{document}
+
+\maketitle
+
+\section{Introduzione}
+
+Lo spettrometro è uno strumento ottico che permette l’osservazione dello spettro di una radiazione elettromagnetica.
+
+Lo spettrometro che ci è stato messo a disposizione in laboratorio è composto da un collimatore, con fenditura regolabile, e un telescopio, con messa a fuoco manuale, in grado di roteare. L' angolo così formato tra i due elementi è misurabile tramite un goniometro in scala sessagesimale con sensibilità di 30”. Tra il collimatore ed il telescopio è presente una base su cui poter fissare l’oggetto (prisma o reticolo) in grado di scomporre l’emissione luminosa nelle varie righe spettrali. Sono state fornite due lampade ad arco al mercurio e al sodio ed e un tubo spettrale contenente un gas inizialmente sconosciuto.
+Nel corso dell’esperienza abbiamo inoltre avuto modo di eseguire delle misurazioni con un simulatore virtuale.
+
+\section{Scopo dell'esperienza}
+
+Gli obiettivi che abbiamo conseguito nell’esperienza con il prisma sono la determinazione dei coefficienti di Cauchy, tramite la misurazione dell’angolo di minima deviazione delle righe di emissione della lampada al mercurio(in laboratorio) ed il campionamento attorno al minimo (virtualmente). Infine abbiamo effettuato il riconoscimento del gas ignoto contenuto nel tubo spettrale attraverso il calcolo della lunghezza d’onda delle righe visualizzate.
+
+Per quanto riguarda l’esperienza con il reticolo abbiamo calcolato il passo usufruendo delle misure raccolte sul doppietto giallo caratteristico della lampada al sodio, e riconosciuto tutte le altre righe spettrali del sodio a partire dalla stima del passo ottenuta. 
+
+\pagebreak
+
+\section{Misure con prisma virtuale}
+
+Per questa esperienza abbiamo selezionato la lampada ad Argon e il prisma di materiale 1 con lato 53.12 mm.
+%abbiamo capito se c'è una lampada migliore dell'altra?? 
+
+ 
+\subsection{Angolo di minima deviazione - metodo diretto}
+Abbiamo eseguito la seguente procedura per ogni lunghezza d'onda disponibile:\\
+ Spostando il cursore abbiamo modificato l'angolo di incidenza fino ad ottenere il valore di \(\delta\) più piccolo che riuscivamo ad osservare, su questo angolo abbiamo attivato il selettore Stater più volte per produrre una serie di misure distribuite casualmente.
+ 
+\subsubsection{Dati raccolti}
+
+Le lunghezze d'onda disponibili per eseguire l'esperimento erano 5, abbiamo elencato i valori in nm nella tabella sotto
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+\caption{lunghezze d'onda tabulate per l'Argon}
+
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{ccccc}
+    			   
+    				\hline
+    				\hline
+                    434.81 & 460.96 & 487.99 & 696.54 & 738.40\\
+    			    \hline 
+    				\hline
+    			
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+\noindent Riportiamo le misure ottenute e le relative medie in gradi sessagesimali con la deviazione standard sulla media. \\
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}|c}
+    			     lambda &&& delta [gradi] &&& media[gradi]\\
+    				\hline
+    				\hline
+    				1 & 35$^{\circ}$ 5' 00''& 35$^{\circ}$ 22'00'' & 35$^{\circ}$ 18' 00'' & 35$^{\circ}$ 17' 00'' & 35$^{\circ}$ 18' 00'' & 35$^{\circ}$  16' $\pm$ 0$^{\circ}$ 3'\\
+    				\hline
+    				2 & 35$^\circ$ 2' 00'' & 35$^{\circ}$ 2' 00'' & 35$^{\circ}$ 25' 00'' & 35$^{\circ}$ 14' 00'' & 35$^{\circ}$ 5' 00'' & 35$^{\circ}$  10' $\pm$ 0$^{\circ}$ 4' \\ 
+    				\hline
+                    3 & 34$^{\circ}$ 50' 00'' & 34$^{\circ}$ 56' 00'' & 34$^{\circ}$ 55' 00'' & 35$^{\circ}$ 00' 00'' & 34$^{\circ}$ 48' 00'' & 34$^{\circ}$  54' $\pm$ 0$^{\circ}$ 2' \\
+                    \hline
+                    4 & 34$^{\circ}$ 22' 00'' & 34$^{\circ}$ 25' 00'' & 34$^{\circ}$ 26' 00'' & 34$^{\circ}$ 17' 00'' & 34$^{\circ}$ 26' 00'' & 34$^{\circ}$  23' $\pm$ 0$^{\circ}$ 2'\\
+                    \hline
+                    5 & 34$^{\circ}$ 11' 00'' & 34$^{\circ}$ 9' 00'' & 34$^{\circ}$ 21' 00'' & 34$^{\circ}$ 12' 00'' & 34$^{\circ}$ 11' 00'' & 34$^{\circ}$  13' $\pm$ 0$^{\circ}$ 2'\\
+    				\hline
+    			
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+
+\subsubsection{Analisi dati}
+L'analisi è stata effettuata per comodità con i valori di media e deviazione standard sulla media espressi in radianti.
+
+    \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    lambda &media di delta[rad]  \\
+    				\hline
+    				\hline
+    				1 & 0.6155 $\pm$ 0.0008\\
+    				\hline
+    				2&0.614  $\pm$ 0.001\\
+    				\hline
+                    3& 0.6091  $\pm$ 0.0006\\
+                    \hline
+                    4& 0.6002  $\pm$ 0.0005\\
+                    \hline
+                    5  &0.5971  $\pm$ 0.0006\\
+                    \hline
+
+                \end{tabular}
+             } %close centering
+    \end{figure}
+\noindent Gli errori dati dalle fluttuazioni delle misure sono maggiori della sensibilità dello strumento, pari a 1' = 0.0003 $rad$, scegliamo dunque di mantenere queste incertezze come sono poichè non avrebbe senso nascondere tali dati statistici dietro alla sensibilità dello strumento.
+
+\subsection{Campionatura intorno al minimo}
+La campionatura è stata eseguita in una regione di larghezza intorno ai 2 gradi.\\Per ogni angolo $\theta$ scelto abbiamo attivato il selettore Stater più volte per generare errori casuali sulle misure ottenute di $\delta$.
+
+\subsubsection{Dati raccolti}
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 1 (misure in gradi)}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}}
+    			    theta &&& delta && \\
+    				\hline
+    				\hline
+    				48$^{\circ}$06'0'' & 35$^{\circ}$16'0''&35$^{\circ}$18'00'' &35$^{\circ}$24'00'' &35$^{\circ}$23'00'' &35$^{\circ}$26'00''\\
+    				\hline
+                    47$^{\circ}$47'00'' & 35$^{\circ}$13'00' & 35$^{\circ}$19'00'' & 35$^{\circ}$19'00'' & 35$^{\circ}$15'00'' &35$^{\circ}$14'00'' \\
+                    \hline
+                    47$^{\circ}$38'00'' & 35$^{\circ}$12'00'' & 35$^{\circ}$09'00'' & 35$^{\circ}$12'00'' & 35$^{\circ}$20'00'' & 35$^{\circ}$16'00'' \\
+                    \hline
+                    47$^{\circ}$33'00'' &35$^{\circ}$14'00'' & 35$^{\circ}$15'00'' & 35$^{\circ}$17'00'' & 35$^{\circ}$11'00'' & 35$^{\circ}$13'00'' \\
+                    \hline
+                    47$^{\circ}$28'00'' & 35$^{\circ}$13'00'' & 35$^{\circ}$11'00'' & 35$^{\circ}$15'00'' & 35$^{\circ}$12'00'' & 35$^{\circ}$12'00''  \\
+    				\hline
+    				47$^{\circ}$19'00'' & 35$^{\circ}$20'00'' & 35$^{\circ}$15'00'' & 35$^{\circ}$11'00'' & 35$^{\circ}$19'0'' & 35$^{\circ}$14'00''  \\
+    				\hline
+    				47$^{\circ}$10'00'' & 35$^{\circ}$21'00'' & 35$^{\circ}$28'00'' & 35$^{\circ}$13'00'' & 35$^{\circ}$14'00'' & 35$^{\circ}$14'00''  \\
+    				\hline
+    				47$^{\circ}$01'00'' & 35$^{\circ}$14'00'' & 35$^{\circ}$19'00'' & 35$^{\circ}$26'00'' & 35$^{\circ}$22'00'' &35$^{\circ}$14'00'' \\
+    				\hline
+    				46$^{\circ}$51'00'' & 35$^{\circ}$25'00'' & 35$^{\circ}$25'00'' & 35$^{\circ}$24'00'' & 35$^{\circ}$24'00'' & 35$^{\circ}$36'00'' \\
+    				
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+    \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 2 (misure in gradi)}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}}
+    			    theta &&& delta && \\
+    				\hline
+    				\hline
+    				46$^{\circ}$44'00'' & 35$^{\circ}$11'00''&35$^{\circ}$14'00''&35$^{\circ}$11'00''&35$^{\circ}$11'00''&35$^{\circ}$12'00''\\
+    				\hline
+                    47$^{\circ}$06'00''& 35$^{\circ}$12'00''&35$^{\circ}$11'00''&35$^{\circ}$13'00''&35$^{\circ}$16'00''&35$^{\circ}$05'00''\\
+                    \hline
+                    48$^{\circ}$06'00'' & 35$^{\circ}$08'00'' & 35$^{\circ}$09'00''&35$^{\circ}$10'00''&35$^{\circ}$10'00''&35$^{\circ}$07'00''\\
+                    \hline
+                    48$^{\circ}$34'00'' &35$^{\circ}$14'00''&35$^{\circ}$11'00''&35$^{\circ}$11'00''&35$^{\circ}$09'00''&35$^{\circ}$07'00'' \\
+                    \hline
+                    49$^{\circ}$01'00'' & 35$^{\circ}$11'00''&35$^{\circ}$14'00''&35$^{\circ}$15'00''&35$^{\circ}$15'00'' & 35$^{\circ}$12'00''  \\
+    				\hline
+    				49$^{\circ}$47'00''& 35$^{\circ}$23'00''&35$^{\circ}$13'00''&35$^{\circ}$13'00''&35$^{\circ}$15'00''&35$^{\circ}$16'00''  \\
+    				
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+    \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 3 (misure in gradi)}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}}
+    			    theta &&& delta && \\
+    				\hline
+    				\hline
+    				48$^{\circ}$01'00'' &35$^{\circ}$03'00'' & 35$^{\circ}$05'00'' & 35$^{\circ}$03'00'' & 35$^{\circ}$02'00'' & 35$^{\circ}$02'00''\\
+    				\hline
+                    47$^{\circ}$57'00''& 34$^{\circ}$56'00'' & 35$^{\circ}$00'00'' & 34$^{\circ}$55'00'' & 34$^{\circ}$55'00'' & 35$^{\circ}$02'00''  \\
+                    \hline
+                    47$^{\circ}$45'00''&34$^{\circ}$55'00'' & 34$^{\circ}$53'00'' & 34$^{\circ}$51'00'' & 34$^{\circ}$58'00'' & 34$^{\circ}$58'00'' \\
+                    \hline
+                    47$^{\circ}$32'00'' &34$^{\circ}$56'00'' & 34$^{\circ}$56'00'' & 34$^{\circ}$57'00'' & 34$^{\circ}$58'00'' & 34$^{\circ}$59'00'' \\
+                    \hline
+                    47$^{\circ}$21'00'' & 35$^{\circ}$09'00'' & 35$^{\circ}$07'00'' & 35$^{\circ}$03'00'' & 35$^{\circ}$02'00'' & 35$^{\circ}$03'00'' \\
+    				\hline
+    				47$^{\circ}$02'00'' & 35$^{\circ}$23'00'' & 35$^{\circ}$13'00'' & 35$^{\circ}$13'00'' & 35$^{\circ}$15'00'' & 35$^{\circ}$16'00'' \\
+    				\hline
+    				46$^{\circ}$51'00'' & 35$^{\circ}$06'00'' & 34$^{\circ}$58'00'' & 35$^{\circ}$02'00'' & 35$^{\circ}$00'00'' & 35$^{\circ}$00'00''\\
+    				
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+    \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 4 (misure in gradi)}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}}
+    			    theta &&& delta && \\
+    				\hline
+    				\hline
+    				48$^{\circ}$33'00''&34$^{\circ}$31'00''&34$^{\circ}$23'00''&34$^{\circ}$33'00''&34$^{\circ}$31'00''&34$^{\circ}$35'00''\\
+    				\hline
+                    48$^{\circ}$16'00''&34$^{\circ}$29'00''&34$^{\circ}$23'00''&34$^{\circ}$26'00''&34$^{\circ}$21'00''&34$^{\circ}$30'00'' \\
+                    \hline
+                    48$^{\circ}$03'00'' & 34$^{\circ}$22'00'' &34$^{\circ}$20'00''&34$^{\circ}$19'00''&34$^{\circ}$23'00''&34$^{\circ}$21'00''\\
+                    \hline
+                    47$^{\circ}$46'00'' &34$^{\circ}$21'00''&34$^{\circ}$22'00''&34$^{\circ}$24'00'' & 34$^{\circ}$21'00'' & 34$^{\circ}$21'00''\\
+                    \hline
+                    47$^{\circ}$13'00'' & 34$^{\circ}$21'00''&34$^{\circ}$23'00''&34$^{\circ}$23'00''&34$^{\circ}$24'00'' & 34$^{\circ}$25'00'' \\
+    				\hline
+    				46$^{\circ}$28'00''& 34$^{\circ}$20'00''&34$^{\circ}$26'00''&34$^{\circ}$33'00''&34$^{\circ}$21'00'' & 34$^{\circ}$27'00'' \\
+    				
+                \end{tabular}
+             } %close centering
+    \end{figure}
+    
+    
+    \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 5 (misure in gradi)}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}}
+    			    theta &&& delta && \\
+    				\hline
+    				\hline
+    				45$^{\circ}$45'00'' & 34$^{\circ}$23'00''&34$^{\circ}$25'00'' & 34$^{\circ}$21'00'' & 34$^{\circ}$20'00'' &34$^{\circ}$23'00''\\
+    				\hline
+    				46$^{\circ}$00'00''&34$^{\circ}$22'00''&34$^{\circ}$19'00''&34$^{\circ}$20'00''&34$^{\circ}$18'00''&34$^{\circ}$22'00''\\
+    				\hline
+                    47$^{\circ}$08'00''& 34$^{\circ}$16'00''&34$^{\circ}$15'00''&34$^{\circ}$18'00''&34$^{\circ}$12'00''&34$^{\circ}$18'00'' \\
+                    \hline
+                   47$^{\circ}$19'00'' & 34$^{\circ}$14'00''&34$^{\circ}$13'00''&34$^{\circ}$17'00''&34$^{\circ}$16'00''&34$^{\circ}$15'00''\\
+                    \hline
+                    47$^{\circ}$35'00''  &34$^{\circ}$17'00''&34$^{\circ}$18'00''&34$^{\circ}$16'00''&34$^{\circ}$15'00''&34$^{\circ}$15'00''\\
+                    \hline
+                    48$^{\circ}$01'00'' & 34$^{\circ}$21'00''&34$^{\circ}$21'00''&34$^{\circ}$17'00''&34$^{\circ}$19'00''&34$^{\circ}$18'00'' \\
+    				\hline
+    				48$^{\circ}$20'00''& 34$^{\circ}$19'00''&34$^{\circ}$20'00''&34$^{\circ}$23'00''&34$^{\circ}$17'00''&34$^{\circ}$18'00'' \\
+    				
+                \end{tabular}
+             } %close centering
+    \end{figure} 
+
+
+
+\pagebreak
+\subsubsection{Analisi dati}
+Nella regione considerata abbiamo approssimato la funzione $\delta(\theta)$ ad una parabola per ricavare agilmente il minimo attraverso il suo vertice; non sono state fatte ipotesi sulla forma della funzione all'esterno.
+
+
+\noindent I dati ottenuti per eseguire il fit ed il risultato dell'interpolazione sono riportati di seguito:
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 1}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    theta[rad] & media di delta[rad]  \\
+    				\hline
+    				\hline
+    				0.8395&	0.6171$\pm$0.0005\\
+    				\hline
+    				0.8340&	0.6155$\pm$0.0004\\
+    				\hline
+                    0.8314&	0.6149$\pm$0.0006\\
+                    \hline
+                    0.8299&	0.6149$\pm$0.0003\\
+                    \hline
+                    0.8285	&0.6145$\pm$0.0002\\
+                    \hline
+                     0.8285&	0.6145$\pm$0.0002\\
+                    \hline
+                     0.8258&	0.6155$\pm$0.0005\\
+                    \hline
+                     0.8232&	0.6161$\pm$0.0008\\
+                    \hline
+                     0.8206&	0.6164$\pm$0.0007\\
+                    \hline
+                    0.8177&	0.6187$\pm$0.0007\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.65 \textwidth}{!}{   %resize table
+			\includegraphics{campionamento1.png}
+		} %close resize
+	} %close centering
+		\caption{equazione usata per l'interpolazione: $p_{0}x^{2} + p_{1}x + p_{2}$}
+
+\end{figure}
+\pagebreak
+\noindent abbiamo provato a ridurre la regione in cui viene svolto il fit ma non siamo riusciti a trovare una correlazione tra i dati rimasti ed il grafico di una parabola, la stima migliore per il chi quadro risulta dunque \(\chi ^{2} = 3.91\) per 6 gradi di libertà, essendo la più piccola che riusciamo ad ottenere da questi dati.\\
+L'ipotesi che i dati nella regione tra 46$^{\circ}$ 51' e 48$^{\circ}$ 6' siano sottoposti a fluttuazioni casuali attorno al grafico di una parabola è corretta al 73\%. 
+
+Dal risultato del fit eseguito con ROOT abbiamo ricavato il minimo usando la formula per l'ordinata del vertice di una parabola:\\ \[yV = \frac{-b^{2}+4ac}{4a}  \hspace{1cm}  \sigma_{yV} = \sqrt{  \left( \frac{b\sigma_{b}}{2a}\right )^{2} + \left (\frac{b\sigma_{a}}{4a^{2}}\right)^{2} + \sigma_{c}^{2}  } \Rightarrow yV = 0.615 \pm 0.003 rad\]
+
+il confronto con il valore ricavato nella prima parte dell'esperienza eseguito con il test t-Student è ritenuto soddisfacente: \( t = \frac{0.6155 - 0.615}{\sqrt{  0.003^{2}+0.0008^{2}  }} = 0.16\) i due valori sono compatibili al 92.07\%.
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 2}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    theta[rad] & media di delta[rad]  \\
+    				\hline
+    				\hline
+                    0.8157&	0.6143$\pm$	0.0002\\
+                    \hline
+                    0.82205	&0.6142$\pm$	0.0005\\
+                    \hline
+                     0.8395&	0.6134$\pm$	0.0002\\
+                    \hline
+                    0.8476&	0.6139	$\pm$0.0003\\
+                    \hline
+                    0.8555&	0.6148$\pm$	0.0002\\
+                    \hline
+                    0.8689&	0.6155$\pm$	0.0005\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{campionamento2.png}
+		} %close resize
+	} %close centering
+	\caption{equazione usata per l'interpolazione: $p_{0}x^{2} + p_{1}x + p_{2}$}
+	\caption{ $ \Rightarrow yV = 0.613 \pm 0.002rad$}
+
+
+\end{figure}
+\pagebreak
+\noindent abbiamo eseguito il fit anche escludendo l'ultimo punto, $\theta$ = 0.8688rad, per ottenere un chi quadro più basso: $\chi^{2} = $0.7006 per 2 gradi di libertà, che corrisponde a una probabilità del 67\% che le misure siano affette solo da errori casuali.\\
+\noindent Il confronto con il valore ricavato nella prima parte dell'esperienza\\ \( t = \frac{0.613- 0.614}{\sqrt{  0.002^{2}+0.001^{2}  }} = 0.45\) è ritenuto soddisfacente: i due valori sono compatibili al 68.92\%.\\
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 3}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    theta[rad] & media di delta[rad]  \\
+    				\hline
+    				\hline
+                    0.8380&	0.6117$\pm$	0.0002\\
+                    \hline
+                    0.8369&	0.6102$\pm$	0.0004\\
+                    \hline
+                    0.8334&	0.6094$\pm$	0.0004\\
+                    \hline
+                     0.8296&	0.6101$\pm$	0.0002\\
+                    \hline
+                    0.8264&	0.6106$\pm$	0.0006\\
+                    \hline
+                    0.8209&	0.6123$\pm$	0.0004\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+    
+    \begin{figure}[!ht]
+        	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.60 \textwidth}{!}{   %resize table
+			\includegraphics{campionamento3.png}
+		} %close resize
+	} %close centering
+			\caption{equazione usata per l'interpolazione: $p_{0}x^{2} + p_{1}x + p_{2}$}
+	\caption{ $ \Rightarrow yV =  0.610 \pm 0.002rad$}
+\end{figure}
+
+\noindent abbiamo ottenuto un chi quadro di 10.61 per 3 gradi di libertà, che corrisponde a una probabilità di 1.5\%.\\
+\noindent Il confronto con la prima parte: \( t = \frac{0.610 - 0.6091}{\sqrt{  0.002^{2}+0.0006^{2}  }} = 0.43\) riscontra che i due valori sono compatibili al 68.92\%.
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 4}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    theta[rad] & media di delta[rad]  \\
+    				\hline
+                    \hline
+                    0.8474&	0.6023$\pm$	0.0006\\
+                    \hline
+                    0.8424&	0.6010$\pm$	0.0005\\
+                    \hline
+                     0.8386&	0.5995	$\pm$0.0002\\
+                    \hline
+                    0.8337&	0.5998	$\pm$0.0002\\
+                    \hline
+                    0.8240&	0.6002	$\pm$0.0002\\
+                    \hline
+                    0.8110&	0.6008$\pm$	0.0007\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+    
+\begin{figure}[!ht]
+        	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{campionamento4.png}
+		} %close resize
+	} %close centering
+		\caption{equazione usata per l'interpolazione: $p_{0}x^{2} + p_{1}x + p_{2}$}
+	\caption{ $ \Rightarrow yV = 0.600 \pm 0.002rad$}
+
+\end{figure}
+\noindent escludere dei punti dal fit non ha portato a nessuna riduzione del chi quadro. Lo consideriamo dunque stimato a 14.16 per 3 gradi di libertà il che corrisponde a 0.4\% di probabilità che i dati siano affetti soltanto da fluttuazioni di tipo statistico.
+
+\noindent Il confronto con il valore ricavato nella prima parte dell'esperienza è ritenuto soddisfacente: \( t = \frac{0.600- 0.6002}{\sqrt{  0.002^{2}+0.0005^{2}  }} = 0.1\) i due valori sono compatibili al 92.03\%.
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{lambda 5}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    theta[rad] & media di delta[rad]  \\
+    				\hline
+    				\hline
+                    0.7989&	0.6000$\pm$	0.0003\\
+                    \hline
+                    0.8029&	0.5993$\pm$	0.0002\\
+                    \hline
+                    0.8226&	0.5980$\pm$	0.0003\\
+                    \hline
+                    0.8258&	0.5978$\pm$	0.0002 \\
+                    \hline
+                    0.8305&	0.5981$\pm$	0.0002\\
+                    \hline
+                    0.8380&	0.5990$\pm$	0.0002\\
+                    \hline
+                    0.8436&	0.5991$\pm$	0.0003\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+\pagebreak
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{campionamento5.png}
+		} %close resize
+	} %close centering
+	\caption{equazione usata per l'interpolazione: $p_{0}x^{2} + p_{1}x + p_{2}$}
+		\caption{ $ \Rightarrow yV =  0.598\pm0.002rad$}
+\end{figure}
+\noindent diminuendo la regione in cui viene eseguito il fit, abbiamo notato una riduzione del chi quadro fino a $\chi^{2}$ = 0.6628 che abbiamo ottenuto escludendo i due punti più estremi $\theta= 0.7985rad$ e $\theta = 0.8436rad$.\\\\
+Il test del chi quadro ha restituito un 67\% di probabilità che l'ipotesi di casualità del nostro esperimento sia corretta per un sistema a 2 gradi di libertà, inoltre il confronto con la prima parte dell'esperienza \( t = \frac{0.598- 0.5971}{\sqrt{  0.002^{2}+0.0006^{2}  }} = 0.43\) conferma una compatibilità del 69.92\%.\\
+
+Abbiamo constatato che il secondo metodo ha prodotto un'incertezza maggiore sulle misure di delta,%perche? 
+dunque abbiamo deciso di proseguire l'analisi delle proprietà del prisma con questo metodo.
+
+Al fine di determinare A e B caratteristici per il prisma abbiamo calcolato l'indice di rifrazione associato ad ogni lambda; conoscendo l'angolo di minima deviazione il calcolo si esegue così:
+\[n(\lambda ) = \frac{sin(\frac{\delta + \alpha}{2} )}{sin(\frac{\alpha }{2})} \hspace{1cm} \sigma_{n} = \frac{cos(\frac{\alpha +\delta }{2})}{2sin(\frac{\alpha }{2})}\sigma_{\delta }\]
+dove \(\alpha\) è l'angolo al vertice del prisma, considerato pari a \(60^{\circ} = 1.047rad\)
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{risultati dei calcoli eseguiti con il metodo 2}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			     lambda[nm] & indice di rifrazione\\
+    				\hline
+    				\hline
+    				434.81&	1.477	$\pm$	0.002\\
+    				\hline
+    				460.96& 1.476	$\pm$	0.001\\
+    				\hline
+    				487.99& 1.474	$\pm$	0.001\\
+    				\hline
+    				696.54& 1.467	$\pm$	0.001\\
+    				\hline
+    				738.40& 1.466	$\pm$	0.001\\
+    				\hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+\pagebreak
+\begin{figure}[!ht]
+    \captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{grafico2.png}
+		} %close resize
+	} %close centering
+		\caption{equazione usata per l'interpolazione: $p_{0}+p_{1}\frac{1}{x^{2}}$}
+\end{figure}    
+ 
+\noindent i valori ottenuti per i parametri A e B in \(n(\lambda) = A + \frac{B}{\lambda^{2}}\) sono:
+\[A=1.460\pm0.002\hspace{1cm} B=0.0034\pm0.0005\mu m^{2} \hspace{1cm} cov_{AB} = -0.7058 \cdot 10^{-6} \mu m ^{2}\]
+confrontandoli con i valori della tabella fornitaci abbiamo concluso che il prisma utilizzato potrebbe essere di quarzo (abbiamo selezionato il materiale numero1) anche se la compatibilità con i coefficienti del quarzo non è risultata molto soddisfacente:
+\[t = \frac{ \hat{A} - A_{tabulato}}{\sigma_{\hat{A}}} = \frac{1.460 - 1.458}{0.002} = 1 \rightarrow PValue= 31.73\%\]
+\[t = \frac{ \hat{B} - B_{tabulato}}{\sigma_{\hat{B}}} = \frac{0.0034 - 0.0035}{0.0005} = 0.2 \rightarrow PValue = 84.15\%\]
+Il test del chi quadro restituisce una probabilità del 65\% che l'andamento supposto sia corretto, anche se ci accorgiamo di aver sovrastimato le incertezze su n, e quindi sugli angoli, dal momento che \(\chi^{2} = 0.3 \gg Ndf = 3\), il che ha sicuramente contribuito ad aumentare la probabilità di riuscita del test. \\
+ 
+\noindent Abbiamo infine selezionato 3 diverse lunghezze d'onda per le quali estrapolare l'indice di rifrazione del nostro prisma:
+    
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{$n = \hat{A} + \frac{\hat{B}}{\lambda^{2}} \hspace{1cm} \sigma_{n} = \sqrt{ \sigma_{A}^{2} + ( \frac{\sigma_{B} }{\lambda^{2}})^{2} + \frac{2cov_{AB}}{\lambda^{2}}}$}
+            
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c|c}
+    			     radiazione &lambda[$\mu m$ ] & indice di rifrazione& errore relativo su n\\
+    			     \hline
+    				\hline
+    				UV &	0.1	&$	1.80\pm0.04$ & 2.2\%\\
+    				\hline
+    				Verde & 0.560  &$ 1.4704\pm0.0006$ & 0.041\%\\
+    				\hline
+    				IR &100	&$1.460\pm0.002$ &0.14\%\\
+                \end{tabular}
+             } %close centering
+\end{figure}
+
+abbiamo notato che l'errore relativo su n diminuisce all'aumentare della lunghezza d'onda, infatti la funzione \(n(\lambda)\) presenta una rapida discesa, ma per lambda alte ha una derivata prossima allo zero per cui selezionando una lunghezza d'onda in quella zona il valore di n risulta determinato con maggiore precisione. Siccome nel nostro caso A e B sono legate da una covarianza negativa, all'aumento di \(\lambda\), come nel caso degli infrarossi, l'errore aumenta perchè il termine contenente \(cov_{AB}\) che limitava l'errore diventa trascurabile. \\
+
+
+\section{Misure con prisma in laboratorio}
+
+Per queste misure abbiamo utilizzato la lampada a mercurio, un prisma di vetro e abbiamo messo precedentemente a fuoco il telescopio.
+
+\noindent L'obiettivo di questa parte dell'esperienza è quello di stimare i parametri della legge di Cauchy \[n=A +\frac{B}{\lambda^{2}}\] attraverso la misura dell'angolo di minima deviazione per le righe osservate. Questa volta abbiamo scelto il più diretto tra i due metodi.\\
+Come abbiamo visto nell'esperienza virtuale la formula per ricavare n dall'angolo di minima deviazione richiede di conoscere l'angolo al vertice del prisma.
+ 
+
+\subsection {Angolo al vertice}
+
+Abbiamo innanzitutto stimato l'angolo del prisma sfruttando la riflessione che si va a creare posizionando il prisma in modo che la luce collimata colpisca una faccia. Misurando gli angoli associati ad entrambe le facce ottiche del prisma, l'angolo al vertice si calcola con \(\alpha = \pi - (\theta_{1}-\theta_{2})\).\\
+
+\noindent Per avere una stima più accurata, abbiamo effettuato 5 misure per ogni angolo e considerato le medie e le deviazioni standard sulle medie.
+
+
+\begin{figure}[!htbp]
+		\captionsetup{labelformat=empty}
+		\caption{misure angolo al vertice}
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c| *{5}{c}|c}
+				 &&& misure &&& media\\
+				 \hline
+				\hline
+                $\theta1$ &128$^{\circ}$ 35' 30''& 128$^{\circ}$ 41' 00''&128$^{\circ}$ 51' 00''&128$^{\circ}$ 38' 00''&128$^{\circ}$ 34' 30'' &128$^{\circ}$ 40' 1''$\pm$ 0 $^{\circ}$ 3'\\
+				\hline
+				$\theta2$ &8$^{\circ}$ 05' 00'' &8$^{\circ}$ 10' 00'' &8$^{\circ}$  18' 00''&8$^{\circ}$ 8' 00'' &8$^{\circ}$ 12' 30''& 8$^{\circ}$ 10' 42''$\pm$0 $^{\circ}$  2'\\
+			\end{tabular}
+		}
+	\end{figure}	
+	abbiamo convertito le medie in rad e poi fatto la differenza considerando l'errore su alpha pari alla somma in quadratura degli errori sotto radice, l'angolo al vertice risulta quindi:
+      
+      \[\alpha = \pi - 2.103 \pm0.001rad = 1.039 \pm 0.001 rad \simeq 59.9^{\circ}\]
+      
+\pagebreak  
+      
+\subsection{Angolo di minima deviazione}
+
+ Questo metodo consiste nella misura dell'angolo di minima deviazione per ogni lunghezza d'onda visualizzata, il quale ci permette di stimare l'indice di rifrazione attraverso alla relazione 
+ 
+ \[\sin \frac{\delta + \alpha}{2} = n \sin \frac{\alpha}{2}\]
+ 
+\subsubsection{Dati raccolti}
+
+Riportiamo in tabella le righe di emissione del mercurio che siamo riusciti a vedere nel corso dell'esperienza:
+
+\begin{figure}[!htbp]
+		\captionsetup{labelformat=empty}
+		\caption{lunghezze d'onda del Hg visualizzate(nm)}
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{ccccc}
+				\hline
+				\hline
+                579.066 & 576.96 & 546.073 & 435.833 & 404.656\\
+				\hline
+				\hline
+			\end{tabular}
+		}
+	\end{figure}
+	
+	
+\noindent Per ogni riga a noi visibile abbiamo proceduto con la misurazione dell'angolo di minima deviazione, ruotando il telescopio e trovando il punto in cui le bande cambiavano la direzione dello spostamento. Abbiamo prestato attenzione a puntare il centro del mirino sul lato sinistro della banda considerata, così come nell'angolo zero, ed effettuato 5 misure per ognuna calcolandone la media e la deviazione standard sulla media per ottenere la miglior stima.
+
+
+    \begin{figure}[!htbp]
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}|c}
+    			    righe &&& misure[gradi] &&& media[gradi]\\
+    				\hline
+    				\hline
+    				angolo zero&283$^{\circ}$ 05'00'' & 283$^{\circ}$ 02' 30'' & 283$^{\circ}$ 02' 00'' & 283$^{\circ}$ 01' 00'' & 283$^{\circ}$ 03' 00''& 283$^{\circ}$ 2' 42'' $\pm$ 0^{\circ} 0' 40'' \\
+    				\hline
+    				riga Gialla dx& 331$^{\circ}$ 33' 00'' & 331$^{\circ}$ 35' 30'' & 331$^{\circ}$ 34' 30''& 331$^{\circ}$ 35' 30'' & 331$^{\circ}$ 29' 30'' & 331$^{\circ}$ 33' $\pm$ 0^{\circ}  2'\\
+    				\hline
+    				riga Gialla sx &331$^{\circ}$ 44'30'' & 331$^{\circ}$ 34' 30'' & 331$^{\circ}$ 29' 00'' & 331$^{\circ}$ 42' 30'' & 331$^{\circ}$ 41' 00'' & 331$^{\circ}$ 38' $\pm$0^{\circ}  3' \\
+    				\hline
+    				riga Verde & 331$^{\circ}$ 40' 30'' & 331$^{\circ}$ 43' 30'' & 331$^{\circ}$ 41' 00'' & 331$^{\circ}$ 40' 30'' & 331$^{\circ}$ 45' 30'' & 331$^{\circ}$ 42' $\pm$ 0^{\circ}  1'\\
+    				\hline
+    				riga Blu & 333$^{\circ}$ 25' 30'' & 333$^{\circ}$ 29' 30'' & 333$^{\circ}$ 40' 30'' & 333$^{\circ}$ 30' 30'' & 333$^{\circ}$ 30' 00'' & 333$^{\circ}$ 31' $\pm$ 0^{\circ}  2'\\
+    				\hline
+    				riga Viola & 333$^{\circ}$ 42' 30'' & 333$^{\circ}$ 42' 30'' & 333$^{\circ}$ 41' 00'' & 333$^{\circ}$ 40' 30'' & 333$^{\circ}$ 43' 30'' & 333$^{\circ}$ 42' 00'' $\pm$ 0^{\circ} 0' 33''\\
+    				
+    			\end{tabular}
+    			
+    		} %close centering
+    	\end{figure}
+    
+
+
+
+\subsubsection{Analisi dati}
+
+
+Abbiamo eseguito i calcoli covertendo gli angoli $\delta$ in radianti, di seguito sono riportati i valori ottenuti con la rispettive incertezze.
+
+  \begin{figure}[!htbp]
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			righe & delta[rad]  \\
+    			\hline
+    			\hline
+    			gialla dx &0.8467 $\pm$ 0.0004\\
+    			\hline
+    			gialla sx &0.8481 $\pm$0.0009\\
+    			\hline
+    			verde &0.8492 $\pm$0.0003\\
+    			\hline
+    			blu & 0.8809 $\pm$ 0.0007\\
+    			\hline
+    			lilla & 0.8841$\pm$  0.0002\\
+    			\hline
+    		\end{tabular}
+    		
+    	} %close centering
+    	
+	\end{figure}
+
+\noindent L'indice di rifrazione si può calcolare mediante la seguente formula
+
+\[n= \frac{sin(\frac{\delta + \alpha}{2})} {\sin \frac{\alpha}{2}}   \hspace{1cm}    \sigma_{n} = \sqrt{ \frac{\partial n}{\partial \alpha}^{2} \sigma_{\alpha}^{2} + \frac{\partial n}{\partial \delta}^{2} \sigma_{\delta}^{2}}\]
+dove abbiamo propagato l'errore degli angoli con la formula delle derivate parziali
+\[\frac{\partial n}{\partial \alpha} =  \frac{cos\left( \frac{\alpha+\delta }{2} \right)}{sin\left(\frac{\alpha}{2}\right)2} -  \frac{cos(\frac{\alpha}{2})}{sin(\frac{\alpha}{2})} \frac{sin( \frac{\alpha+\delta}{2} )}{sin(\frac{\alpha}{2})2}   \hspace{1cm}   \frac{\partial n}{\partial \delta}= \frac{cos(\frac{\delta+\alpha}{2})}{2 sin(\frac{\alpha}{2})}\]
+
+
+\noindent I risultati sono riportati in tabella insieme alle note lunghezze d'onda delle bande osservate:
+
+  \begin{figure}[!htbp]
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			lamda Hg[nm] & indice n\\
+    			\hline
+    			\hline
+    		    579.066	&	1.630 $\pm$ 0.004\\
+    			\hline
+    			576.960	&	1.631 $\pm$0.004\\
+    			\hline
+    			546.073	&	1.632 $\pm$0.004\\
+    			\hline
+    	    	435.833	&	1.650 $\pm$0.004\\
+    			\hline
+    	    	404.656	&	1.652 $\pm$0.004\\
+    			\hline
+    		\end{tabular}
+    		
+    	} %close centering
+    	
+	\end{figure}
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.90 \textwidth}{!}{   %resize table
+			\includegraphics{grafico1.png}
+			
+		} %close resize
+	} %close centering
+	\caption{funzione utilizzata per il grafico : n=$p_{0}+p_{1}\frac{1}{x^{2}}$}
+\end{figure}
+il fit eseguito con ROOT ha fornito le stime per A e B:
+\[ A =1.608\pm 0.005\hspace{1cm} B = 7547 \pm 1274 nm^{2} \hspace{1cm} cov_{AB} = -6.66 nm^{2}\]
+Il test del \(\chi^{2}\) garantisce una probabilità del 90\% per il corretto adattamento della funzione alle misure, anche se riconosciamo che la stima degli errori risulta eccessiva, infatti \(\chi^{2} \approx \frac{1}{3} Ndf\).
+\pagebreak
+
+\subsection{Campionatura intorno al minimo}
+Il metodo consiste nell'individuare qualche punto nella regione prossima all'angolo di minima deviazione e di ricavare il punto stesso di minimo eseguendo l'interpolazione con l'equazione di una parabola.\\
+\noindent Abbiamo quindi posto il telescopio in quattro punti che non corrispondevano esattamente alla posizione in cui la riga cambiava verso di spostamento, per prendere più misure dello stesso punto abbiamo spostato leggermente il telescopio per poi tornare su un punto che assumevamo fosse la posizione di partenza.
+La lunghezza d'onda selezionata è quella del verde \(\lambda = 546.073nm\).
+
+\subsubsection{Dati raccolti}
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}|c}
+    			     punto &&& misure[gradi] &&& media[gradi]\\
+    				\hline
+    				\hline
+    				1&332$^{\circ}$ 04' 30''&331$^{\circ}$ 50' 00''&331$^{\circ}$ 50' 30''&331$^{\circ}$ 54' 30''&332$^{\circ}$ 04' 00'' &331$^{\circ}$ 56'  $\pm$ 00$^{\circ}$ 03' \\
+    				\hline
+    				2&331$^{\circ}$ 50' 30''&331$^{\circ}$ 52' 00''&331$^{\circ}$ 40' 30''&331$^{\circ}$ 38, 00&331$^{\circ}$ 47' 30''& 331$^{\circ}$ 45' $\pm$ 00$^{\circ}$ 03'\\
+    				\hline
+    				3&332$^{\circ}$ 00'' 30''&331$^{\circ}$ 55' 00''&331$^{\circ}$ 52' 00''&331$^{\circ}$ 52' 00''&331$^{\circ}$ 45' 30''&331$^{\circ}$ 53' $\pm$ 00$^{\circ}$ 02'\\
+    				\hline
+    				4&332$^{\circ}$ 00' 30''&332$^{\circ}$ 00' 30''&332$^{\circ}$ 09' 30''&332$^{\circ}$ 05' 30&331$^{\circ}$ 40' 30''& 331$^{\circ}$ 59' $\pm$ 00$^{\circ}$ 05'\\
+                \end{tabular}
+             } %close centering
+\end{figure}
+
+\noindent Si ricorda che l'errore strumentale in radianti è 0.0001rad, trascurabile rispetto alle fluttuazioni casuali; l'angolo di riferimento come angolo al centro è lo stesso usato per i calcoli sopra. \\
+
+Ci siamo accorti, ragionando a posteriori, che il metodo di raccolta dati non è chiaramente affidabile, sarebbe bastato prendere una misura per ogni punto e poi associarvi un errore diverso dalla sensibilità dello strumento (il test del chi quadro che vorremmo effettuare prevede solo errori casuali), come ad esempio l'incertezza che stimiamo essere ragionevole a seguito dell'ultimo test del chi quadro eseguito. \\
+Assumendo che i fattori casuali che hanno influito sulla misura (come ad esempio un errore di lettura, un allineamento non preciso con la linea) siano gli stessi per il campionamento e per la ricerca del minimo in maniera diretta, potremmo associare ad ognuna delle singole misure una \(\sigma = \frac{1}{3}\sigma_{verde} = \frac{1}{3}\cdot 0.0003rad \)
+
+\subsubsection{Analisi dati}
+Nonostante la mancanza di rigore nella raccolta dati, riportiamo comunque l'analisi effettuata con le misure ottenute. Abbiamo proceduto calcolando le medie in radianti degli angoli sopra riportati e la relativa differenza con l'angolo al centro, l'incertezza è stata stimata sommando in quadratura gli errori statistici sulle le medie. 
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			     punto & delta[rad]\\
+    				\hline
+    				\hline
+    				1&0.8535 $\pm$ 0.0009\\
+    				\hline
+    				2& 0.8503 $\pm$	0.0008\\
+    				\hline
+    				3& 0.8524 $\pm$	0.0007\\
+    				\hline
+    				4& 0.854 $\pm$	0.001\\
+                \end{tabular}
+             } %close centering
+    \caption{la tabella riporta direttamente la differenza con l'angolo al centro}
+    \end{figure}
+\noindent attraverso questi punti abbiamo eseguito l'interpolazione della parabola di equazione \(y = y_{0} +a(x-x_{0})^{2}\).\\
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.85 \textwidth}{!}{   %resize table
+			\includegraphics{campionamento.png}
+		} %close resize
+	} %close centering
+    \caption{equazione del grafico: \(\theta = p_{0}+p_{1}(x-p_{2})^{2}\)}
+
+\end{figure}
+\noindent Il test del chi quadro per questo andamento parabolico restituisce un \(\chi^{2} = 2.2\) con 1 grado di libertà, che corrisponde ad una probabilità del 14\%. \\
+\noindent Il risultato del fit eseguito con ROOT riporta un valore per\\ \(\theta_{min2} = p_{0} = 0.851 \pm 0.0006 rad\) che confrontato con quello ottenuto con il metodo precedente per il verde: \(\theta_{min1} = 0.8492 \pm 0.0003nm\) permette di notare che il primo metodo è stato il più preciso.
+Abbiamo eseguito il test t-Student per verificare la compatibiltà tra le due misure ottenute indipendentemente:
+
+\[ t = \frac{\theta_{min1}-\theta_{min2}}{\sqrt{dev_{1}^{2}+ dev_{2}^{2} }} = 2.68 \]
+il risultato del test corrisponde ad un 0.69\% di probabilità che l'ipotesi di compatibilità sia corretta, che riteniamo accettabile.
+
+\pagebreak
+\subsection{Potere risolutivo}
+Per concludere con l'analisi delle caratteristiche del prisma abbiamo calcolato il potere risolutivo attraverso la formula \[ R = L\left | \frac{\mathrm{d} n}{\mathrm{d} \lambda} \right | = L \frac{2B}{\lambda^{3}}\]
+
+dove L è la lunghezza della base del prisma pari a \(0.048 \pm 0.0006m\).\\
+Come si nota dalla formula, R dipende da \(\frac{1}{\lambda^{3}}\) ed è adimensionale.
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+        \caption{Potere Risolutivo in funzione della lunghezza d'onda}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.80 \textwidth}{!}{   %resize table
+			\includegraphics{potere_risolutivo.png}
+		} %close resize
+	} %close centering
+\end{figure}
+
+\begin{figure}[!htbp]
+\captionsetup{labelformat=empty}
+    \caption{potere risolutivo per ogni lambda osservata con il Mercurio}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    lambda[nm] & Potere Risolutivo\\
+    				\hline
+    				\hline
+    				579.066	& 3731 $\pm$ 630\\
+    				\hline
+    				576.96&3772 $\pm$ 637\\
+    				\hline
+    				546.073&  4449 $\pm$ 751\\
+    				\hline
+    				435.833&8752 $\pm$1477\\
+    				\hline
+    				404.656& 10934 $\pm$1846\\
+    				\hline
+    				\hline
+    			
+                \end{tabular}
+             } %close centering
+\end{figure}
+
+
+\pagebreak
+\subsection{Identificazione gas ignoto}
+
+Dopo aver concluso le misurazioni con la lampada Hg, abbiamo utilizzato il tubo spettrale contenente un gas ignoto.
+
+\subsubsection{Dati raccolti}
+
+Abbiamo proceduto con il metodo della misurazione diretta di $\delta$. Di seguito sono riportate le misure raccolte.
+
+
+%so che lamedia è scritta male poi sistemo
+%io terrei solo i primi nelle incertezze delle medie
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}|c}
+    			     riga &&& misure in gradi &&& media\\
+    				\hline
+    				\hline
+    				#rosso&&235$^{\circ}$ 22' 00''&235$^{\circ}$ 20' 00''&235$^{\circ}$ 27' 30''&&235$^{\circ}$ 23' 10'' \pm 2' \\
+    				\hline
+    				#giallo&&235$^{\circ}$ 02' 00''&235$^{\circ}$ 47' 00''&235$^{\circ}$ 01' 00''&&235$^{\circ}$ 16' 41''\pm15' 11''\\
+    				\hline
+    				#verde&&234$^{\circ}$ 00'' 30''&233$^{\circ}$ 41' 00''&233$^{\circ}$ 43' 00''&&233$^{\circ}$ 48' 11'' \pm 6' 11''\\
+    				\hline
+    				#ciano&&233$^{\circ}$ 44' 00''&233$^{\circ}$ 40' 30''&233$^{\circ}$ 46' 00''&&233$^{\circ}$ 43' 19''\pm 1' 44''\\
+    				\hline
+    				#blu&&233$^{\circ}$ 20' 30''&233$^{\circ}$ 20' 00''&233$^{\circ}$ 22' 00''&&233$^{\circ}$ 20' 49''\pm 6'\\
+    				\hline
+    				#viola&&233$^{\circ}$ 01' 30''&232$^{\circ}$ 52' 00''&232$^{\circ}$ 46' 00''&&232$^{\circ}$ 53' 10''\pm 4' 30'' \\
+    				\hline
+                \end{tabular}
+             } %close centering
+             \caption{l'errore strumentare corrisponde ancora a 0\(^{\circ} 0' 30'' = 0.0001 rad\)}
+    \end{figure}
+
+
+
+\subsubsection{Analisi dati}
+
+Come fatto in precedenza, abbiamo convertito gli angoli in radianti per eseguire il calcolo di n
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			     riga & media per \(\delta\)[rad] \\
+    				\hline
+    				\hline
+    				rosso&0.8318 $\pm$ 0.0007\\
+    				\hline
+    				giallo&0.834 $\pm$0.004\\
+    				\hline
+    				verde&0.860 $\pm$ 0.002\\
+    				\hline
+    				ciano&0.8608 $\pm$ 0.0005\\
+    				\hline
+    				blu&0.8674 $\pm $0.0003\\
+    				\hline
+    				viola&0.875 $\pm$ 0.001 \\
+    				\hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+per ricavare le lunghezze d'onda sconosciute abbiamo usato la formula:
+\[\lambda = \sqrt{ B/(n-A) } \hspace{1cm} \sigma_{\lambda}= \sqrt{ (\frac{\partial \lambda}{\partial n})^{2}\sigma_{n}^{2} + (\frac{\partial \lambda}{\partial A})^{2}\sigma_{A}^{2}  + (\frac{\partial \lambda}{\partial B})^{2}\sigma_{B}^{2} + (\frac{\partial \lambda}{\partial B})(\frac{\partial \lambda}{\partial A})2cov}\]
+l'incertezza su lambda è stata ricavata attraverso la propagazione degli errori su A, B(compresa la covarianza trovata con ROOT:\(cov_{AB} = -6.655nm^{2}\)) e n
+\[
+        \frac{\partial \lambda}{\partial n}= -\frac{ \left( \frac{-B}{(A-n)}\right)^{\frac{3}{2}}}{2B} \hspace{0.5 cm} \frac{\partial \lambda}{\partial A}= \frac{B}{ 2(n-A)^{2}\sqrt{\frac{B}{( n-A ) }}} \hspace{0.5 cm} \frac{\partial \lambda}{\partial B}= \frac{\sqrt{\frac{-B}{(A-n)}}}{ 2B}
+\]
+i risultati dei calcoli sono riportati nella tabella denominata identificazione gas ignoto, abbiamo usato le stime per A e per B ricavate nella sezione Angolo di minima deviazione.\\
+
+\pagebreak
+
+\noindent Le misure effettuate ci portano a pensare che ci sia una buona correlazione con le righe di emissione dell'Elio, tuttavia riscontriamo un'ampia incertezza sulle lunghezze d'onda, soprattutto per quelle più grandi che sono affette da un potere risolutivo del prisma inferiore.\\
+Questo suggerisce la possibilità che l'ambiente fosse eccessivamente illuminato, il che ha ci impedito di stringere la fenditura fino ad ottenere una risoluzione ottimale.
+ 
+\begin{figure}[!htbp]
+\captionsetup{labelformat=empty}
+    	\caption{identificazione gas ignoto}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c||c|c}
+    			   indice n & lambda sperimentali[nm] & lambda tabulate(He)[nm] & test t - Student \\
+    			   \hline
+    			   1.621 $\pm$ 0.004 & 745.894 $\pm$ 92.312 & 668 & 0.84 \(\overset{PValue}{\rightarrow}40.09\%\)\\
+    			   \hline
+    			   1.623 $\pm$ 0.004 & 716.653 $\pm$ 77.845 & 589 & 1.6\(\overset{PValue}{\rightarrow} 10.96\%\)\\
+    			   \hline
+    			   1.638 $\pm$ 0.004 & 502.101 $\pm$ 13.769 & 502 & 0.01\(\overset{PValue}{\rightarrow} 99.20\%\)\\
+    			   \hline
+    			   1.639 $\pm$ 0.004 & 495.325 $\pm$ 13.150 & 469 & 2.0\(\overset{PValue}{\rightarrow} 4.55\%\)\\
+    			   \hline
+    			   1.642 $\pm$ 0.004 & 467.113 $\pm$ 11.783 & 441 & 2.2\(\overset{PValue}{\rightarrow} 2.78\%\)\\
+    			   \hline
+    			   1.647 $\pm$ 0.004 & 438.379 $\pm$ 12.026 & 427 & 0.95\(\overset{PValue}{\rightarrow} 34.21\%\)\\
+    			
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+\noindent Per ogni lunghezza d'onda abbiamo effettuato il test t-Student per confrontare la misura sperimentale con quelle tabulate nel testo di riferimento. \\
+Formula utilizzata: 
+\[t = \frac{\left| \hat{\lambda} - \lambda_{tabulata} \right|}{\sqrt{\sigma^{2}_{\hat{\lambda}}}}\]
+
+\noindent Stabilendo un valore limite per il PValue = 5\% siamo in grado di concludere che le righe ottenute hanno buona probabilità di corrispondere alle emissioni dell'elio. \\
+
+%\href{https://edisciplinas.usp.br/pluginfile.php/4822251/mod_resource/content/1/Espectro%20do%20helio%20-%20presto.pdf}{PDF di riferimento righe di emissione Elio}
+
+
+
+\section{Misure con reticolo}
+\noindent Riportiamo le caratteristiche principali dello strumento utilizzato in questa parte. \\
+
+\noindent reticolo utilizzato : 1200 linee/mm, 3cm di larghezza  $\mapsto$ Nrighe = 36000\\
+valore atteso per il passo: 833nm
+\subsection{Stima del passo del reticolo}
+Abbiamo stimato il passo del reticolo ricorrendo alla lampada al sodio e puntando il telescopio su una delle due righe del doppietto giallo (lambda = 589.59nm) per calcolare la sua posizione rispetto all'immagine di ordine zero.
+Le misure sono state effettuate sulle immagini del primo ordine a causa della scarsa visibilità degli ordini successivi.
+
+\subsubsection{Dati raccolti}
+Per prima cosa, per poter osservare la simmetria dell'immagine di diffrazione abbiamo allineato il più possibile il reticolo in modo che la perpendicolare fosse parallela al fascio luminoso del collimatore.\\
+
+\begin{figure}[!htbp]
+\captionsetup{labelformat=empty}
+    	\caption{verifica di allineamento}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c}
+    			    angolo a sinistra[gradi] & angolo al centro[gradi] & angolo a destra[gradi]\\
+    				\hline
+    	            \hline
+    	           328 00' 00''$\pm$ 0$^{\circ}$ 00' 30''&283$^{\circ}$ 00' 00''$\pm$ 0$^{\circ}$ 00' 30''&239 00' 00''$\pm$ 0$^{\circ}$ 00' 30''\\
+                \end{tabular}
+             } %close centering
+    \end{figure}
+\noindent avremmo dovuto procedere con la riduzione della differenza tra i due angoli: sinistro = 45$^{\circ}$ e destro = -44$^{\circ}$ ruotando il tavolino del reticolo in senso orario di mezzo grado ma abbiamo preferito procedere con le misure per mancanza di tempo.\\
+Le misure sono state effettuate in due giornate differenti e con due spettrometri differenti, il primo aveva sensibilità maggiore: \(00 ^{\circ} 00' 30''\), il secondo aveva sensibilità di \(00^{\circ} 01'\).
+
+    \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{giornata 1(misure in gradi)}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{4}{c}|c}
+    			    righe &misura1 &misura2&misura3&misura4& medie\\
+    				\hline
+    				\hline
+    				angolo centrale1 & 283$^{\circ}$ 00' 00'' & 282$^{\circ}$ 58' 00'' & 283$^{\circ}$ 02' 00'' & 283$^{\circ}$ 00' 00''&283$^{\circ}$ 00' $\pm$ 0$^{\circ}$ 01'\\
+    				\hline
+    				riga Gialla1 & 239$^{\circ}$ 00' 00'' & 238$^{\circ}$ 46' 30'' & 238$^{\circ}$ 41' 00'' & 238$^{\circ}$ 42' 00''&238$^{\circ}$ 49' $\pm$ 0$^{\circ}$ 06'\\
+                \end{tabular}
+             } %close centering
+    \end{figure}
+   per la giornata 2 la procedura di allineamento è stata saltata, abbiamo preferito procedere con la misura di entrambi i lati per ogni riga per poi trattare il disallineamento con una media pesata 
+   
+	\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{giornata 2(misure in gradi)}
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|*{3}{c}|c}
+    			righe &misura1 &misura2&misura3& medie\\
+                \hline
+				\hline
+				angolo centrale2 &318$^{\circ}$ 01' &318$^{\circ}$ 30' & 318$^{\circ}$ 16' &318$^{\circ}$ 15' $\pm$ 0$^{\circ}$ 8'\\
+                \hline
+				riga Gialla2 sx& 274$^{\circ}$ 30'  &274$^{\circ}$ 30' & 274$^{\circ}$ 42' &274$^{\circ}$ 34'$\pm$  0$^{\circ}$ 04'\\
+				\hline
+				riga Gialla2 dx &04$^{\circ}$ 05' & 04$^{\circ}$ 19' & 04$^{\circ}$ 06' & 04$^{\circ}$ 10' $\pm$ 0$^{\circ}$ 05'\\
+			\end{tabular}
+         } %close centering
+    \end{figure}
+    				
+
+
+
+\subsubsection{Analisi Dati}
+i calcoli sono stati svolti in radianti, di seguito le medie ottenute\\
+	\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|*{4}{c}|c}
+    			 &riga & angolo medio riga & angolo medio centro &differenza& media totale\\
+                \hline
+				\hline
+			    giornata 1&Gialla1 & 4.168$\pm$ 0.002 & 4.9393  $\pm$ 0.0003& 0.771 $\pm$  0.002 & 0.771$\pm$  0.002 \\
+                \hline
+				&Gialla2 sx& 4.792 $\pm$  0.001 & 5.555 $\pm$ 0.002& 0.763 $\pm$  0.003 & \\
+				
+				giornata 2 &&&&& 0.781  $\pm$ 0.002\\
+				
+				&Gialla2 dx & 0.073 0.001 & 5.555 $\pm$ 0.002 &  0.801 $\pm$  0.003& \\
+				\hline
+				\hline
+			\end{tabular}
+         } %close centering
+        \caption{posizione angolare in radianti della riga gialla più esterna($\lambda=589.59nm$)}
+
+    \end{figure}
+    
+a questo punto abbiamo scelto di mantenere i due esperimenti separati fino alla fine e di produrre una stima per d per ogni giornata al fine di comprendere meglio il sorgere di eventuali errori sistematici.\\
+
+\noindent Abbiamo calcolato il passo come 
+\[d = \frac{\lambda n}{sin(\theta_{giallo})} \hspace{1cm} \sigma_{d} = \lambda n \frac{cos(\bar{\theta_{giallo}} )} {sin(\bar{\theta_{giallo}})^{2} }\sigma_{\bar{\theta}} \]
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|c}
+			    giornata& passo[nm]\\
+			    \hline 
+    			 1 & 846.0 $\pm$  1.5\\
+    			\hline
+    			 2 & 837.1 $\pm$ 1.6\\
+                \hline
+				\hline
+			    
+			\end{tabular}
+         } %close centering
+    \end{figure}
+effettuando una media pesata per le due stime del passo abbiamo ottenuto:
+\[\bar{d} = \frac{\sum_{i=1}^{2} \frac{d_{i}}{\sigma_{i}^{2}}}{\sum_{i=1}^{2} \frac{1}{\sigma_{i}^{2}}} = 842.055nm \hspace{1cm} \sigma_{\bar{d}} = \frac{1}{\sum_{i=1}^{2} \frac{1}{\sigma_{i}^{2}}} = 1.08717nm\]
+
+\noindent Per confrontare \(\hat{d} = 842 \pm 1nm\) con il valore atteso di 833nm abbiamo effettuato il test t-Student:
+\[ t = \frac{\hat{d} - d}{\sigma_{\hat{d}} }= 9 \]
+il risultato del test indica una notevole discrepanza tra il valore atteso e quello osservato sperimentalmente. Ciò può essere dovuto al disallineamento del reticolo che non è stato corretto per la stima di \(d_{1}\).
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+        \caption{Correzione in caso di incidenza non perpendicolare}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.80 \textwidth}{!}{   %resize table
+			\includegraphics{reticolo_disegno.png}
+		} %close resize
+	} %close centering
+\end{figure}
+
+\noindent Come si può dedurre dal disegno per correggere questa stima possiamo utilizzare la formula 
+\[d = \frac{n \cdot \lambda}{sin(\theta) + sin(\alpha)} \hspace{1cm} \sigma_{d} = \sqrt{   \left(\frac{\partial d}{\partial \theta}\right)^{2}\sigma_{\alpha}^{2} + \left(\frac{\partial d}{\partial \theta}\right)^{2} \sigma_{\theta}^{2} }\]
+\noindent Abbiamo eseguito la propagazione degli errori su delta e alpha usando la formula con le derivate parziali 
+\[\frac{\partial d}{\partial \theta} = \frac{n \lambda cos(\theta)}{( sin(\theta)+sin(\alpha) )^{2}} \hspace{1cm} \frac{\partial d}{\partial \alpha}= \frac{n \lambda cos(\alpha)}{(sin(\theta)+sin(\alpha))^{2}}\]
+
+
+\begin{enumerate}
+    \item [-] Si osserva che \(\alpha = 1.24^{\circ} \pm 0.05 ^{\circ} = 0.0217 \pm  0.0009\)rad è l'angolo di disallineamento del fascio incidente rispetto alla normale. \\
+
+Conoscendo \(\beta^{-} = -44^{\circ} \pm 0.01 ^{\circ}\) e \(\beta^{+} = 45^{\circ} \pm 0.01^{\circ}\) abbiamo ricavato \(\alpha\) con la seguente formula: 
+\[\tan(\alpha) = \frac{sin(\beta^{-}) + sin(\beta^{+})}{2 - cos(\beta^{-}) - cos(\beta^{+})}\]
+ 
+e la sua incertezza con la propagazione degli errori. \\
+
+    \item[-] Mentre \(\theta =\) posizione della riga rispetto alla normale al reticolo = posizione della riga rispetto alla direzione di incidenza - \(\alpha\) \\ \(\theta = \) 0.771rad - 0.0217 rad \(\pm\) \(\sqrt{0.002^{2} + 0.0009^{2}}\) = 0.749\( \pm\) 0.002. \\
+\end{enumerate}
+
+
+\noindent Il risultato è \( d_{1} = 839 \pm 2\)nm; il passo risultante ottenuto dalle due giornate dopo aver corretto \(d_{1}\) è \(d_{finale} = 838 \pm 1\)nm, che si avvicina maggiormente al valore atteso rispetto alla stima precedente, anche se la compatibilità non risulta ancora accettabile. 
+
+\subsection{Identificazione righe spettrali della lampada Na}
+
+\subsubsection{Dati raccolti}
+
+ \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{giornata 1(misure in gradi)}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{4}{c}|c}
+    			    righe &misura1 &misura2&misura3&misura4& medie\\
+    				\hline
+    				\hline
+    				angolo centrale1 & 283$^{\circ}$ 00' 00'' & 282$^{\circ}$ 58' 00'' & 283$^{\circ}$ 02' 00'' & 283$^{\circ}$ 00' 00''&283$^{\circ}$ 00' $\pm$ 0$^{\circ}$ 01'\\
+    				\hline
+    				riga Blu1 & 246$^{\circ}$ 44' 30'' & 245$^{\circ}$ 00' 00'' & 246$^{\circ}$ 46' 00'' & 246$^{\circ}$ 44' 30'' & 246 10'$\pm$ 0$^{\circ}$ 35'\\
+    				\hline
+    				riga Verde1 & 245$^{\circ}$ 25' 00'' & 245$^{\circ}$ 22' 30'' & 245$^{\circ}$ 21' 30'' & 245$^{\circ}$21' 30'' & 245$^{\circ}$ 23' $\pm$ 0$^{\circ}$ 1'\\
+    				\hline
+    				riga Gialla1 & 239$^{\circ}$ 00' 00'' & 238$^{\circ}$ 46' 30'' & 238$^{\circ}$ 41' 00'' & 238$^{\circ}$ 42' 00''&238$^{\circ}$ 49' $\pm$ 0$^{\circ}$ 06'\\
+    				\hline
+    				riga Rossa1 &237$^{\circ}$ 26' 00'' &236$^{\circ}$ 20' 00'' &236$^{\circ}$ 20' 30'' & 236$^{\circ}$ 1' 00'' &236$^{\circ}$ 42' $\pm$ 0$^{\circ}$ 22' \\
+    				
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+   
+	\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{giornata 2(misure in gradi)}
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|*{3}{c}|c}
+    			righe &misura1 &misura2&misura3& medie\\
+                \hline
+				\hline
+				angolo centrale2 &318$^{\circ}$ 01' 00''&318$^{\circ}$ 30' 00''& 318$^{\circ}$ 16' 00''&318$^{\circ}$ 15' $\pm$ 0$^{\circ}$ 8'\\
+                \hline
+                riga Blu2 & 352$^{\circ}$ 3' 00''&352$^{\circ}$ 5' 00''&352$^{\circ}$ 4' 00'' & 352$^{\circ}$ 4' 1''$\pm$ 0$^{\circ}$ 0' 35''\\
+                \hline
+                riga Verde2 & 355$^{\circ}$  39' 00'' & 355$^{\circ}$  40' 00'' & 355$^{\circ}$  38' 00'' & 355$^{\circ}$  39' 00'' $\pm$ 0$^{\circ}$ 0' 35''\\
+                \hline
+				riga Gialla2 sx& 274$^{\circ}$ 30' 00'' &274$^{\circ}$ 30' 00''& 274$^{\circ}$ 42' &274$^{\circ}$ 34' 00''$\pm$  0$^{\circ}$ 04'\\
+				\hline
+				riga Gialla2 dx &04$^{\circ}$ 05' 00''& 04$^{\circ}$ 19' 00''& 04$^{\circ}$ 06' 00''& 04$^{\circ}$ 10' $\pm$ 0$^{\circ}$ 05'\\
+				\hline
+				riga Rossa2 sx & 272$^{\circ}$ 00' 00''&272$^{\circ}$ 30' 00''&272$^{\circ}$ 15' 00''& 272 15' $\pm$ 0$^{\circ}$ 9'\\
+				\hline
+				riga Rossa2 dx & 7$^{\circ}$ 3' 00'' &6$^{\circ}$ 9' 00''&6$^{\circ}$ 8' 00''&6$^{\circ}$ 27'$\pm$ 0$^{\circ}$ 18'\\
+				\hline
+				\hline
+			\end{tabular}
+         } %close centering
+    \end{figure}
+
+\pagebreak
+
+\subsubsection{Analisi dati}
+
+i calcoli sono stati svolti in radianti, di seguito le medie ottenute
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+		\makebox[1 \textwidth][c]{       %centering table
+			\begin{tabular}{c|*{4}{c}|c}
+    			 &riga & angolo medio riga & angolo medio centro &differenza& media totale\\
+                \hline
+				\hline
+			    &Gialla1 & 4.168 $\pm$ 0.002 & 4.9393  $\pm$ 0.0003& 0.771 $\pm$  0.002 & 0.771 $\pm$ 0.002 \\
+                &Rossa1 & 4.131 $\pm$ 0.006 & 4.9393  $\pm$ 0.0003 & 0.808 $\pm$ 0.006 & 0.808 $\pm$ 0.006\\
+                giornata1 & &&&&\\
+                &Blu1 & 4.30 $\pm$ 0.01 & 4.9393 $\pm$ 0.0003 & 0.64 $\pm$ 0.01 & 0.64 $\pm$ 0.01\\
+                &Verde1 & 4.2828 $\pm$ 0.0003 &  4.9393 $\pm$ 0.0003 &  0.6565 $\pm$ 0.0005& 0.6565 $\pm$ 0.0005\\
+                \hline
+				&Gialla2 sx& 4.792 $\pm$  0.001 & 5.555 $\pm$ 0.002& 0.763 $\pm$  0.003 & \\
+				&&&&&0.781 $\pm$ 0.002\\
+				&Gialla2 dx & 0.073 $\pm$ 0.001 & 5.555 $\pm$ 0.002 &  0.801 $\pm$ 0.003& \\
+				&Rosso2 sx & 4.752 $\pm$ 0.003 & 5.555 $\pm$ 0.002 & 0.803 $\pm$ 0.004&\\
+				giornata 2 &&&&& 0.813 $\pm$ 0.003\\
+				&Rosso2 dx & 0.112 $\pm$ 0.005 & 5.555 $\pm$ 0.002 & 0.841 $\pm$ 0.006&\\
+                &Blu2 & 6.1447 $\pm$ 0.0002& 5.555 $\pm$ 0.002 & 0.590$\pm$ 0.002 &  0.590 $\pm$ 0.002\\
+                &Verde2& 6.2073 $\pm$ 0.0002&  5.555 $\pm$ 0.002 &0.653 $\pm$ 0.002 & 0.653 $\pm$ 0.002\\
+				
+				\hline
+				\hline
+			\end{tabular}
+         } %close centering
+        \caption{posizione angolare in radianti delle righe osservate}
+
+\end{figure}
+    
+\noindent per identificare le lunghezze d'onda delle righe osservate abbiamo invertito la relazione precedentemente utilizzata, la tabella sotto riassume i risultati dei calcoli eseguiti sempre in radianti
+
+
+
+\begin{figure}[!htbp]
+	\captionsetup{labelformat=empty}
+	\caption{formula utilizzata: \(\lambda = \frac{\hat{d}sin(\theta)}{n} \hspace{0.5 cm} \sigma_{\lambda} =\sqrt{\left ( \frac{sin(\theta )}{n} \right )^{2}\sigma_{d}^{2} + \left ( \frac{dcos(\theta )}{n} \right )^{2}\sigma_{\theta }^{2}}\)}
+		\makebox[1 \textwidth][c]{       %centering table
+		\begin{tabular}{c|c|c|c|c}
+    			riga& theta medio[rad] &lunghezza d'onda[nm] & lunghezza d'onda tabulata[nm] & test t\\
+                \hline
+				\hline
+				Rossa & 0.812 $\pm$ 0.003 &  608 $\pm$ 2 & 615 & 3.5\\
+                \hline
+                Blu & 0.593 $\pm$ 0.002 & 468 $\pm$ 2 & 467 & 0.5\\
+                \hline
+                Verde &  0.6564 $\pm$ 0.0004& 511 $\pm$ 1 & 515&4\\
+			\end{tabular}
+         } %close centering
+\end{figure}
+
+\noindent gli angoli riportati come theta medio rappresentano una media pesata tra quelli ottenuti dalla prima e dalla seconda giornata, il passo utilizzato è quello sottoposto alla correzione per il disallineamento. \\
+Considerando le lunghezze d'onda più simili a quelle ottenute tra quelle tabulate, abbiamo verificato la compatibilità con il test t-Student. Il test ha riportato risultati soddisfacenti solo per la riga blu, una stima per d maggiormente compatibile con il valore vero avrebbe probabilmente portato ad un risultato soddisfacente per tutte le righe.
+
+\section{Considerazioni finali}
+
+Un fatto importante di cui tenere nota a termine di questa esperienza è il riconoscimento che prisma e reticolo di diffrazione disperdono la luce con andamento opposto: un prisma devia maggiormente le lunghezze d'onda violette rispetto a quelle rosse (\(n \propto \frac{1}{\lambda^{2}}\)), mentre un reticolo viceversa (\(sin(\theta) \propto \lambda\)). \\
+Abbiamo visto come il potere risolutivo di un prisma vari con la lunghezza d'onda siccome \(\frac{\lambda}{\delta \lambda} = L\frac{dn}{d\lambda}\); la capacità di distinguere due lunghezze d'onda vicine per il reticolo invece dipende esclusivamente dall'ordine di diffrazione che si vuole risolvere e dal numero di fenditure. \\
+
+\noindent Si può infatti dimostrare che, imponendo la condizione limite per cui il massimo principale (di ordine n) della lunghezza \(\lambda + d \lambda\), si trovi nella posizione del minimo adiacente al massimo principale (sempre di ordine n) di \(\lambda\); la minima distanza sulle lunghezze d'onda risolvibile è:
+\[R = \frac{\lambda}{d \lambda} = Nn\]
+
+\noindent Concludiamo dunque che il potere risolutivo diminuisce solo all'aumentare dell'ondine che si sta analizzando. Nel nostro caso n è rimasto sempre = 1 poichè il reticolo aveva un passo abbastanza grande (1200 righe/mm) da ridurre il potere dispersivo (\(\frac{d\theta}{d\lambda} = \frac{n}{dcos(\theta)}\)) a tal punto che i massimi delle diverse lunghezze, sovrapponendosi, hanno creato una luce bianca che impediva di distinguere le righe dopo un certo angolo.
+%che differenza c’è tra reticolo e prisma in termini della capacità di misura di una lunghezza d’onda e di identificazione di tutte le righe di emissione di un atomo eccitato?
+
+\end{document}

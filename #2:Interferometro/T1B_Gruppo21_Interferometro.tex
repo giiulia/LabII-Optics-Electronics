@@ -1,0 +1,728 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{tabularx}
+\usepackage{natbib}
+\usepackage{graphicx}
+
+
+\usepackage{hyperref} %per i link
+\usepackage{tikz}
+
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{amsmath, amsthm}
+
+\usepackage{mathrsfs}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{caption}
+
+\theoremstyle{definition}
+\newtheorem{rich}{richiamo matematico}[section]
+
+
+\title{Interferometro}
+\author{Broggi, Cantarini, Falconelli}
+\date{Laboratorio di fisica II}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduzione}
+
+L'interferenza è un fenomeno che si osserva quando due o più onde generate da sorgenti distinte ma coerenti si sovrappongono. \\
+In laboratorio abbiamo avuto modo di creare figure d'interferenza ed effettuare misure e verifiche sperimentali con le configurazioni di Fabry-Perot e di Michelson ed un righello metallico impiegato come reticolo utilizzando un laser He-Ne. Virtualmente abbiamo calibrato il micrometro in configurazione Fabry-Perot con una lunghezza d'onda conosciuta al fine di determinare una stima di 3 diverse lunghezze d'onda ignote.
+%qualcosa sul righello -va bene now?
+
+\section{Configurazione Fabry-Perot virtuale}
+
+Per queste misure abbiamo variato la distanza tra gli specchi di intervalli $\Delta\ d_{m} \simeq 10$ e contato le frange che attraversavano il segno di riferimento. 
+Il simulatore assume un angolo di incidenza $\theta$ pari a 30$^{\circ}$.
+Considerando $\Delta$ N il numero di frange contate per l'intervallo $\Delta\ d_{m}$ vale la relazione 
+\[2\Delta d_{m} \cos \theta = \Delta N \lambda\]
+
+Le prime misurazioni, essendo nota la lunghezza d'onda $\lambda$ = 0.632$\mu m$ del rosso, sono servite per calibrare l'intervallo $\Delta d_{m}$ scelto. Le successive, noto l'intervallo e la sua unità di misura, ci hanno permesso di calcolare $\lambda$ diverse da quella di partenza.
+\pagebreak
+\subsection{Calibrazione dell'interferometro}
+Abbiamo effettuato più misure partendo ogni volta da d = 8[?] e terminando in posizioni distinte per poter apprezzare le fluttuazioni casuali della misura e al tempo stesso calibrare un range per \(\Delta d_{m}\) significativamente ampio.\\
+Successivamente, usando la formula \\
+\[\frac{\Delta d_{r}}{\Delta d_{m}} = \frac{\Delta N\lambda}{2cos(30^{\circ})\Delta d_{m}}\]
+abbiamo ricavato il rapporto di calibrazione per ogni misura effettuata
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{il [?] indica che l'unità di misura è da determinare}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c}
+    			    $\Delta d_{m}$ [?] & $\Delta N$ & rapporto di calibrazione[$\mu m$]\\
+    				\hline
+    				\hline
+                    8.98&	29 &  1.17\\
+                    \hline
+                    9.15&	30 & 1.20\\
+                    \hline
+                    9.46& 31 &  1.20\\
+                    \hline
+                    10.00&	32 & 1.19 \\
+                    \hline
+                    10.41&	34 & 1.18\\
+                    \hline
+                    10.50&	33& 1.15\\
+                    \hline
+                \end{tabular}
+             } %close centering
+             \caption{$\lambda$ = 0.632$\mu m$ nota}
+    \end{figure}
+    
+La stima finale per il rapporto di calibrazione è stata effettuata calcolando la media e la deviazione standard sulla media: \(R =  1.18 \pm 0.008 \mu m\)
+
+\subsection{Misura delle lunghezze d'onda ignote}
+
+Per questa parte abbiamo proceduto contando, per variazioni di $d_{m}$ pari a 9.70, 10.00, 10.30, il numero di frange $\Delta$N, in modo da poter interpolare i dati con una retta ed ottenere una stima di $\lambda$.
+
+\subsubsection{Dati raccolti}
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{scorrimento delle frange verdi}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|cccc}
+    			    $\Delta d_{m}$[?]& &misure& $\Delta N$&\\
+    				\hline
+    				\hline
+                    9.70 &42& 41& 42& 42\\
+                    \hline
+                    10.0 &43& 44& 44& 45\\
+                    \hline
+                    10.30 & 45& 44& 45& 46\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+.\\\\\\\
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{scorrimento delle frange blu}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|cccc}
+    			    $\Delta d_{m}$[?]& &misure& $\Delta N$&\\
+    				\hline
+    				\hline
+                    9.70 &37& 37& 39& 37\\
+                    \hline
+                    10.0 &38& 40& 38& 38\\
+                    \hline
+                    10.30 & 39& 40& 39& 41\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+  
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{scorrimento delle frange gialle}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|cccc}
+    			    $\Delta d_{m}$[?]& &misure& $\Delta N$&\\
+    				\hline
+    				\hline
+                    9.70 &34& 33& 34& 34\\
+                    \hline
+                    10.0 &35& 35& 36& 36\\
+                    \hline
+                    10.30 & 37& 37& 36& 36\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+
+\subsubsection{Analisi dati}
+Al fine di riportare i dati raccolti per ogni lunghezza d'onda in un grafico a punti significativo abbiamo calcolato l'effettiva variazione per la distanza tra gli specchi  moltiplicando ogni misura di $\Delta d_{m}$ per il rapporto di calibrazione R e calcolato media e deviazione standard per ogni $\Delta N$.\\
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    $\Delta d_{m}\cdot R$ [$\mu m$]& $\Delta N$\\
+    				\hline
+    				\hline
+                    11.44 $\pm$ 0.08 &	 41.75	$\pm$	 0.3 \\
+                    \hline
+                    11.79 $\pm$ 0.08  & 44 	$\pm$ 	 0.4\\
+                    \hline
+                    12.15 $\pm$ 0.08  &  45 	$\pm$	 0.4\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+Abbiamo calcolato il coefficiente di correlazione lineare per accertarci che l'andamento di \(\Delta N\) in funzione di \(\Delta d_{r}\) fosse soddisfacente:
+\[r = \frac{\sum (x_{i} - \bar{x})(y_{i} - \bar{y})}{\sqrt{\sum (x_{i} - \bar{x})^{2}\sum (y_{i} - \bar{y})^{2}}} = 0.976 \approx 1 \]
+concludiamo che la probabilità che le due grandezze non siano correlate linearmente è prossima allo 0\% quindi ci aspettiamo che il grafico rappresenti una retta come da teoria.
+\pagebreak
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.65 \textwidth}{!}{   %resize table
+			\includegraphics{ricerca_verde.png}
+		} %close resize
+	} %close centering
+		\caption{equazione usata per l'interpolazione: $p_{0}x$}
+
+\end{figure}
+il fit eseguito con ROOT stima il coefficiente angolare della retta a \(p_{0}=3.69 \pm 0.02 \frac{1}{\mu m}\), abbiamo calcolato lambda come 
+\[\lambda=\frac{2\cos(30^{\circ})}{p_{0}} \hspace{1cm} \sigma_{\lambda} = \frac{2cos(30^{\circ})\sigma_{p_{0}}}{p_{0}^{2}}\]
+il risultato ottenuto è \(\lambda_{verde} = 0.470\pm0.003 \mu m\), mentre l'intervallo di riferimento in cui ci aspettiamo la stima ricada è 0.520-0.565 $\mu m$.\\ Trattandosi di dati virtuali la possibilità di aver commesso imprecisioni durante la raccolta dati è bassa, per spiegare dunque l'incompatibilità della stima con i valori attesi per il verde abbiamo per prima cosa eseguito gli stessi passaggi di analisi dati per le altre lunghezze d'onda. Il caso in cui le prossime stime risultassero accettabili, ci porterà a concludere che il valore per \(\lambda\) utilizzato per programmare il simulatore potrebbe non essere quello corretto. \\
+
+\noindent L'analisi dati per il blu è stata svolta analogamente, sempre partendo a contare $\Delta d_{m}$ da 8.\\
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    $\Delta d_{m}\cdot R$ [$\mu m$]& $\Delta N$\\
+    				\hline
+    				\hline
+                    11.44 $\pm$ 0.08 &	 37.5	$\pm$	 0.5 \\
+                    \hline
+                    11.79 $\pm$ 0.08  & 38.5 	$\pm$ 	 0.5\\
+                    \hline
+                    12.15 $\pm$ 0.08  &  39.75 	$\pm$	 0.5\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+anche qui abbiamo calcolato il coefficiente di correlazione lineare\\ \(r=0.981\approx1\), concludiamo che la correlazione è soddisfacente anche in questo caso, essendo 1 il valore atteso per r.\\
+
+\pagebreak
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.65 \textwidth}{!}{   %resize table
+			\includegraphics{ricerca_blu.png}
+		} %close resize
+	} %close centering
+		\caption{equazione usata per l'interpolazione: $p_{0}x$}
+
+\end{figure}
+il coefficiente angolare risulta \(p_{0} = 3.27 \pm 0.03 \frac{1}{\mu m}\), quindi la stima per lambda è \(\lambda_{blu} = 0.530 \pm 0.004 \mu m\). L'intervallo di riferimento per il blu è 0.435-0.500 $\mu m$, dunque consideriamo la stima accettabile.\\
+
+\noindent Eseguendo i medesimi calcoli per il giallo abbiamo ottenuto:
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c}
+    			    $\Delta d_{m}\cdot R$ [$\mu m$]& $\Delta N$\\
+    				\hline
+    				\hline
+                    11.44 $\pm$ 0.08 &	 33.75	$\pm$	 0.25 \\
+                    \hline
+                    11.80 $\pm$ 0.08  & 35.5 	$\pm$ 	 0.29\\
+                    \hline
+                    12.15 $\pm$ 0.08  &  36.5 	$\pm$	 0.29\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+\noindent per tali punti il coefficinte di correlazione risulta: \(r = 0.981 \approx 1\), quindi anche per il giallo l'ipotesi che le nostre misure siano distribuite linearmente è corretta, con una probabilità approssimabile al 100\%.
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.65 \textwidth}{!}{   %resize table
+			\includegraphics{ricerca_giallo.png}
+		} %close resize
+	} %close centering
+		\caption{equazione usata per l'interpolazione: $p_{0}x$}
+
+\end{figure}
+
+\noindent l'ultimo coefficiente angolare vale \(p_{0} = 2.99 \pm 0.02 \frac{1}{\mu m}\) e la lunghezza d'onda \(\lambda_{giallo} = 0.580 \pm 0.003 \mu m\); siccome l'intervallo di riferimento per questo colore è di  0.565-0.590 $\mu m$, ci riteniamo soddisfatti anche dei risultati di questo esperimento.
+
+\section{Configurazione Fabry-Perot}
+
+Prima di effettuare le misure abbiamo montato tutti gli elementi sul banco ottico ed allineato con cura il fascio emesso dal laser con l'onda riflessa.\\
+La lunghezza d'onda del laser He-Ne utilizzato è nota e vale $\lambda$=0.6328 $\mu$m. 
+
+
+\subsection{Verifica della legge dei massimi di interferenza}
+La nostra figura di interferenza presentava diversi cerchi concentrici la cui luminosità diminuiva con l'aumentare del raggio, mentre la nitidezza aumentava.\\
+La prima parte dell'esperienza in laboratorio consisteva nella verifica sperimentale della seguente legge dell'ottica ondulatoria:
+%N=numero frange d=distanza specchi theta=angolo incidenza
+
+\[\delta_{r}\frac{\lambda}{2 \pi } + 2d cos(\theta) = k \lambda\]
+  k è l'indice del massimo di interferenza considerato e \(\theta\) la sua posizione angolare rispetto al centro della figura, centrata in linea con la sorgente, mentre d è la larghezza della cavità di Fabry-Perot, che andremo a stimare con una interpolazione lineare.
+\subsubsection{Dati raccolti}
+In questa parte, come in tutta l'esperienza, abbiamo usato come schermo il muro frontale al laser per una misurazione più agevole.\\
+La sorgente dei fasci divergenti è il fuoco della lente che, trovandosi a 0.018cm dal centro dell'oggetto, ha distanza dal muro approssimabile a quella della lente stessa: L = 173.9 $\pm$ 0.1 cm. La distanza della lente dal muro è stata misurata con un metro di sensibilità 1mm a partire dal punto più lontano della lente e sottraendo la metà del suo spessore, riportato sulla scheda Pasco:\\(173.9 cm $\pm$ 0.1) cm -  0.003cm = 173.9 $\pm$ 0.1 cm.\\
+
+\pagebreak
+
+Le misure del diametro di quelle frange circolari che potevamo osservare più chiaramente sono riportate, in centimetri, nella tabella sottostante
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*5{c}|c}
+    			    k&& &misure[cm]&&& media[cm]\\
+    				\hline
+    				\hline
+                    5 &	 2.8& 2.3& 2.4& 2.6& 2.5&2.52 $\pm$ 0.09\\
+                    \hline
+                    4 & 4.7& 4.4& 4.3& 4.6& 4.5&4.50 $\pm$ 0.07\\
+                    \hline
+                    3 & 6.0& 5.9& 5.7& 5.8& 5.8&5.84 $\pm$ 0.05\\
+                    \hline
+                    2 & 7.0& 6.9& 6.9& 6.9& 6.9 & 6.92 $\pm$ 0.02\\
+                    \hline
+                    1 & 7.9& 7.8& 7.9& 7.8& 7.8 & 7.84 $\pm$ 0.02\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+\subsubsection{Analisi dati}
+Siccome l'incertezza stimata per la media delle nostre misure è inferiore alla sensibilità del metro utilizzato, consideriamo come errore sulla stima di ogni diametro quest'ultimo: \(\sigma_{\mu} = 0.1cm\).\\
+L'angolo relativo a ciascun massimo è stato ricavato come segue, utilizzando la propagazione degli errori sul raggio e sulla distanza L dal muro:
+
+\[\theta = atan\left (\frac{r}{L}\right ) \hspace{1cm}
+\sigma_{\theta} = \sqrt{ \left(\frac{\sigma_{r}}{  L(1 + \left (\frac{r}{L} \right )^{2}) } \right )^{2} + \left (\frac{r\sigma_{L}}{L^{2}(1 + \left (\frac{r}{L}\right )^{2}) } \right )^{2} }\]
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c|c}
+    			    k&media corretta[cm]& raggio[cm]&cos(theta)\\
+    				\hline
+    				\hline
+                    5 &	2.5 $\pm$ 0.1& 1.26 $\pm$ 0.05 & 0.999974 $\pm$ 2 $\cdot 10^{6}$  \\
+                    \hline
+                    4 &4.5 $\pm$ 0.1& 2.25 $\pm$ 0.05 &  0.999916 $\pm$ 4 $\cdot 10^{6}$ \\
+                    \hline
+                    3 & 5.8 $\pm$ 0.1&2.92 $\pm$ 0.05 &  0.999859 $\pm$ 5 $\cdot 10^{6}$ \\
+                    \hline
+                    2 & 6.9 $\pm$ 0.1&3.46 $\pm$ 0.05 & 0.999802 $\pm$ 6 $\cdot 10^{6}$\\
+                    \hline
+                    1 &7.8 $\pm$ 0.1& 3.92 $\pm$ 0.05 & 0.999746 $\pm$ 6 $\cdot 10^{6}$ \\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+\noindent Abbiamo calcolato il coefficiente di correlazione lineare tra l'ordine del massimo associato a ogni \(\theta\) e \(cos(\theta)\)
+\[r = \frac{\sum (x_{i} - \bar{x})(y_{i} - \bar{y})}{\sqrt{\sum (x_{i} - \bar{x})^{2}\sum (y_{i} - \bar{y})^{2}}} = 0.999989 \approx 1\]
+il valore è così vicino ad 1 che possiamo considerare l'ipotesi di linearità verificata al 100\%, di sotto riportiamo il grafico prodotto con questi dati
+
+\pagebreak
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.80 \textwidth}{!}{   %resize table
+			\includegraphics{verifica.png}
+		} %close resize
+	} %close centering
+    \caption{equazione usata per l'interpolazione: \(p_{0} x + p_{1}\)}
+\end{figure}
+
+i risultati del fit per il coefficiente angolare e l'intercetta sono:\\ \(p_{0} = 1.8 \cdot 10^{4} \pm 0.4\) e \(p_{1} = -1.8 \cdot 10^{4} \pm 0.4\) da cui abbiamo ricavato 
+\[\hat{d} = \frac{\lambda p_{0}}{2} \hspace{1cm} \sigma_{\hat{d}} = \frac{\lambda \sigma_{p_{0}}}{2}\]
+la larghezza cavità di Fabry-Perot quindi risulta: \(5550.8 \pm 0.1 \mu m\),\\ovvero \(\simeq 5.5 \pm 0.0001 mm\), notiamo la grande precisione con cui le misure relative agli effetti ottici permettono di determinare la stima desiderata.\\
+Dai risultati di questa interpolazione si può ricavare anche una stima per \(\delta_{r}\) che rappresenta lo sfasamento medio tra i raggi uscenti dalla cavità dovuto alla riflessione \(\delta_{r} = -1.8 \cdot 10^{4} \pm 0.4 \cdot 2 \pi\) ovvero \(-0.8 \cdot 2k \pi \).
+
+\subsection{Calibrazione del micrometro}
+Per la calibrazione del micrometro abbiamo sfruttato la relazione: \(2  \Delta d = \Delta N \lambda\) (\(cos(\theta) \approx 1\) come abbiamo potuto calcolare nell'analisi precedente) misurando più volte il passaggio di circa 20 frange attraverso un segno praticato su un foglio attaccato al muro, e segnando il relativo spostamento del micrometro dalla sua posizione iniziale. \\
+Siccome la scheda PASCO indicava che al centro dell'area di movimento si ha una precisione sugli spostamenti massima del 1\%, abbiamo svolto le nostre misurazioni a partire dal segno del 3 su un range ampio 10.\\
+Prima di ogni conteggio ruotavamo la manopola facendo un giro completo nella stessa direzione in cui volevamo muoverci per evitare errori dovuti al backslash del sistema meccanico.
+
+\pagebreak
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c}
+    			    $\Delta d_{m}$[?] & $\Delta N$ &$ \Delta d_{r}/ \Delta d_{m} [\mu m]$\\
+    				\hline
+    				7 $\pm$ 1& 21 & 0.9 $\pm$ 0.1\\
+    				\hline
+    				7 $\pm$ 1& 22 & 1.0 $\pm$ 0.1 \\
+    				\hline
+    				8 $\pm$ 1& 25& 1.0 $\pm$ 0.1\\
+    				\hline
+    				9 $\pm$ 1& 28& 1.0 $\pm$ 0.1\\
+    				\hline
+    				10 $\pm$ 1& 29& 0.9 $\pm$ 0.1\\
+    				\hline
+    				10 $\pm$ 1& 30& 0.9 $\pm$ 0.1\\
+    				\hline
+    				8 $\pm$ 1& 24& 0.9 $\pm$ 0.1\\
+    				\hline
+    				9 $\pm$ 1& 26& 0.9 $\pm$ 0.1 \\
+                    \hline
+                \end{tabular}
+             } %close centering
+             \caption{sensibilità del micrometro = 1[?]}
+    \end{figure}
+\[\Rightarrow  media:\bar{R}= 0.95 \pm 0.04 \mu m\]
+
+\noindent Abbiamo notato che l'attività di conteggio diventava più ardua all'aumentare di \(\Delta N\) per via della difficoltà a ruotare con continuità la manopola, per questo motivo ci siamo fermati solo a venti frange, comunque sufficienti per ottenere una precisione sul rapporto \(\frac{\Delta d_{r}}{\Delta d_{m}}\) del 10\%.
+Raddoppiando l'intervallo da calibrare avremmo potuto dimezzare la precisione siccome il rapporto sensibilità dello strumento-intervallo sarebbe diminuito. Tuttavia, poichè abbiamo effettuato più misurazioni, la precisione sul valore finale è del 4\%.
+
+\section{Configurazione Michelson}
+L'interferometro di Michelson si presta all'esecuzione di esperimenti interessanti come la stima dell'indice di rifrazione dell'aria o del vetro. Ponendo una cella a vuoto, oppure una lastra di vetro, tra il beam splitter e lo specchio mobile, abbiamo potuto studiare gli effetti della variazione del percorso dei raggi al loro interno sulla figura riprodotta.
+
+\subsection{Verifica della calibrazione}
+Abbiamo rapidamente calibrato il medesimo intervallo anche con la configurazione di Michelson per poter effettuare un confronto tra la precisione dei due metodi.
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c}
+    				\hline
+    			    $\Delta d_{m}$[?] & $\Delta N$ &$ \Delta d_{r}/ \Delta d_{m} \mu m$\\
+    				\hline
+    				6 $\pm$ 1& 21 & 1.1 $\pm$ 0.2\\
+    				\hline
+    				7 $\pm$ 1& 22 & 1.0 $\pm$ 0.1 \\
+    				\hline
+    				6 $\pm$ 1& 21& 1.1 $\pm$ 0.2\\
+    				\hline
+                \end{tabular}
+             } %close centering
+             \caption{sensibilità del micrometro = 1[?]}
+
+    \end{figure}
+    
+\[\Rightarrow media: \bar{R} =  1.1 \pm 0.1 \mu m\]
+La precisione per ogni misura effettuata, rispetto al 10\% ottenuto con Fabry-Perot, è del 18\%, ma si riduce a 9\% sulla la media. Questa differenza era prevedibile osservando l'immagine ottenuta con Michelson che presentava frange più larghe.
+
+\subsection{Indice di rifrazione dell'aria}
+
+Per effettuare la misura dell'indice di rifrazione dell'aria abbiamo utilizzato una cella a vuoto, dallo spessore di 3 cm, in cui era possibile variare a piacere la pressione.
+Poiché l'indice di rifrazione ha un andamento lineare in funzione della pressione atmosferica, lo abbiamo ricavato dalla relazione 
+\[n_{aria}= m  P_{atm} +1 \hspace{1cm} con \hspace{1cm} m_ = \frac{\Delta N \lambda}{2d \Delta P}\]
+dove  $\Delta$ N è il numero delle frange contate , lambda la lunghezza d'onda del laser nota, d lo spessore della cella a vuoto e $\Delta$ P è il modulo della differenza di pressione rispetto a quella iniziale.\\
+
+\subsubsection{Dati raccolti}
+La pompa utilizzata ha una sensibilità di 2kPa, che abbiamo riportato come stima per l'errore sulle letture.\\
+Nel raccogliere i dati, dopo aver riscontrato qualche difficoltà nel passare lentamente da \(P_{gauge}\) a Patm, abbiamo deciso di contare le frange quando il sistema varia da Patm a \(P_{gauge}\) quindi mentre l'aria esce.
+In questo modo il cambiamento di pressione risultava meno brusco e il movimento della figura più lento, di conseguenza il conteggio più semplice. \\
+Di seguito i dati raccolti a differenti variazioni di pressioni (si noti che la pressione iniziale nel nostro caso è sempre uguale a 0 rispetto a Patm, per cui in tabella viene segnata solo la pressione finale, da cui è facilmente deducibile \(\Delta P\))\\
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|cccc|c}
+    				\hline
+    			    Pressione finale [kPa]&&& $\Delta N$  & &media\\
+    				\hline
+    				-30 $\pm$ 2 & 7 & 6 & 7 & 7 & 6.7 $\pm$ 0.25\\
+    				\hline
+    				-40 $\pm$ 2& 10 & 9 &  9 & 8  & 9 $\pm$0.7\\
+    				\hline
+    				-70 $\pm$ 2 & 15 & 15 & 15& 16 & 15.25 $\pm$ 0.25\\
+    				\hline
+                \end{tabular}
+             } %close centering
+             \caption{ \begin{center}la pressione finale è intesa come pressione al di sotto del valore di Patm,\\ da cui il - \end{center} }
+    \end{figure}
+
+\subsubsection{Analisi dati}
+Poiché abbiamo preso misure a differenti pressioni finali, cerchiamo una retta che dimostri la legge sopra descritta per cui l'andamento del numero di frange contate è lineare rispetto alla \(\Delta P \) applicata.\\
+Si noti che nonostante la \(\Delta P \) da noi applicata sia in realtà negativa siccome andavamo a diminuire la pressione, il grafico riporta il modulo di ogni \(\Delta P \) poichè è ciò che ci interessa per ricavare m.
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.80 \textwidth}{!}{   %resize table
+			\includegraphics{indice_rifrazione_aria.png}
+		} %close resize
+	} %close centering
+    \caption{funzione utilizzata: $y = p_{0}x$}
+\end{figure}
+
+il risultato del fit eseguito con ROOT ha determinato un coefficiente angolare pari a \(p_{0} =  0.220 \pm   0.006 \frac{1}{kPa}  \), da cui abbiamo ricavato m:
+\[m = \frac{p_{0 \lambda}}{2d} = 2.32 10^{-6} \pm 7 \cdot 10^{-8} \frac{1}{kPa}\]
+sostituendo m nell'equazione iniziale in cui abbiamo supposto \(P_{atm} = 101.3250\)kPa  otteniamo \(n_{aria} = 1.000230  \pm  7 \cdot 10^{-06}\).\\
+
+\noindent Abbiamo fatto un test t-Student per verificare la compatibilità della nostra stima con il valore tabulato per \(n_{aria}\), ovvero 1.000294:
+\[t = \frac{\left | \hat{n} - n_{aria}\right |}{\sigma_{\hat{n}}} = \frac{\left |1.000230 - 1.000294 \right|}{ 7 \cdot 10^{-06}} = 9\]
+Il test da' un  risultato insoddisfacente che ci porta a concludere di aver sottostimato le incertezze, probabilmente la precisione con cui riuscivamo a selezionare il valore di \(P_{gauge}\) non era affatto inferiore alla sua sensibilità; sospettiamo un errore di parallasse dovuto alla posizione laterale del nostro occhio rispetto alla lancetta e allo spessore del vetro che copriva la lancetta.
+Immaginiamo di aver sbagliato a stimare l'errore sulla Pressione finale della metà: questa correzione porterebbe ad aumentare l'errore su \(n_{aria}\) del 75 \% (la stima per $n_{aria}$ ponendo $\sigma_{\DeltaP}=4 kPa$ è di $1.00024  \pm  1 \cdot 10^{-5}$).\\\\
+Si osservi che concludere che \(n_{aria} \simeq 1\) era necessario per giustificare l'assunzione effettuata nell'utilizzare la formula \(2\Delta d = \Delta N \lambda\) con \(\lambda = \lambda_{0} =\) lunghezza d'onda del nostro laser nel vuoto (l'approssimazione si ripeterà anche nelle formule per il calcolo di \(n_{vetro}\) e passo del righello).
+
+\subsection{Indice di rifrazione del vetro}
+Attraverso un braccio rotante fissato alla lastra di vetro, abbiamo potuto modificare lentamente l'inclinazione di quest'ultima rispetto al cammino della luce e leggere lo spostamento con una sensibilità strumentale di \(1^{\circ}\).\\
+Se la variazione della posizione angolare è \(\theta = \theta finale\), considerando un \(\theta iniziale\) di \(0^{\circ}\) perchè siamo partiti da una posizione perpendicolare al fascio, l'indice di rifrazione del vetro è stato calcolato usando la formula:
+\[n_{vetro} =\frac{(2d - \Delta N \lambda)(1 - cos\theta)}{2d \cdot (1 - cos\theta) - \Delta N \lambda}\]
+
+
+\subsubsection{Dati raccolti}
+La larghezza della piastra di vetro utilizzata è \(t = 6 \cdot 10^{3} \pm 10^{3}  \mu m\).\\
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{misure effettuate per il calcolo di $n_{vetro}$}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|ccccc}
+    				\hline
+    			    $\theta$ finale [gradi]&2.6 & 2.8 & 2.7 & 2.6  & 3.2\\
+    				\hline
+    				$\Delta N$ &&& 10 &\\
+    				\hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+    
+\noindent Abbiamo fatto l'infelice scelta di contare il passaggio di sole 10 frange durante questi spostamenti, che corrispondono a un angolo medio di $2.8^{\circ} \pm 0.1^{\circ}$ la cui incertezza risulta essere il 10\% di quella dello strumento.\\
+Per ottenere una stima per n accurata oltre che precisa saremmo tentati di usare \(1^{\circ}\) come incertezza su \(\theta\), tuttavia questa scelta ci porterebbe ad avere una stima tutt'altro che precisa, per via del nostro errore di giudizio iniziale: \(\theta = 2.8^{\circ} \pm 1^{\circ} \xrightarrow[]{precisione} 36\% \). \\
+
+Per correggere l'errore commesso nella prima giornata abbiamo preso nuovamente le misure la volta successiva, stando attenti ad arrivare fino ai 10$^{\circ}$ di inclinazione:\\
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|ccccc}
+    				\hline
+    			    $\theta$ finale [gradi]&&&10 $\pm$ 1&&\\
+    				\hline
+    				$\Delta N$ & 31 & 33 & 30 &  32 & 30\\
+    				\hline
+                \end{tabular}
+             } %close centering
+             \caption{qui abbiamo utilizzato da subito la sensibilità dello strumento}
+    \end{figure}
+
+\subsubsection{Analisi Dati}
+Utilizzando la formula sosttostante abbiamo eseguito i nostri calcoli del caso.\\
+\[n_{vetro} =\frac{(2d - \Delta N \lambda)(1 - cos\theta)}{2d \cdot (1 - cos\theta) - \Delta N \lambda} \hspace{1cm} \sigma_{n} = \left | \frac{(2t - \Delta N \lambda )sin\bar{\theta}\Delta N \lambda}{\left( 2t( 1 - cos\bar{\theta} ) -\Delta N \lambda \right)  ^{2}}  \right | \sigma_{\bar{\theta}} \]
+
+Come accennato, la stima per n utilizzando \(\bar{\theta} = 2.8^{\circ} \pm 1^{\circ}\) è sicuramente molto accurata ma poco significativa per via della scarsa precisione:\\ n =1.8 $\pm$ 1.1.\\
+La stima per n ottenuta con \(\theta = 2.8^{\circ} \pm 0.1^{\circ}\) è di \(1.8 \pm 0.1\) è invece precisa al 5\% ma ci aspettiamo sia poco accurata. Di fronte all'incertezza che quello trovato sia effettivamente vicino al valore di n per quel vetro abbiamo pensato di eseguire, invece di una media su \(\theta\), una media pesata sugli indici ricavati per ogni \(\theta\), che ci aspettiamo poco precisi, contiamo però sulla media pesata per abbassare il grado di incertezza sulla misura finale.
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c}
+    			    $\theta$ finale [gradi]& stima per n & precisione \\
+    				\hline
+    				\hline
+    				2.6 $\pm$ 1& 2.0 $\pm$ 1.7 & 85\%\\
+    				\hline
+    				2.8 $\pm$ 1& 1.8 $\pm$ 1.0 & 56\%\\
+    				\hline
+                    2.7 $\pm$ 1& 1.9 $\pm$ 1.3 & 68\%\\
+                    \hline
+                    2.6 $\pm$ 1& 2.0 $\pm$ 1.7 & 85\%\\
+                    \hline
+                    3.2 $\pm$ 1& 1.5 $\pm$ 0.5 & 33\%\\
+    				\hline
+                \end{tabular}
+             } %close centering
+             \caption{\(\Rightarrow  \bar{n}  = 1.65 \pm 0.39\) }
+\end{figure}
+Come atteso la precisione della media pesata si riduce a un 25\%, consideriamo questa la nostra stima migliore per accuratezza e precisione.\\
+Consideriamo come valore di confronto l'indice di rifrazione del vetro Flint, quello più utilizzato in ottica; per la lunghezza d'onda del rosso  $n_{flint} = 1.61$.\\
+Il test t-Student effettuato per la stima ottenuta:
+\[t = \frac{\hat{n} - n_{flint}}{\sigma_{\hat{h}}} = \frac{1.65 - 1.61}{0.39} = 0.1 \Rightarrow PValue = 92\%\]
+
+\noindent Nella seconda giornata in laboratorio abbiamo tentato di svolgere la raccolta dati in modo più accorto prendendo più misure di $\Delta N$ per una variazione angolare di 10 $^{\circ}$ circa.\\
+La media su \(\Delta N\) osservato è di 31.2 $\pm$ 0.6, consideriamo un \(\theta finale = 10^{\circ} \pm 1^{\circ}\) per ogni misura e un \(theta_{iniziale} = 0^{\circ}\) perchè partivamo sempre dalla posizione perpendicolare al fascio luminoso.
+Per ottenere una stima per \(n_{vetro}\) abbiamo usato le seguenti formule per la propagazione degli errori
+
+\[n_{vetro} =\frac{(2d - \Delta N \lambda)(1 - cos\theta)}{2d \cdot (1 - cos\theta) - \Delta N \lambda} \hspace{1cm} \sigma_{n} = \sqrt{\left( \frac{\partial n}{\partial \Delta N} \sigma_{N}\right)^{2} + \left( \frac{\partial n}{\partial \theta} \sigma_{\theta}\right)^{2}}\]
+\[
+    \frac{\partial n }{\partial \Delta N}= \frac{\bar{\Delta N}2t(1-cos\theta)\lambda cos\theta}{\left(2t( 1 - cos\theta ) - \bar{\Delta N} \lambda \right)^{2}}
+    \hspace{1cm}
+    \frac{\partial n }{\partial \theta} = \frac{(\lambda\bar{\Delta N}-2t)\lambda\bar{\Delta N}sin\theta}{\left(2t( 1 - cos\theta ) - \bar{\Delta N}\lambda \right)^{2}}\]\\
+    
+    
+\noindent Il risultato ottenuto è \(n_{vetro} = 1.12 \pm 0.03\) che si discosta molto di quello atteso per il vetro Flint di 1.61: \( t = \frac{\left | 1.12 - 1.61 \right |}{0.03} = 16.3\) la probabilità che le due misure siano compatibili è approssimabile allo 0\%.\\
+Attribuiamo questo insuccesso del test a gravi errori di allineamento della strumentazione; abbiamo avuto, durante la procedura di montaggio e allineamento degli strumenti ottici, una notevole difficoltà ad ottenere una figura chiara e centrata come quella dell'esperienza precedente.\\
+La figura presentava una distorsione che attribuiamo alla orientazione non perfettamente perpendicolare dello specchietto mobile rispetto al fascio, infatti abbiamo notato che lo specchio non era perfettamente in linea con la base ad incastro danneggiata.
+
+\section{Misure con righello metallico}
+Lo scopo di questa esperienza era di osservare le proprietà del righello come reticolo di diffrazione e di ottenere una stima del suo passo (1mm).\\
+Per questa parte abbiamo utilizzato un righello metallico posizionandolo in modo che sporgesse dal tavolo di 3.5cm. Puntando il laser radente alle scalanature del righello siamo stati in grado di visualizzare sul muro la figura di interferenza, caratterizzata da punti più luminosi in cui abbiamo riconosciuto i massimi di interferenza.\\
+
+\subsubsection{Dati raccolti}
+Abbiamo effettuato le seguenti misure:\\
+
+\noindent $h_{s}$ = 3.8 $\pm$ 0.1 cm altezza del foro del laser rispetto al tavolo.\\
+$d_{i}$ = 72.5 $\pm$ 0.1 cm distanza tra sorgente e primo punto della regione illuminata.\\
+$d_{r}$ = 127 $\pm$ 0.1 cm distanza tra il primo punto della regione illuminata e il muro.\\
+
+\noindent Alla base della serie di punti abbiamo notato un cerchio i cui punti estremi sulla verticale erano più luminosi rispetto al resto: il raggio indeviato \(P_{t}\) ed il raggio riflesso \(P_{r}\) (massimo di ordine 0). Abbiamo misurato la loro distanza e calcolato il raggio del cerchio
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{misure per calcolare il raggio}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{*{5}{c}|c|c}
+    			\hline
+                &&$P_{r} - P_{t}[cm]$ &&&media[cm]& raggio[cm]\\
+    				\hline
+    				\hline
+    			     7.8& 7.7& 7.7& 7.8& 7.8& 7.8 $\pm$ 0.02&  3.88 $\pm$ 0.01\\
+                    \hline
+                    \end{tabular}
+             } %close centering
+\end{figure}
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\caption{misure per calcolare le posizioni dei massimi di interferenza}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|*{5}{c}|c}
+    			    ordine massimo &&& altezza[cm] &&& media[cm]\\
+    				\hline
+    				\hline
+    				0& &&0&&&0\\
+    				\hline
+                    1&	2.5 & 2.5 & 2.5& 2.4& 2.5 &  2.48  $\pm$ 0.02\\
+                    \hline
+                    2&	4.2& 4.1& 4.1& 4.0& 4.1& 4.10  $\pm$ 0.03\\
+                    \hline
+                    3& 5.5&5.5& 5.4& 5.4& 5.5&  5.46  $\pm$ 0.02\\
+                    \hline
+                    4&6.6& 6.6& 6.5& 6.5& 6.5 & 6.54  $\pm$ 0.02\\
+                    \hline
+                    5&7.5& 7.6& 7.5&7.4& 7.5 & 7.50  $\pm$ 0.03\\
+                    \hline
+                    6&8.5& 8.5& 8.4& 8.4& 8.5 & 8.46  $\pm$ 0.02\\
+                    \hline
+                    7&9.3& 9.8& 9.3& 9.2& 9.3 &  9.38  $\pm$ 0.1\\
+                    \hline
+                \end{tabular}
+             } %close centering
+             \caption{l'altezza è riferita al massimo di ordine 0}
+    \end{figure}
+
+\noindent Useremo la sensibilità dello strumento per eseguire i calcoli, essendo questa maggiore di ogni fluttuazione casuale delle misure che siamo stati in grado di apprezzare: sensibilità del metro = 0.1cm.
+
+
+\subsubsection{Analisi dati}
+Per prima cosa abbiamo calcolato l'angolo di incidenza tenendo conto dell'incertezza su \(d_{i}\) e \(h_{s}\)
+
+\[\theta_{Inc} = atan \left (\frac{h_{s}}{d_{i}} \right ) = 0.052 rad \hspace{1cm}
+\sigma_{\theta}= \sqrt{  \left (\frac{\frac{ h_{s} \sigma_{d_{i}} }{ d_{i}^{2} } }{ 1+ \left ( \frac{h_{s}}{d_{i}} \right )  ^{2} } \right ) ^{2}  + \left (  \frac{\frac{\sigma_{h_{s}}}{d_{i}}}{ 1+\left ( \frac{h_{s}}{d_{i}} \right )  ^{2} } \right )   ^{2} } = 0.001 rad\]
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c|c}
+    			    ordine del massimo &media corretta[cm]& + raggio[cm]& distanza dal centro[cm]\\
+    				\hline
+    				\hline
+    				0& 0 & + 3.88 $\pm$ 0.1 &  3.88 $\pm$ 0.1 \\
+    				\hline
+                    1 & 2.48 $\pm$0.1 & + 3.88 $\pm$ 0.1 & 6.4 $\pm$ 0.1 \\
+                    \hline
+                    2 & 4.10 $\pm$0.1 &+ 3.88 $\pm$ 0.1 &8.0 $\pm$ 0.1\\
+                    \hline
+                    3 & 5.46 $\pm$0.1&+ 3.88 $\pm$ 0.1 &9.3 $\pm$ 0.1  \\
+                    \hline
+                    4 & 6.54 $\pm$0.1& + 3.88 $\pm$ 0.1 &10.4 $\pm$ 0.1\\
+                    \hline
+                    5 & 7.50 $\pm$0.1&+ 3.88 $\pm$ 0.1 &11.4$\pm$ 0.1 \\
+                    \hline
+                    6 & 8.46 $\pm$0.1&+ 3.88 $\pm$ 0.1 & 12.3 $\pm$ 0.1\\
+                    \hline
+                    7 & 9.38 $\pm$0.1&+ 3.88 $\pm$ 0.1 &13.3 $\pm$ 0.1\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+
+
+\noindent attraverso le formule:
+\[\theta_{N} = atan\left ( \frac{h_{c}}{d_{r}} \right ) \hspace{1cm}
+\sigma_{\theta N} = \sqrt{  \left( \frac{\partial \theta_{N}  }{\partial d_{r}} \right)^{2} + \left( \frac{\partial \theta_{N}  }{\partial h_{c}} \right) ^{2} }\]
+
+\[\frac{\partial \theta_{N}  }{\partial d_{r}} = \frac{\frac{\sigma_{d_{r}}h_{c}}{d_{r}^{2}}}{1+\left(\frac{h_{c}}{d_{r}}\right)^{2}} \hspace{1cm} \frac{\partial \theta_{N}  }{\partial h_{c}} =\frac{\frac{\sigma_{h}}{d_{r}}}{1+\left(\frac{h_{c}}{d_{r}}\right) ^{2}}\]
+
+\noindent abbiamo ricavato \(\theta_{N}\), la posizione angolare del massimo N rispetto al centro della figura.
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    		\makebox[1 \textwidth][c]{       %centering table
+    			\begin{tabular}{c|c|c}
+    			    ordine del massimo &$\theta_{N}$[rad] & $cos(\theta_{Inc}) - cos(\theta_{N})$\\
+    				\hline
+    				\hline
+    			    0 &0.030 $\pm$ 0.001&	 -0.00090 $\pm$	8 10^{-5}\\
+    			    \hline
+                    1  & 0.050 $\pm$ 0.001 &  -0.00012 $\pm$ $9 \cdot 10^{-5}$\\
+                    \hline
+                    2  &  0.0628 $\pm$ 0.001 &0.0006  $\pm$			 $1 \cdot 10^{-4}$\\
+                    \hline
+                    3  & 0.0734 $\pm$ 0.001 & 0.0013  $\pm$			$1 \cdot 10^{-4}$\\
+                    \hline
+                    4 &  0.082 $\pm$ 0.001 & 0.0020	 $\pm$		 $1 \cdot 10^{-4}$\\
+                    \hline
+                    5&  0.089 $\pm$ 0.001 & 	 0.0026  $\pm$ $1 \cdot 10^{-4}$\\
+                    \hline
+                    6 & 0.097 $\pm$ 0.001 &  0.0033 	 $\pm$ $1 \cdot 10^{-4}$\\
+                    \hline
+                    7 &0.104 $\pm$ 0.001 &  0.0040 	 $\pm$ $1 \cdot 10^{-4}$\\
+                    \hline
+                \end{tabular}
+             } %close centering
+    \end{figure}
+\noindent Il calcolo per il coefficiente di correlazione lineare per il passo ha riportato un valore di \(0.999666\), il che ci da una certezza approssimabile al 100\% sulla correttezza dell'ipotesi che le misure siano guidate da una legge lineare.\\
+
+\noindent Infatti la teoria sui fenomeni di interferenza nei reticoli e dei ragionamenti geometrici sul nostro caso ci hanno portati a ricavare la seguente formula per ricavare d, dove la lunghezza d'onda del laser è $\lambda = 0.6328 \cdot 10^{-4}cm$.
+\[d (cos\theta_{Inc} - cos\theta_{N}) = k \lambda\]
+La formula si dimostra considerando che i massimi di interferenza si presentano laddove la differenza di cammino di due raggi provenienti da sorgenti distinte ma coerenti(le scalanature del righello) è pari a \(k\lambda\), dove k è un intero. La differenza di cammino tra due raggi consecutivi si ricava attraverso un disegno simile a quello sottostante:
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.9 \textwidth}{!}{   %resize table
+			\includegraphics{disegno_righello.png}
+		} %close resize
+	} %close centering
+\end{figure}
+
+\pagebreak
+
+\noindent \(\alpha \) è l'angolo di incidenza mentre \(\beta\) è l'angolo d'uscita del raggio riflesso, il quale produrrà, interferendo con gli altri raggi riflessi, il massimo di interferenza alla posizione che abbiamo chiamato \(\theta_{N}\).\\
+Attribuiamo segno positivo al tratto blu e segno negativo al tratto rosso perchè appartengono a cammini differenti e otteniamo la formula riportata in alto.\\\\
+
+\noindent Abbiamo utilizzato tale formula per eseguire un'interpolazione lineare dei nostri dati
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.80 \textwidth}{!}{   %resize table
+			\includegraphics{passo_righello.png}
+		} %close resize
+	} %close centering
+	
+    \caption{funzione utilizzata: $y = p_{0}x+p_{1}$}
+\end{figure}
+\pagebreak
+\noindent Il coefficiente angolare \(m = \frac{\lambda}{d}\)  vale \(7.0 \cdot 10^{-4}\pm 2 \cdot 10^{-5}\) mentre l'intercetta \( c = -8.5 \cdot 10^{-4} \pm  6 \cdot 10^{-5}\) come previsto dai dati.\\
+
+\noindent Il passo del righello e la rispettiva incertezza si possono calcolare come:
+
+ \[passo_{righello} = \frac{\lambda}{m} \hspace{1cm} \sigma_{passo} = \frac{\lambda \sigma_m}{m^{2}}\] 
+   
+\noindent pertanto risulta \(passo_{righello} =  0.090\pm0.002cm \).
+
+\noindent Confrontando la stima ottenuta con il valore atteso di 1mm = 0.1cm abbiamo ottenuto una probabilità di compatibilità approssimabile a 0\%.
+\[t = \frac{\left |\hat{d}-d_{atteso}\right|}{\sigma_{d}}= \frac{ \left |
+0.090 - 0.1\right |}{0.002} = 5 \]
+
+\noindent La scarsa compatibilità è in gran parte dovuta alla grande precisione con cui questo metodo ci ha permesso di produrre una stima per d (precisione del 3\%). Tuttavia una fonte di errore sistematico da tenere in considerazione è il metodo di determinazione di \(\theta_{Inc}\) (si  noti che con \(\theta_{Inc}\) più grande avremmo ottenuto una stima più accurata); siccome la regione del righello illuminata dal laser era piuttosto ampia, trovando un modo per ridurla e considerando il suo punto medio invece dell'estremo iniziale avremmo ottenuto una stima per l'angolo di incidenza più accurata.\\\\
+Concludiamo osservando che anche lavorando con reticoli di passo dell'ordine dei cm (grandezza macroscopica distinguibile ad occhio nudo) è ancora possibile apprezzare la precisione delle misure ottiche, anche se rimane difficoltoso ottenere una stima accurata poichè i fattori che possono modificare le immagini di interferenza sono parecchi e a volte impercettibili a occhio nudo.
+
+\end{document}

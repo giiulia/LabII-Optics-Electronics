@@ -1,0 +1,1058 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{tabularx}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{comment} 
+
+
+\usepackage{hyperref} %per i link
+\usepackage{tikz}
+
+\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{amsmath, amsthm}
+
+\usepackage{mathrsfs}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{caption}
+
+\theoremstyle{definition}
+\newtheorem{rich}{richiamo matematico}[section]
+
+
+\title{Microonde}
+\author{Broggi, Cantarini, Falconelli}
+\date{Laboratorio di fisica II}
+
+\begin{document}
+
+\maketitle
+
+%commentate le parti che dovete fare, ovviamente si può intervenire sulle parti di altri. Avvisare se non si riesce a fare qualcosa che ci si ri-divide i compiti :) 
+
+\section{Introduzione}%dia
+
+%sistemare scrittura
+
+Le microonde sono onde elettromagnetiche con lunghezza d'onda compresa tra 30cm e 1mm. In questa esperienza, suddivisa in una parte virtuale ed una in laboratorio, abbiamo studiato alcuni pincipi dell'ottica geometrica e ondulatoria sfruttando le loro proprietà.
+
+In particolare, avendo a disposizione dei dati generati virtualmente, abbiamo confrontato l'attendibilità di tre diverse ipotesi sulla natura del segnale S; mentre in laboratorio abbiamo avuto modo di effettuare misure con un emettitore ed un ricevitore e, facendo uso di diversi strumenti, abbiamo potuto creare varie configurazioni per generare diversi fenomeni.\\
+L'apparecchiatura consente di effettuare la lettura di: 
+\begin{itemize}
+    \item intensità del segnale, tramite il milliamperometro analogico posto sul ricevitore di sensibilità 0.02 \(\cdot A\) mA oppure un multimetro digitale da connettere al ricevitore di sensibilità pari a 1mV,
+    \item la distanza tra emettitore e ricevitore tramite un metro di sensibilità 1mm,
+    \item l'angolo formato tra emettitore e ricevitore, grazie al goniometro posto nel mezzo, di sensibilità 1\(^{\circ}\)
+    \item ed infine gli angoli con cui possono ruotare i due apparecchi sul loro asse, poichè essi includono un goniometro sul retro, anchìesso di sensibilità 1\(^{\circ}\)
+\end{itemize}
+
+Il milliamperometro dell'intensità è regolabile tramite due manopole, una che consente un off-set della misura e l'altra che permette di modificare la precisione, selezionando un fattore di amplificazione A (30x, 10x, 03x, 01x) di cui moltiplicare la misura letta.
+
+
+\section{Esperienza virtuale}
+Lo scopo dell'esperienza virtuale consisteva nello sfruttare la legge di Malus sulla polarizzazione per studiare il tipo di segnale "ricevuto" dallo strumento virtuale; ci viene fatto notare che i dati forniti sono stati generati come combinazione di due fattori mediati, il modulo del campo elettrico e l'intensità, il confronto dei quali andremo ad analizzare.\\
+
+
+\subsection{Dati raccolti}
+I dati seguenti sono stati generati con un programma non prodotto dai noi.
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c}
+    	\hline
+    	\hline
+        angoli[gradi] & Intensità[mA]\\
+        \hline
+        -0.785&			118.56$\pm$ 0.02\\
+        \hline
+        23.784&			100.08$\pm$ 0.02\\
+        \hline
+        50.654&			49.05$\pm$ 0.02\\
+        \hline
+        74.709&			9.78$\pm$ 0.02\\
+        \hline
+        99.823&         4.49$\pm$ 0.02\\
+        \hline
+        126.243&		42.96$\pm$ 0.02\\
+        \hline
+        149.089	&		88.22$\pm$ 0.02\\
+        \hline
+        175.840	&		118.29$\pm$ 0.02\\
+        \hline
+        199.605	&		105.43$\pm$ 0.02\\
+        \hline
+        224.352	&		62.12$\pm$ 0.02\\
+        \hline
+        249.061	&		16.97$\pm$ 0.02\\
+        \hline
+        275.112	&		1.61$\pm$ 0.02\\
+        \hline
+        298.902	&		29.67$\pm$ 0.02\\
+        \hline
+        324.998	&		80.58$\pm$ 0.02\\
+        \hline
+        350.029	&		115.46$\pm$ 0.02\\
+        \hline
+        373.404	&		112.36$\pm$ 0.02\\
+        \hline
+        399.949	&		70.73$\pm$ 0.02\\
+        \hline
+        424.632	&		23.53$\pm$ 0.02\\
+        \hline
+        449.105	&		-0.36$\pm$ 0.02\\
+        \hline
+        474.671	&		22.11$\pm$ 0.02\\
+        \hline
+        499.288	&		69.91$\pm$ 0.02\\
+        \hline
+        525.950	&		112.12$\pm$ 0.02\\
+        \hline
+        549.353	&		115.95$\pm$ 0.02\\
+        \hline
+        573.792	&		83.12$\pm$ 0.02\\
+        \hline
+        600.986	&		29.79$\pm$ 0.02\\
+        \hline
+        624.941	&		1.29$\pm$ 0.02\\
+        \hline
+        650.815	&		16.94$\pm$ 0.02\\
+        \hline
+        674.487	&		59.81$\pm$ 0.02\\
+        \hline
+        699.228	&		103.82$\pm$ 0.02\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+    \caption{l'errore sugli angoli è considerato trascurabile}
+\end{table}
+\pagebreak
+\subsection{Analisi dati}
+Le ipotesi che abbiamo preso in considerazione per decretare la dipendenza del segnale da uno o entrambi dei due fattori sono le seguenti:
+\begin{itemize}
+    \item \(S = A \left|cos(x) \right|\) il segnale è direttamente proporzionale al modulo del campo E, con \(A \propto \left| \bar{Ex}\right|\)
+    \item \(S = B cos^{2}(x) \) il segnale dipende direttamente dall'intensità I, con \(B \propto \bar{Ix}\)
+    \item \(S = A \left|cos(x)\right| + B cos^{2}(x) \) il segnale dipende da ambedue
+\end{itemize}
+
+\noindent Dal punto di vista concettuale, la differenza principale tra queste opzioni sta nell'andamento quadratico o non del coseno più che nei valori di A e B; ciò è dato dall'osservazione che se il segnale dipendesse direttamente dall'intensità allora avrebbe il suo stesso andamento rispetto all'angolo di polarizzazione dell'onda già polarizzata linearmente (dato dalla legge di Malus: \(I = I_{0}cos^{2}x\)). L'andamento previsto per un segnale direttamente proporzionale al modulo del campo è invece:  considerato \(I(t, x) \propto \left | E(t, x) \right |^{2} \xrightarrow[]{Legge di Malus} \left | E(t, x) \right |^{2} \propto \left | E_{0}(t, x) \right |^{2} cos^{2}x \rightarrow \left | E(t, x) \right | \propto \left | E_{0}(t, x) \right | cosx\).\\
+Nella pratica i coefficienti A e B ci aiutano a capire meglio quale dei due fenomeni è preponderante o se lo sono entrambi.\\
+
+
+\noindent Riportiamo di sotto i 3 grafici e le relative legende con le statistiche che ci hanno permesso di concludere se ci fosse un'ipotesi più accreditata delle altre. Fissiamo inoltre una soglia per il PValue al 5\%:
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{interpolazione_1.png}
+		} %close resize
+	} %close centering
+	\caption{formula utilizzata per l'interpolazione: \(p_{0}\left| cos(x) \right|\)}
+\end{figure}
+già dal grafico notiamo che la funzione non si adatta adeguatamente ai punti rappresentati, infatti \(\chi^{2} = 5407\) non è paragonalibile a  Ndf = 28.\\
+
+\pagebreak
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{interpolazione_2.png}
+		} %close resize
+	} %close centering
+	\caption{formula utilizzata per l'interpolazione: \(p_{0}\cos^{2}(x) \)}
+
+\end{figure}
+
+La seconda opzione è più soddisfacente, infatti otteniamo una stima del \(\chi^{2} = 30\) con un Ndf = 28, che corrisponde ad un PValue= 46\% di probabilità che questa ipotesi sia corretta, che supera la soglia del 5\% che ci siamo prefissati.\\
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{interpolazione_3.png}
+		} %close resize 
+	} %close centering
+	\caption{formula utilizzata per l'interpolazione: \(p_{0}\cos^{2}(x) + p_{1}\left| cos(x) \right|  \)}
+
+\end{figure}
+
+\noindent Con la terza opzione otteniamo un \(\chi^{2}\) molto più piccolo: 1.561 per un Ndf=27 poichè abbiamo dovuto determinare un parametro in più con i dati a disposizione, il test dunque non può che risultare con un PValue \(\approx 100\%\). Anche questa ipotesi sembra essere valida come l'altra, siccome supera facilmente il valore di soglia. Tuttavia il nostro obiettivo è di identificare la più corretta, guardiamo allora alla stima dei parametri:\\
+opzione 1: \(B = 119.6 \pm 0.3 mA\)\\
+opzione 2: \(A =  7.1 \pm 0.3 mA; B = 111.6 \pm 0.4mA\)\\
+Notiamo che la stima per A è di ben due ordini di grandezza inferiore ad entrambe le stime per B, riconosciamo dunque nel termine dipendente dal valore medio dell'intensità quello preponderante tra i due considerati nella generazione dei dati.\\\\
+Dal momento che, per quanto riguarda la stima degli angoli, i dati utilizzati per questi fit erano molto più precisi di quanto saremo in grado di fare in laboratorio, consideriamo l'ipotesi che le misure siano state effettuate con un goniometro della sensibilità di \(1^{\circ}\) e ripetute ognuna almeno 2 volte, dunque ripetiamo l'analisi in maniera analoga.\\
+
+Siccome le opzioni non differiscono in maniera qualitativa da quelle precedenti riportiamo solo una tabella di confronto dei dati statistici dei fit:
+  \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\makebox[1 \textwidth][c]{    %centering table
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    \hline
+    &\multicolumn{4}{|c|}{Statistiche virtuali} &\multicolumn{4}{|c|}{Statistiche reali} \\ 
+    \cline{2-9}
+    &A [mA]& B[mA] &  \(\chi^{2}/Ndf\)& PV&A [mA]& B [mA]&  \(\chi^{2}/Ndf\) & PV\\ 
+    \hline
+    \(A \left| cosx\right|\)& 102 $\pm$4 &/&5407 / 28 & 0\%&102 $\pm$ 4&/&5428 / 28 & 0\%\\ \hline
+    \(B cos^{2}x\)&/&119.6 $\pm$ 0.3 &30.41/28 & 46\%& / &119.6 $\pm$ 0.3&27.6 / 28 & 46\%\\ \hline
+    \(A\left| cosx\right| + Bcos^{2}x\) &7.1 $\pm$ 0.3&111.6 $\pm$ 0.4&2 / 27 & 100\%&6.6 $\pm$ 0.4&112.2 $\pm$ 0.5& 3.08 /27 & 100\%\\ \hline
+
+    \end{tabular}
+
+
+    } %close centering
+\caption{l'errore sugli angoli stimato è di 0.5\(^{\circ}\) per le misure reali e 0\(^{\circ}\) per le misure virtuali}
+\end{figure}
+ 
+
+Le conclusioni che possiamo trarre dai nuovi dati sono analoghe a quelle precedenti; notiamo in media una maggiore precisione dei risultati, come ci attendiamo per dati con incertezze anche sulle ascisse. A questo punto possiamo avanzare l'ipotesi che anche il rilevatore in laboratorio sarà in larga parte più sensibile al valor medio dell'intensità per questo tutti i nostri dati verranno espressi in mA; questa ipotesi verrà comunque verificata durante l'esperienza.\\
+
+
+\section{Onde stazionarie}
+
+Con questo esperimento vogliamo osservare l'andamento del segnale ricevuto al variare della distanza tra emettitore e ricevitore.
+
+\noindent Ci aspettiamo di osservare due eventi combinati:
+\begin{enumerate}
+   \item un andamento oscillante dell'intensità spostando il ricevitore rispetto all'emettitore, che corrispondono a quando esso incontra nodi e ventri dell'onda stazionaria formatasi con l'instaurarsi di interferenza tra le onde riflesse dalle orne.
+    
+   \item la progressiva diminuzione dell' intensità man mano che ci allontaniamo dall'emettitore spiegabile modellizzando l'emettitore come sorgente puntiforme di microonde, la cui intensità tende a diminuire come \(\frac{1}{R^{2}}\).
+\end{enumerate}
+
+Abbiamo deciso di raccogliere dati partendo da una distanza tra gli emettitori di 25 cm scalando ogni volta con un passo di 0.5 cm fino al raggiungimento di 50 cm. Nelle ultime misure abbiamo deciso di adottare un passo di 0.25 cm per timore che l'ampiezza delle oscillazioni non fosse sufficiente per inidividuare i massimi da un grafico che asintoticamente si comporta come una retta(andamento che ci aspettiamo, per distanze grandi, per via della limitata sensibilità dei nostri strumenti); i dati dimostrano che sbagliavamo ma abbiamo conservato le misure.\\
+
+\subsection{Alcuni accorgimenti} 
+
+Abbiamo notato che leggendo le misure con il multimetro, la misura letta sul display era molto incerta perciò abbiamo optato per la lettura sul milliamperometro al fine di minimizzare l'errore statistico. Si noti che anche la lettura sul milliamperometro era leggermente incerta, soprattutto se l'onda veniva affiancata da un oggetto riflettore: abbiamo osservato un'oscillazione sempre più marcata con l'avvicinarsi di una piastra riflettente.\\
+Abbiamo inoltre verificato la riproducibilità della misura per una distanza emettitore - ricevitore di 30cm, spostando e rimettendo in posizione l'emettitore, ottenendo sempre una lettura di 0.9x30 mA. Un'analisi del problema di determinare la lunghezza d'onda del segnale suggerisce di prendere l'intervallo in cui si raccolgono le misure  il più ampio possibile, in quanto l'incertezza sulla stima per \(\lambda\) dipende largamente dalla precisione associata alla distanza considerata: andremo quindi a tracciare su un grafico più massimi possibili tenendo conto della posizione a cui li abbiamo trovati.
+
+\subsection{Dati raccolti}
+
+Abbiamo posizionato la manopola dell'Amplificazione a 30x e posizionato l'offset a fondo scala prevedendo una discesa netta del segnale durante l'allontanamento dello strumento. Solo per le misure, fino a posizione = 30 esclusa, abbiamo dovuto abbassare l'offset siccome la lettura usciva dal range, quindi le misure lette erano a -0.08mA rispetto quelle riportate.\\
+
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+    \caption{Per le seguenti misure assumiamo un'incertezza di 1mm sulle distanze e 0.03x30mA sulle Intensità(dovuta al vacillamento della lancetta)  }
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|*{11}{c}|c}
+    	\hline
+    	\hline
+        Distanze [cm]& 25& 25.5& 26& 26.5& 27& 27.5& 28& 28.5& 29& 29.5& 30& ... \\
+        \hline
+        Intensità [mA]& 0.90& 1.06&0.86& 0.90& 1.04& 1.04& 0.90& 1.02& 0.84& 0.84 & 0.90 & 30x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+\end{table}
+
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|*{11}{c}|c}
+    	\hline
+    	\hline
+        Distanze [cm]& 30.5& 31& 31.5& 32& 32.5& 33& 33.5& 34&  34.5& 35& 35.5 & ... \\
+        \hline
+        Intensità [mA]&  0.94& 0.82& 0.88& 0.9& 0.8& 0.88& 0.84& 0.78& 0.86 & 0.80 & 0.78& 30x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+\end{table}
+
+
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|*{11}{c}|c}
+    	\hline
+    	\hline
+        Distanze [cm]& 36& 36.5& 37& 37.5& 38& 38.5& 39& 39.5& 40& 40.5& 41 & ... \\
+        \hline
+        Intensità [mA]& 0.84& 0.78& 0.76& 0.82& 0.74& 0.78& 0.80& 0.72& 0.76& 0.76& 0.68& 30x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+\end{table}
+
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|*{11}{c}|c}
+    	\hline
+    	\hline
+        Distanze [cm]&  41.5& 42& 42.5& 43& 43.5& 44& 44.5& 45& 45.25& 45.5& 45.75  & ... \\
+        \hline
+        Intensità [mA]&   0.74& 0.74& 0.66& 0.72& 0.70& 0.64& 0.70& 0.66& 0.64& 0.64&  0.66& 30x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+\end{table}
+
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|*{11}{c}|c}
+    	\hline
+    	\hline
+        Distanze [cm]&  46&46.25& 46.5& 46.75& 47& 47.25& 47.50& 47.75& 48& 48.25& 48.5 & ... \\
+        \hline
+        Intensità [mA]&  0.70& 0.70& 0.66& 0.64& 0.64& 0.68& 0.70& 0.68& 0.64& 0.62& 0.62 & 30x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+\end{table}
+
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|*{6}{c}|c}
+    	\hline
+    	\hline
+        Distanze [cm]&  48.75& 49& 49.25& 49.5& 49.75& 50 &  \\
+        \hline
+        Intensità [mA]& 0.66& 0.68& 0.66& 0.62& 0.60& 0.62 & 30x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+\end{table}
+
+
+
+
+\subsection{Commenti e osservazioni}
+
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+    	\caption{grafico variazione dell'intensità in funzione della distanza}
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{1.2 \textwidth}{!}{   %resize table
+			\includegraphics{I_D_esteso.png}
+			
+		} %close resize
+	} %close centering
+\end{figure}
+
+Abbiamo riportato in un grafico l'andamento dell' intensità in funzione della distanza, e come si può ben osservare abbiamo verificato entrambi i comportamenti che ci aspettavamo (massimi e minimi, e diminuzione generale dell'intensità). Ci accorgiamo quindi che per ottimizzare le misure, nei successivi esperimenti sarà più indicato mantenere emettitore e ricevitore sempre alla stessa distanza reciproca.\\
+Il fatto che le ultime misure siano più fitte ha evidenziato di più i massimi e minimi che pensavamo di perdere a causa della intensità generale ridotta, ma non ha nessun altro risultato.\\
+
+
+\noindent Infine con un semplice conto possiamo ricavarci la lunghezza d'onda che, ricordiamo, è fissa essendo la nostra sorgente monocromatica.\\
+Poniamo d = distranza tra i due diodi, posizionati a 5cm all'interno di ciascuna orna di emettitore e ricevitore, sappiamo che se d è proporzionale alla distanza tra i nodi dell'onda stazionaria:  \(d = n\frac{\lambda}{2}\), con n intero qualsiasi, mi aspetto un massimo, per via del fatto che tutte le onde riflesse dalle orne saranno in fase, e perchè l'interferenza tra le stesse produce un'onda con \(\lambda_{interf} = \lambda/2\).\\\\
+%io l'ho visto dall'animazione stupida su wikipedia sulle onde stazionarie ma domani provo a fare un disegnino
+Nel nostro caso è risultato conveniente misurare non una sola d ma un intervallo D = [25cm, 50cm] di ampiezza 25cm; se n è il numero di massimi rilevati nello spostamento, possiamo adattare la formula di prima al nostro caso, osservando che se s è la stima della distanza tra due nodi dell'onda stazionaria \( s = \frac{D}{n} =  \frac{\lambda}{2} \rightarrow \lambda = 2\frac{D}{n}\) abbiamo ottenuto una formula per \(\lambda\).\\\\
+Ponendo D = \(25cm \pm 0.1\) e n = 17, risulta \(\lambda = 2.94 \pm 0.01cm\), confrontata con la lunghezza d'onda nota di 2.85 cm attraverso un test T-Student si ottiene t = 9. La stima non è dunque sufficientemente accurata, questo perchè l'intervallo campionato non è esattamente 25 cm ma di meno. Infatti i diodi sono situati più avanti rispetto al punto sul supporto da noi usato come riferimento. Stimiamo che siano collocati più verso l'interno di \( 1.0 \pm 0.5 \) cm, possiamo applicare la seguente correzione:
+ chiamiamo D' la nuova distanza che si ottiene sottraendo \(1.0 \pm 0.5 \) cm per ciascun estremo\\
+ \Rightarrow \( D'= 23.0 \pm 0.7 \) cm \\
+ sostituendo nella formula precedentemente ottenuta, si ottiene
+ \[ \lambda = 2.70 \pm 0.08cm\] 
+ Effettuando il test T-Student, questa volta, possiamo concludere che con la correzione abbiamo un'attendibilità del 93,85 \% grazie all'introduzione della stima del nosro errore sistematico.
+
+
+\section{Polarizzazione} %giu
+Dal momento che l'emettitore a disposizione generava onde polarizzate linearmente e, similmente, il ricevitore rilevava solo i campi paralleli all'asse del suo diodo, possiamo vedere il sistema come un'onda non polarizzata che attraversa due filtri polarizzatori. Abbiamo studiato gli effetti combinati dei due polarizzatori tra loro e con l'interposizione di una griglia di metallo.
+
+\subsection{Obiettivi}
+Abbiamo organizzato l'attività tenendo a mente i due obiettivi principali:
+\subsubsection{Analizzare la lettura del trasduttore in mA}
+
+Le prime misure sono state effettuate con l'obiettivo di verificare una(o nessuna) delle due ipotesi riguardanti la lettura che effettuavamo dal trasduttore montato sul ricevitore:
+\begin{itemize}
+  \item  la lettura è direttamente proporzionale al \textbf{campo elettrico} dell'onda ricevuta
+  \item la lettura dipende direttamente dalla \textbf{intensità} dell'onda
+\end{itemize}
+
+\noindent \textbf{Metodo adottato}\\
+
+\noindent Secondo quanto previsto dalla legge di Malus, l'intensità \(I_{0}\) di un'onda già polarizzata linearmente viene attenuata di:
+\[I = I_{0} cos^{2}(\theta)\]
+dove \(\theta\) è l'orientazione del filtro  rispetto al campo elettrico.\\
+\noindent Nel caso in cui questa formula rappresenti il nostro fenomeno (è quanto assumiamo) possiamo ottenere una risposta riportando in un grafico la lettura \(M\) effettuata al variare dell'angolo \(\theta\), ruotando per esempio l'emettitore sul suo asse. Si noti che per effettuare questa misura sarà necessario mantenere i due strumenti a una distanza fissa per evitare di ottenere misure inconsistenti.\\
+\noindent In conclusione, le nostre ipotesi saranno verificate rispettivamente se l'andamento delle misure segue la forma funzionale di \(M_{0}cos(\theta)\) o di \(M_{0}cos(\theta)^{2}\), con\\ \(M_{0}\) = lettura a \( 0^{\circ} \) sul goniometro dell'emettitore.
+
+\subsubsection{Studiare l'influenza della griglia polarizzatrice}
+Introducendo la griglia metallica abbiamo potuto focalizzarci sul comportamento del campo elettrico emesso, indagando inanzitutto la sua orientazione per esempio quando si posiziona l'emettitore in orizzontale (\(0^{\circ}\) dalla lettura sul goniometro sul retro).\\
+
+\noindent \textbf{Metodo adottato}\\
+
+\noindent Per cominciare ci siamo chiesti se il fenomeno osservato con la griglia fosse analogo alla  "polarizzazione" effettuata dal diodo del ricevitore: abbiamo concluso che l'effetto provocato dalla griglia di metallo fosse l'opposto. Un'onda polarizzata con il campo elettrico sull'asse verticale, incontrando una griglia con delle aperture rettangolari che si estendono sullo stesso asse, perde la maggior parte dell'energia nell'incontro con gli elettroni liberi del metallo che cominciano ad oscillare parallelamente al campo (cosa che non potrebbero fare se le aperture fossero perpendicolari al campo).\\
+A termine di queste considerazioni, in laboratorio abbiamo orientato i due strumenti prima in asse l'uno con l'altro, per dedurre l'orientazione del campo elettrico rispetto all'asse dell'emettitore; poi separati da un'angolo di 90\(^{\circ}\), per studiare l'effetto della griglia a diverse orientazioni. 
+
+
+
+\subsection{Dati raccolti e commenti}
+
+\subsubsection{Analisi della lettura del traduttore}
+Le misure sono state rilevate mantenendo una distanza fissa tra emettitore e ricevitore, abbiamo ripetuto la procedura per 3 distanze differenti: 50cm, 70cm e 90cm.\\
+Si noti che il contatore esprimeva la lettura in mA per un range da 0 a 1, con una sensibilità di\( 0.02 \cdot A\), dove con A indichiamo l'amplificazione dell'intensità di segnale selezionata tra quelle possibili.\\
+All'inizio di ogni set di misure abbiamo regolato le manopole di Amplificazione e Offset per una deflessione del misuratore quasi a fondo scala, prevedendo una riduzione dell'intensità dalla posizione di partenza (pari inclinazione dei due strumenti ).
+Ruotando progressivamente l'emettitore attorno al suo asse di angoli di \(10^{\circ}\) abbiamo ottenuto le seguenti misure.\\
+
+\begin{table}[!h]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|*{11}{c}|c}
+        distanza [cm]&0& 10& 20& 30& 40& 50& 60& 70& 80& 85& 90&  Amplificazione [mA]\\
+    	\hline
+    	\hline
+        50 &0.58& 0.54& 0.50& 0.46& 0.38& 0.28& 0.18& 0.10& 0.02& 0.007& 0.00&30x\\
+        \hline
+        70&0.94& 0.92& 0.86& 0.80& 0.68& 0.52& 0.38& 0.22& 0.06& 0.02& 0.00&10x \\
+        \hline
+        90&0.76& 0.74& 0.70& 0.62& 0.54& 0.42& 0.30& 0.16& 0.04& 0.02&  0.00&10x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+
+\bigskip
+
+
+\makebox[1 \textwidth][c]{       %centering table
+
+    \begin{tabular}{c|*{12}{c} |c}
+        distanza [cm]& 95& 100& 110& 120& 130& 140& 150& 160& 170& 180& 190& 200&  intensità [mA]\\
+    	\hline
+    	\hline
+        50 & 0.005& 0.03& 0.10& 0.20& 0.28& 0.38& 0.46& 0.52& 0.56& 0.58& 0.54& 0.50&30x\\
+        \hline
+        70& 0.002& 0.04& 0.20& 0.40& 0.52& 0.68& 0.78& 0.86& 0.92& 0.94&&&10x \\
+        \hline
+        90& 0.002& 0.02& 0.14& 0.28& 0.40& 0.50& 0.60& 0.68& 0.72& 0.74&&&10x\\
+        \hline
+        \hline
+    \end{tabular}
+    }
+
+\end{table}
+
+\noindent notiamo che le misure, per angoli superiori a \(90 ^{\circ}\), hanno andamento simmetrico alle precedenti: l'intensità torna ad aumentare con la diminuizione dell'inclinazione dell'asse di trasmissione rispetto a quello di ricezione, fino a ripetersi dopo angoli superiori a \(180^{\circ}\). Ciò suggerisce un modello periodico di periodo \(\pi\), simile alla funzione \(cos^{2}(\theta)\). Di sotto riportiamo i grafici con cui abbiamo confrontato ciascuna ipotesi alle misure rilevate:
+
+
+\begin{figure}[!h]%
+    \captionsetup{labelformat=empty}
+    \caption{confronto tra i modelli e le misure}
+    \makebox[1 \textwidth][c]{       %centering table
+        \resizebox{1.2 \textwidth}{!}{   %resize table
+            \subfloat[\centering \(M_{0}cos\theta\)]{{\includegraphics[width=5cm]{Meter reading e legge di Malus_opz1.png} }}%
+            \qquad
+            \subfloat[\centering \(M_{0}cos^{2}\theta\)]{{\includegraphics[width=5cm]{Meter reading e legge di Malus_opz2.png} }}%
+        }
+    }
+\end{figure}
+
+\noindent La conferma visiva dell'ipotesi (b) è ritenuta sufficiente a concludere che le nostre letture corrisponevano in maniera direttamente proporzionale all'intensità dell'onda ricevuta. Nell'immagine (b) si nota anche come dai \(180^{\circ}\) in poi le misure comincino a ripetersi, confermando l'andamento periodico supposto.\\
+\noindent Da queste misure possiamo osservare inoltre la proprietà principale di un sistema formato da due polarizzatori consecutivi: quando sono orientati perpendicolarmente il segnale dell'onda si perde completamente, è il caso \(\theta = 90^{\circ}\).\\
+
+\noindent Il confronto tra le misure prese per distanze diverse è riassunto nel grafico sottostante:
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{polarizzazione.png}
+			
+		} %close resize
+	} %close centering
+\end{figure}
+
+\noindent Notiamo che il grafico relativo a \(d = 50cm\) si discosta da quello dei \(70cm\) in modo marcato; infatti non ci aspettiamo che i grafici siano disposti ordinatamente, dal momento che la variazione dell'intensità con la distanza ha un andamento irregolare dovuto all'instaurarsi di onde stazionarie.\\
+
+
+\subsubsection{Griglia metallica}
+Le misure effettuate con la griglia metallica sono state eseguite tutte alla medesima distanza di 90cm tra gli apparati.\\
+\noindent Ruotando la griglia rispetto all'asse ottico, con le fessure a formare angoli di \(0^{\circ}, 45^{\circ}, 90^{\circ}\) rispetto all'orizzontale, abbiamo rilevato le seguenti intensità:
+
+ \begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{emettitore e ricevitore orientati a 0\(^{\circ}\)}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c|c}
+        angolo griglia & Intensità & Amplificazione[mA]\\
+        \hline
+        \hline
+        0\(^{\circ}\)& 0.18& 30x\\
+    	\hline
+        45\(^{\circ}\)& 0.12 & 30x\\
+        \hline
+        90\(^{\circ}\)& 0.02 & 30x\\
+        \hline
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	
+\end{figure}
+
+\noindent Questi primi tre valori dell'intensità indicano tutti una cosa: l'orientazione a \(0^{\circ}\) (con parte lunga dei coni orizzontale) dell' emettitore produce polarizzazione verticale, allo stesso modo il ricevitore sullo 0 rileva solo onde polarizzate verticalmente. Infatti se la griglia è posizionata con le fessure in verticale, sapendo che lascia passare solo onde polarizzate orizzontalmente, spieghiamo l'intensità prossima a 0mA solo concludendo quanto dichiarato.\\
+Notiamo che la griglia ha attenuato il segnale del 30\% rispetto al 0.76 x10mA precedente, riconduciamo questo effetto a un fenomeno di riflessione sull'area non bucata della piastra.
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{ricevitore ruotato di 90\(^{\circ}\), perpendicolare all'emettitore}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c|c}
+        angolo griglia & Intensità & Amplificazione[mA]\\
+        \hline
+        \hline
+        0\(^{\circ}\)& 0.0& 30x\\
+    	\hline
+        45\(^{\circ}\)& 0.14 & 30x\\
+        \hline
+        90\(^{\circ}\) & 0.0 & 30x\\
+        \hline
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	
+\end{figure}
+
+\noindent La seconda tabella dimostra un fatto interessante: interponendo un terzo elemento polarizzatore inclinato di un qualsiasi angolo \(\theta \neq  90^{\circ}\) tra due polarizzatori con assi di trasmissione perpendicolari, l'intensità rilevata non è più nulla. Siccome un polarizzatore trasmette solo una certa componente dell'onda, inclinando la griglia a meno di 90 gradi rispetto all'onda emessa questa componente non sarà mai 0, e verrà in parte rilevata dal ricevitore.\\
+\noindent Per questo motivo rileviamo 0.14 x30 mA quando la griglia è a \(45^{\circ}\). Ci aspettiamo che l'intensità rilevata avrebbe avuto un andamento di periodico di periodo \(\frac{\pi}{2}\) con massimo in \(\frac{\pi}{4}\) se avessimo ruotato la griglia sul suo supporto con continuità.
+
+
+\section{Verifica legge di Cartesio}%dia 
+%pag 11 manuale PASCO
+La legge della riflessione di Cartesio afferma che l'angolo di incidenza di un'onda su una superficie riflettente è pari all'angolo di riflessione
+$\theta_i = \theta_r$.
+
+\subsection{Metodo adottato}
+
+Per verificare ciò abbiamo utilizzato una lastra metallica quadrata montata sulla base al centro dell'apparato. Mantenendo l'emettitore fisso, abbiamo ruotato la base con la lastrina in modo da creare diversi angoli di incidenza. Per ognuno di essi abbiamo trovato, osservando il milliamperometo, il punto di massimo corrispondente al raggio riflesso, in modo da poter misurare con il goniometro sulla base $\theta_r$.\\
+\pagebreak
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.5 \textwidth}{!}{   %resize table
+			\includegraphics{Cartesio.jpeg}
+		} %close resize
+	} %close centering
+\end{figure}
+
+\noindent Per osservare l'intensità abbiamo preferito regolare la precisione a 10x, poiché in 30x lo spostamento della lancetta per identificare il massimo risultava quasi impercettibile, ostacolando la ricerca dei punti d'interesse.
+
+\subsection{Dati raccolti}
+Abbiamo misurato tre volte $\theta_r$ per 5 diversi $\theta_i$. Per completezza riportiamo anche il valore dell'intensità  osservato in corrispondenza dei massimi, anche se non utile al fine della verifica della legge di Cartesio.
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{verifica Legge della riflessione}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c|c}
+        angolo di incidenza $\theta_i$ & angolo di riflessione $\theta_r$ & intensità[mA]\\
+        \hline
+        \hline
+        35\(^{\circ}\)& 33\(^{\circ}\), 32\(^{\circ}\), 33\(^{\circ}\) & 6.2 $\pm$ 0.2\\
+    	\hline
+        40\(^{\circ}\)& 41\(^{\circ}\), 40\(^{\circ}\), 41\(^{\circ}\) & 6.8 $\pm$ 0.2\\
+        \hline
+        50\(^{\circ}\) & 49\(^{\circ}\), 49\(^{\circ}\), 50\(^{\circ}\) & 8.2 $\pm$ 0.2\\
+        \hline
+        60\(^{\circ}\) & 54\(^{\circ}\), 53\(^{\circ}\), 56\(^{\circ}\) & 7.4 $\pm$ 0.2\\
+        \hline
+        70\(^{\circ}\) & 67\(^{\circ}\), 68\(^{\circ}\), 68\(^{\circ}\) & 6.4  $\pm$ 0.2\\
+        \hline
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	\caption{l'errore stimato per ogni angolo è quello associato allo strumento: \(1^{\circ}\)}
+\end{figure}
+
+\noindent Abbiamo notato che il raggio riflesso non è l'unico che si può osservare successivamente all'interazione con la lastrina; abbiamo infatti individuato, per angoli di incidenza di 40\(^{\circ}\) e 50\(^{\circ}\), dei raggi trasmessi di intensità inferiori: 0.8mA e 2mA, chiaramente la maggior parte dell'intensità dell'onda veniva riflessa.
+
+
+\subsection{Analisi dati} 
+Calcoliamo media e rispettivo errore di $\theta_r$ con
+
+
+\[\bar{\theta_{r}}=\frac{\sum\theta_{ri}}{N}; \hspace{1cm} \sigma_\theta=\sqrt{\frac{\sum(\bar{\theta_{r}}-\theta_{ri})^{2}}{N-1}} \hspace{0.5cm} \sigma_\bar{\theta}=\frac{\sigma_{\theta}}{\sqrt{N}}\]
+
+Nella seguente tabella riportiamo i valori medi di $\theta_r$ ottenuti e la rispettiva incertezza. Per $\theta_i$ consideriamo l'incertezza dello strumento, pari ad un grado.\\\\\\
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c}
+        $\theta_i$[gradi] & $\bar{\theta_r}$[gradi]\\
+        \hline
+        \hline
+        35\(^{\circ}\)$\pm$1\(^{\circ}\)& 32.7\(^{\circ}\)$\pm$0.3\(^{\circ}\)\\
+    	\hline
+        40\(^{\circ}\)$\pm$1\(^{\circ}\)& 40.7\(^{\circ}\)$\pm$0.3\(^{\circ}\)\\
+        \hline
+        50\(^{\circ}\)$\pm$1\(^{\circ}\) & 49,3\(^{\circ}\)$\pm$0.3\(^{\circ}\)\\
+        \hline
+        60\(^{\circ}\)$\pm$1\(^{\circ}\) & 54,3\(^{\circ}\)$\pm$0.3\(^{\circ}\)\\
+        \hline
+        70\(^{\circ}\)$\pm$1\(^{\circ}\) & 67.7\(^{\circ}\)$\pm$0.3\(^{\circ}\)\\
+        \hline
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	
+\end{figure}
+
+\noindent $\theta_i$ e $\theta_r$ secondo la teoria dovrebbero risultare uguali, verifichiamo l'ipotesi per ogni angolo con il test:
+
+\[t=\frac{|\theta_{incidente}-\theta_{riflesso} |}{\sqrt{\sigma_\theta_i^2+\sigma_\theta_r^2}}\]\
+per il quale stabiliamo una soglia di accettabilità del 0.5\%.\\
+
+\noindent Calcoliamo le probabilità di ottenere ogni stima di $\bar{\theta_{r}}$ in un intervallo ampio t deviazioni standard $\sigma_{\theta_{r}}$ rispetto al valore vero $\theta_{i}$:\\
+
+
+
+Per $\theta_{r}$ atteso = 35\(^{\circ}\): \(t=\frac{\left|35.0-32.7\right|}{\sqrt{1^2+0.3^2}}=2.2 \Rightarrow PValue=2.78\)\\
+
+Per $\theta_{r}$ atteso = 40\(^{\circ}\): \(t=\frac{|40.0-40.7|}{\sqrt{1^2+0.3^{2}}}=0.67 \Rightarrow PValue=50.29\%\)\\
+
+Per $\theta_{r}$ atteso = 50\(^{\circ}\): \(t=\frac{\left |50.0-49.3\right |}{\sqrt{1^2+0.3{^2}}}=0.67 \Rightarrow PValue=50.29\%\)\\
+
+Per $\theta_{r}$ atteso = 60\(^{\circ}\): \(t=\frac{\left|60.0-54.3\right|}{\sqrt{1^2+0.3^{2}}}=5.46 \Rightarrow PValue<0.5\%\)\\
+
+Per $\theta_{r}$ atteso = 70\(^{\circ}\): \(t=\frac{\left|70.0-67.7\right|}{\sqrt{1^2+0.3^{2}}}=2.2 \Rightarrow PValue=2.78\%\)\\
+
+I PValue ottenuti per lo più rispettano la soglia, crediamo che per ottenere delle misure più soddisfacenti avremmo dovuto agire a priori regolando la precisione del trasduttore a 3x oppure 1x, sfruttando l'offset per vedere il massimo. 
+
+
+
+
+\pagebreak
+
+\section{Rifrazione con prisma}
+
+In questa parte dell'esperimento abbiamo impiegato un prisma di polistirolo per poter determinare l'indice di rifrazione dello styrene tramite la legge della rifrazione, ovvero
+
+\[n_{i} sin\theta_{i}=n_{r} sin\theta_{r}\]
+
+Per effettutare le misure il prisma è stato posizionato con la faccia rivolta verso l'emettitore ad angolo retto rispetto al fascio di microonde, così da minimizzare il più possibile l'angolo di rifrazione dovuto alla prima faccia, lo studio del fenomeno si riduce quindi al solo effetto dovuto alla seconda faccia del materiale.
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{1.0 \textwidth}{!}{   %resize table
+			\includegraphics{prisma.png}
+		} %close resize
+	} %close centering
+\end{figure}
+
+\subsection{Dati raccolti}
+Come prima cosa per conoscere l'inclinazione della seconda faccia abbiamo misurato l'angolo al vertice del prisma con l'aiuto di un goniometro: \(\alpha\)=22\(^{\circ}\)\pm1\(^{\circ}\).\\
+Una volta posto il prisma sulla base tra emettitore e ricevitore abbiamo potuto verificare che l'indice di rifrazione del polistirolo è approssimabile ad uno. Il raggio incidente è stato deviato di un angolo di 2\(^{\circ} \pm1 ^{\circ}\), infatti abbiamo riconosciuto il raggio rifratto in un massimo di intensità rilevato alla posizione angolare di 182 \(^{\circ}\) rispetto all'emettitore.\\
+In seguito abbiamo riempito il prisma di pellets di styrene ed e abbiamo individuato nuovamente il massimo di intensità del segnale spostando il ricevitore, che questa volta è stato posizionato intorno ai 13.5 \(^{\circ}\) rispetto all'asse di trasmissione dell'onda incidente. 
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{Prisma riempito di styrene}
+    	\makebox[0.90 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c|c}
+        $\theta$ deviazione [gradi] & Intensità onda rifratta & Amplificazione[mA]\\
+        \hline
+        \hline
+        13  & 0.58 $\pm 0.02$ & 30x\\
+        \hline
+        14 & 0.56 $\pm 0.02 $& 30x\\
+        \hline
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	
+\end{figure}
+
+
+\subsection{Analisi dati}
+
+Dalla stima per l'angolo di deviazione rispetto all'asse di partenza \( \theta_{dev}=13.5 ^{\circ}\pm 0.5 ^{\circ}\) ricaviamo l'angolo di rifrazione rispetto alla normale alla faccia del prisma conoscendo alpha e sommando in quadratura le incertezze:\\ \(\theta_{r} = \theta_{dev} + \alpha = 35.5  ^{\circ}\pm 1.1 ^{\circ}\). L'angolo di incidenza misurato rispetto alla medesima normale coincide con lo stesso alpha(si guardi il disegno riportato in alto); siccome il raggio di microonde attraversa lo styrene mentre ancora non è stato rifratto e poi passa all'aria vale:
+\[n_{styrene} = n_{aria}\frac{sin\theta_{rifr}}{sin\theta_{inc}}\]
+\[\Rightarrow n = \frac{sin(35.5)}{sin(22)} \pm \sqrt{ \left(\frac{cos(35.5) \cdot \sigma_{\theta_r}}{sin(22)}\right)^{2} + \left(\frac{-sin(35.5) cos(22)\cdot \sigma_{\alpha}}{sin(22)^{2}}\right)^{2}  }= 1.55 \pm 0.08  \] 
+
+dove abbiamo convertito gli angoli da gradi a radianti per eseguire i calcoli e ottenere una misura adimensionale, segue la tabella delle conversioni:
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c}
+        angolo incidente & angolo rifratto\\
+        \hline
+        \hline
+        $22^{\circ}\pm 1^{\circ}$ & $35.5^{\circ} \pm 1.1^{\circ}$ \\
+    	\hline
+        $(0.38\pm 0.02) rad$& $ (0.62 \pm 0.02 )rad $ \\
+        \hline
+        
+        \hline
+        \hline
+    \end{tabular}
+    } %close centering
+
+\end{figure}
+
+\noindent La stima per l'indice di rifrazione dello stirene risulta essere compatibile con quella attesa di 1.546:
+\[ t = \frac{\left |\hat{n} - n_{atteso} \right|}{\sigma_n} = \frac{1.55 - 1.546}{0.08} = 0.05\]
+il test del t-Student ci permette di affermare che la nostra stima è adeguatamente accurata con una sicurezza all'incirca del 100\%. 
+
+\section{Angolo di Brewster}%giu
+L'esperienza consisteva nello studiare la connessione tra l'intensità dell'onda rilevata dal ricevitore ed il suo grado di polarizzazione, in particolare è stata adoperata una lastra di polietilene su cui abbiamo fatto riflettere il fascio di microonde in maniera tale da ottenere un parziale polarizzazione.\\
+\subsection{Intermezzo teorico}%giu
+
+L'effetto di polarizzazione durante la riflessione è dovuto al fatto che il campo elettrico riprodotto dagli elettroni del materiale nel raggio riflesso non è in grado, per le proprietà di onda trasversale della radiazione studiata, di oscillare nella direzione di propagazione del raggio. Per cui, nella condizione in cui raggio riflesso e raggio rifratto sono perpendicolari (si guardi il disegno sotto), l'unica componente del raggio riflesso sarà quella perpendicolare al piano di incidenza (polarizzazione completa). Per angoli di incidenza diversi dall'angolo di Brewster otteniamo una parziale polarizzazione in tale direzione.
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.6 \textwidth}{!}{   %resize table
+			\includegraphics{Brewster.png}
+		} %close resize
+	} %close centering
+\end{figure}
+
+\subsection{Metodo adottato}
+Per ricavare l'angolo di Brewster per la nostra lastra abbiamo polarizzato parallelamente al piano di incidenza l'onda emessa (orizzontale, \(\theta\) sul goniometro dell'emettitore= \(90^{\circ}\)); così facendo, ci aspettavamo che la lettura sul ricevitore, ruotato anch'esso di 90 gradi, si annullasse una volta trovato l'angolo di incidenza pari a \(\theta_{B}\). Abbiamo progressivamente spostato il ricevitore di angoli di 10\(^{\circ}\) e prestato attenzione a campionare più fittamente l'area in cui notavamo una diminuizione nell'intensità del raggio riflesso.\\
+Per ogni angolo di incidenza testato abbiamo spostato il ricevitore nella posizione in cui ci aspettavamo di ritrovare il raggio riflesso, e ci fermavamo nel punto esatto in cui la lancetta indicava il massimo di intensità.\\
+
+\noindent Nella fretta abbiamo mancato di misurare l'intensità rilevata anche per una polarizzazione verticale; sarebbe stato invece interessante poter constatare che, al contrario, un'onda polarizzata in direzione perpendicolare al piano di incidenza non viene affatto annullata dalla riflessione con il mezzo.\\
+
+\pagebreak
+
+\subsection{Dati raccolti}
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c|c}
+        angolo di incidenza[gradi]& Intensità & Amplificazione[mA]\\
+        \hline
+        \hline
+        25\(\pm\)1& 0.02 \(\pm\)0.02& 10x\\
+    	\hline
+        28\(\pm\)1& 0.00 \(\pm\)0.02&10x\\
+        \hline
+        30\(\pm\)1 & 0.02 \(\pm\)0.02&10x\\
+        \hline
+        35\(\pm\)1 & 0.04 \(\pm\)0.02&10x\\
+        \hline
+        40\(\pm\)1 & 0.08 \(\pm\)0.02&10x\\
+        \hline
+        50\(\pm\)1 & 0.11 \(\pm\)0.02&10x\\
+        \hline
+        52\(\pm\)1& 0.00 \(\pm\)0.02&10x\\
+        \hline
+        55\(\pm\)1 & 0.08 \(\pm\)0.02&10x\\
+        \hline
+        60\(\pm\)1 & 0.36 \(\pm\)0.02&10x\\
+        \hline
+        \hline
+    \end{tabular}
+    } %close centering
+    \caption{si noti che la sensibilità dello strumento utilizzato era 0.02 xA mA}
+    	\caption{A=livello di amplificazione scelto}
+\end{figure}
+
+
+
+\subsection{Analisi dati}
+Convertendo le misure con la giusta amplificazione del segnale rilevato abbiamo ottenuto il grafico sottostante:
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c}
+        angolo di incidenza[gradi]& Intensità[mA]\\
+        \hline
+        \hline
+        25\(\pm\)1& 0.20 \(\pm\)0.20\\
+    	\hline
+        28\(\pm\)1& 0.00 \(\pm\)0.20\\
+        \hline
+        30\(\pm\)1 & 0.20 \(\pm\)0.20\\
+        \hline
+        35\(\pm\)1 & 0.40 \(\pm\)0.20\\
+        \hline
+        40\(\pm\)1 & 0.80 \(\pm\)0.20\\
+        \hline
+        50\(\pm\)1 & 1.10 \(\pm\)0.20\\
+        \hline
+        52\(\pm\)1& 0.00 \(\pm\)0.20\\
+        \hline
+        55\(\pm\)1 & 0.80 \(\pm\)0.20\\
+        \hline
+        60\(\pm\)1 & 3.60 \(\pm\)0.20\\
+        \hline
+        \hline
+    \end{tabular}
+    } %close centering
+
+\end{figure}
+
+\pagebreak
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{angolo di Brewster.png}
+		} %close resize
+	} %close centering
+\end{figure}
+Il primo minimo riscontrato è probabilmente dovuto ad una imprecisa lettura del contatore, forse aumentando la sensibilità avremmo rilevato un segnale più alto, la cui debolezza è comunque da attribuire al fatto che, per angoli di incidenza così piccoli, la maggior parte dell'onda viene rifratta, lasciando il raggio riflesso meno intenso.\\
+Il minimo osservato per \(\theta = 52^{\circ} \pm 1^{\circ}\) si trova invece dove ci aspetteremmo di leggere un'intensità riflessa alta; perciò la sua presenza è da attribuire all'effetto di Brewster.\\
+
+\noindent Se avessimo tenuto traccia anche delle intensità dell'onda con polarizzazione perpendicolare all'asse di incidenza avremmo notato che il suo andamento non si abbassa in un minimo, ma ci aspettiamo che la curva continui a salire regolarmente fino a raggiungere la condizione di totale riflessione (condizione che anche la nostra curva raggiunge, come vediamo dalla rapida risalita dei punti successivi al minimo).\\
+
+\noindent Siccome l'angolo di Brewster è tale per cui raggio riflesso con \(\theta_{1}\) e raggio rifratto di \(\theta_{2}\) sono perpendicolari, utilizzando la legge si Snell e la legge di Cartesio concludiamo che:
+\[n1 sin(\theta_{1}) = n2 sin(\theta_{2})\]
+\[n1 sin(\theta_{1}) = n2 sin(90 - \theta_{1})\]
+\[n1 sin(\theta_{1}) = n2 cos(\theta_{1})  \Rightarrow tan(\theta_{1})=\left(\frac{n2}{n1}\right)\]
+
+\noindent conoscendo l'indice di rifrazione del polietilene pari a 1.54, sappiamo che l'angolo di Brewster che ci aspettiamo è di \(57^{\circ}\), per cui la nostra stima \(\hat{\theta_{B}}=52^{\circ}\pm 1^{\circ}\) non risulta molto accurata, il valore per la t-Student ottenuto è:
+\[t = \frac{\left| \hat{\theta_{B}} - \theta_{B}\right|}{\hat{\sigma_{\theta}}} = \frac{\left|52 - 57\right|}{1} = 5\]
+Una possibile causa di tale discrepanza tra le misure ed il valore atteso può essere dovuta ad un allineamento impreciso della lastra che magari si è spostata dalla posizione originale durante le rotazioni progressive. Se supponiamo che la lastra abbia ruotato sulla sua base nella direzione in cui ruotavamo il sostegno, possiamo concludere che la normale potrebbe essersi spostata di un grado o due rispetto a quanto stimavamo.\\
+Questo ci porta a pensare che la nostra misura per \(\theta_{inc}\) non fosse sufficientemente accurata; per migliorare l'accuratezza avremmo potuto tenere traccia anche degli angoli \(\theta_{rifl}\)in cui abbiamo effettivamente rilevato il massimo di intensità e stimare \(\theta_{inc}\) come una media di: \(\frac{\theta_{inc} + \theta_{rifl}}{2} = \theta_{ effettivo}\).
+
+\subsection{accenno sugli occhiali polaroid}
+Non solo le plastiche come il polietilene polarizzano le onde che riflettono su di esso, ogni materiale o sostanza non metallica come vetro o acqua tende a riflettere per lo più la radiazione che oscilla parallelamente alla sua superficie e ad assorbire o trasmettere il resto. Gli occhiali da sole polaroid sono studiati per assorbire solo le onde polarizzate orizzontalmente, così facendo bloccano la maggior parte dell'onda riflessa dalle superfici come quella di un lago o di una strada con lo scopo di permettere di vedere più chiaramente sotto la superficie dell'aqua o i dettagli della strada.
+
+\section{Interferenza da doppia fenditura}%dia
+
+Con l'uso di tre diverse lastrine metalliche abbiamo potuto configurare l'apparecchiatura in modo da generare un fenomeno di interferenza da doppia fenditura. In particolare abbiamo montato sulla base centrale, ai lati, due lastrine della stessa dimensione e al centro una lastrina più stretta. 
+
+\noindent Lo scopo delle misure era quello di verificare per ogni massimo trovato la seguente relazione:
+
+\[d sin\theta = n \lambda\]
+
+Dove d è la distanza tra le due sorgenti, n è l'ordine del massimo e theta l'angolo misurato tra il ricevitore e l'asse ottico; \(\lambda\) è nota e vale 2.85cm.
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.5 \textwidth}{!}{   %resize table
+			\includegraphics{doppiafenditura.jpeg}
+		} %close resize
+	} %close centering
+\end{figure}
+
+
+
+
+\subsection{Dati raccolti}
+
+Abbiamo dapprima misurato le lastrine e posto una specifica distanza tra di esse.\\
+\noindent
+larghezza lastrina centrale: l1= 6cm;\\
+larghezza lastrine laterali: l2 = 9cm;\\
+distanza tra le lastrine (larghezza fenditure) = 1.5cm, confrontabile con \(\lambda\);\\\\
+\noindent I due spazi tra le lastrine si comportano come due sorgenti puntiformi di onde elettromagnetiche; se consideriamo i loro centri $\Rightarrow$ distanza tra le fenditure:\\ d = 7.5cm.\\
+
+\noindent Abbiamo proceduto mantenendo l'emettitore fisso e ruotando il braccio fino al punto in cui compare il massimo, lì abbiamo misurato l'angolo mediante il goniometro posto sulla base, riconosciuto l'ordine del massimo e letto l'intensità con il milliamperometro analogico. Di seguito le misure effettuate:
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c|c}
+        Ordine massimo & Intensità [mA] & angolo [Gradi] \\
+        \hline
+        \hline
+        1 & (0.52$\pm$ 0.02)x30 & 22\(^{\circ}\) $\pm$ 1 \(^{\circ}\)\\
+        \hline
+        2 & (0.32$\pm$ 0.02)x30 & 48\(^{\circ}\) $\pm$ 1 \(^{\circ}\)\\
+        \hline
+        3 & (0.18$\pm$ 0.02)x30 & 58\(^{\circ}\) $\pm$ 1 \(^{\circ}\)\\
+        \hline  
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	
+\end{figure}
+si noti che l'intensità non è utile ai fini della verifica della legge ma da un'indicazione sulla dispersione dell'energia con l'allontanarsi dal centro della figura.
+
+
+\subsection{Analisi dati}
+
+Abbiamo calcolato il seno degli angoli misurati e, tenendo conto dell'errore dello strumento, propagato l'errore su di esso.
+
+
+
+\[\sigma_{sin\theta} = \frac{\partial sin\theta}{\partial \theta}*\sigma_{\theta}\]
+
+
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c}
+        sin\theta & incertezza \\
+        \hline
+        \hline
+        0.37 & \pm0.02 \\
+        \hline
+        0.74 & \pm0.01 \\
+        \hline
+        0.85 & \pm0.01 \\
+        \hline  
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	
+\end{figure}
+
+
+
+
+\noindent Abbiamo quindi verificato la legge, tenendo conto che \(sin\theta\) fosse l'unica grandezza affetta da errore: l'incertezza sul valore a sinistra dell'uguale è infatti dovuta a \(|d| \cdot \sigma_{sin\theta}\)\\\\\\
+
+\[(7.5cm \cdot 0.37)\pm0.01 cm = 1 \cdot 2.85 cm \hspace{0.5cm} \Rightarrow \hspace{0.5cm}  2.775\pm0.15 cm \aprrox 2.85cm\]
+\[(7.5cm \cdot 0.74)\pm0.01 cm = 2 \cdot 2.85 cm \hspace{0.5cm} \Rightarrow \hspace{0.5cm} 5.55\pm0.75 cm \aprrox 5.7cm\]
+\[(7.5cm \cdot 0.85)\pm0.01 cm = 3 \cdot 2.85 cm \hspace{0.5cm} \Rightarrow \hspace{0.5cm} 6.37\pm0.75\neq 8.55 cm\]
+
+
+\noindent Notiamo che nei primi due casi l'uguaglianza è soddisfatta, mentre nel terzo no. Supponiamo di aver commesso un errore di identificazione del massimo .\\
+
+\noindent Valutiamo quindi la probabilità che la legge sia verificata, fissando una soglia per il test del T-Student del 0.5\%:
+
+\[t = \frac{\left| 2.775 - 2.85\right|}{0.15}=0.5\Rightarrow PValue=61.71\%\]
+
+\[t = \frac{\left| 5.55 - 5.70\right|}{0.75}=0.2\Rightarrow PValue=84.15\%\]
+
+\[t = \frac{\left| 6.37 - 8.55\right|}{0.75}=2.9\Rightarrow PValue=0.37\%\]
+
+\noindent Come ci aspettavamo, la probabilità che la misura effettuata per il massimo di ordine 3 non sia affetta da errori sistematici è molto bassa, addirittura inferiore alla soglia predisposta di 0.5\%, mentre per quanto riguarda le altre due possiamo dirci soddisfatti del valore ottenuto.\\\\
+Costruendo un grafico di \(sin\theta(n)\) possiamo osservare ancora meglio come il punto relativo a n=3 sia disallineato rispetto a n=1 ed n=2, rendendo il fit dei punti poco attendibile:
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.74 \textwidth}{!}{   %resize table
+			\includegraphics{interpolazione_doppia_fenditura.png}
+		} %close resize
+	} %close centering
+	\caption{equazione utilizzata per l'interpolazione : \(sin(\theta) = p_{0} n\)}
+\end{figure}
+
+
+
+\noindent Abbiamo provato ad escludere dal fit il punto relativo al terzo ordine, così da ricavare una stima approssimativa della lunghezza d'onda e controllare che fosse confrontabile con quella data.\\
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.8 \textwidth}{!}{   %resize table
+			\includegraphics{interpolazione_doppia_fenditura_corretta.png}
+		} %close resize
+	} %close centering
+	\caption{equazione utilizzata per l'interpolazione: \(sin(\theta) = p_{0}n\)}
+\end{figure}
+
+Il fit restituisce un \(\chi^{2} = 0.03\) per Ndf = 1 che corrisponde ad un PValue approssimabile al 100\%, ci fidiamo dunque dei risultati di questo fit più che del precedente e stimiamo la lunghezza della microonda a partire dal coefficiente angolare:
+\[\lambda = p_{0} \cdot d = 0.372 \pm 0.005 \cdot 7.5 cm = 2.79 \pm 0.04 cm \]
+
+la stima risulta coerente con quella attesa con una sicurezza del 13\% 
+\[t = \frac{\left| \hat{\lambda} - \lambda_{nota}\right|}{\sigma_{\hat{\lambda}}} = \frac{\left| 2.79 - 2.85 \right|}{0.04} = 1.5\]
+
+
+
+
+
+%paragrafo da togliere
+\section{Diffrazione di Bragg}
+Lo scopo di questo esperimento è quello di comprendere come avviene la mappatura dei reticoli cristallini dei minerali.
+Nel nostro caso abbiamo sostituito i raggi x con microonde, per cui anche il reticolo da esaminare è stato ingradito in modo da essere in linea con l'ordine di grandezza della lunghezza d'onda delle microonde (pari 2.85 cm).
+
+\subsection{Metodo adottato}
+La famiglia di piani selezionata per eseguire l'esperimento è quella parallela alla faccia del cubo, essa non rappresentava l'unica scelta ma per motivi di tempistica ci siamo accontentati di queste uniche misure.\\
+Per cominciare abbiamo ruotato il cubo rispetto all'emettitore in maniera tale da ottenere un angolo di incidenza rispetto alla normale ai piani di 30\(^{\circ}\), che corrisponde ad un angolo rispetto ai piani di 60\(^{\circ}\); abbiamo misurato l'intensità in corrispondenza dell'angolo di riflessione(\(\theta_{deviato} = \theta_{inc}\) per la legge di riflessione di Bragg) e poi ruotato di nuovo il cubo. Inizialmente abbiamo scelto di riportare le misure ogni 5\(^{\circ}\), nei casi in cui notavamo di essere vicino ad un massimo di intensità tornavamo insietro per infittire il campionamento dell'intervallo interessato. L'emettitore è rimasto fisso e orientato con polarizzazione uguale a quella di ricezione per tutta la raccolta dati.\\
+
+\noindent Nel momento in cui si verifica la condizione di Bragg: \(   2 d sin \theta = n\lambda \)  si osserva un massimo di intensità; misurando quindi l'angolo $\theta$ e la relativa intensità, possiamo stimare d, ovvero il distanziamento tra i piani paralleli scelti.
+
+
+\subsection{Dati raccolti}
+
+\begin{figure}[!htbp]
+    	\captionsetup{labelformat=empty}
+        \caption{ricerca del massimo}
+    	\makebox[1 \textwidth][c]{       %centering table
+    \begin{tabular}{c|c}
+        angolo rispetto ai piani[gradi] & Intensità [mA]\\
+        \hline
+        \hline
+        60 \(\pm 1\)& 0.2\(\pm0.2\)\\
+        \hline
+        55 \(\pm 1\) & 1.2\(\pm0.2\)\\
+        \hline
+        53 \(\pm 1\)& 1.2\(\pm0.2\)\\
+        \hline  
+        50 \(\pm 1\) & 1.8\(\pm0.2\)\\
+        \hline
+        48 \(\pm 1\)& 1.8\(\pm0.2\)\\
+        \hline
+        45 \(\pm 1\)& 1.2\(\pm0.2\)\\
+        \hline
+        40 \(\pm 1\)& 0.2\(\pm0.2\)\\
+    	\hline
+        \hline
+    \end{tabular}
+
+    } %close centering
+    	
+\end{figure}
+
+\pagebreak
+\subsection{Analisi dati}
+
+Abbiamo rappresentato con un grafico l'andamento dell'intensità in funzione di \(\theta\):
+
+\begin{figure}[!ht]
+    	\captionsetup{labelformat=empty}
+
+	\makebox[1 \textwidth][c]{       %centering table
+		\resizebox{0.70 \textwidth}{!}{   %resize table
+			\includegraphics{cubo di Bragg.png}
+			
+		} %close resize
+	} %close centering
+\end{figure}
+
+sostituendo nella formula l'angolo corrispondente al massimo, si ottiene un d=1.86 cm che è confrontabile con la lunghezza d'onda dell'emettitore. \\
+
+Sappiamo tuttavia che lo spazio tra le sferette è di 3 cm, per cui la nostra misura non è molto accurata.
+Le ragioni di questa discrepanza potrebbero essere dovute a mancanza di precisione nel ruotare il cubo (era molto scomodo leggere i gradi perchè il supporto era ingombrante e oscurava in parte la buona visione delle tacchette indicanti i gradi).
+altro errore poterebbe essere stato nella determinazione del massimo,in quanto la lancetta oscillava parecchio.
+
+\end{document}
