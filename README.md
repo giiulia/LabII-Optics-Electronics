@@ -10,9 +10,7 @@ For each of these experiences, C++ scripts have been developed to meet the need.
 Each experience and so the relative report faces up the main phenomena of the topic of inquiry.
 The topics of this year's course:
 ## The Spectrometer
-This apparatus was used in conjunction with discharge lamps and spectral tubes to inquire about the peculiarities of the prism and the graticule. Each set of data has been stored differently. We carried out part of the project virtually therefore we labeled some data "virtual".
-
-In [Spettrometer](./#1:Spectrometer) are visible all sections and the relative data analysis.
+This apparatus was used in conjunction with discharge lamps and spectral tubes to inquire about the peculiarities of the prism and the graticule.Part of the project was carried-out virtually, so we labeled some data as "virtual". Each set of data has been stored differently. In [Spettrometer](./#1:Spectrometer) are visible all sections and the relative data analysis.
 
 The final product, with comments and hypotesis from our project group, is at [Pdf of report](./#1:Spettromentro/relazione_spettrometro.pdf); if the source is of any interest: [source of report](./#1:Spectrometer/relazione_spettrometro.tex)
 
