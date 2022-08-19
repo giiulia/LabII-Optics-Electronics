@@ -1,5 +1,5 @@
-# Lab II projects
-Group experiences in university laboratories, taken during the second year of BSc in Physics, have given rise to detailed reports that exist thanks to the work of
+# Lab II projects<sub>taken during the second year of BSc in Physics</sub>
+Group experiences in university laboratories have given rise to detailed reports that exist thanks to the work of
 - Data Store
 - Data Analysis
 - Result Display
