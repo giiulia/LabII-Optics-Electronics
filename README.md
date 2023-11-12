@@ -7,12 +7,8 @@ The following process has been necessary to reach the intent:
 - **Data Analysis**
 - **Result Display**
 
-For each of these experiences, C++ scripts have been developed to meet the need.
-
-In some cases, part of the project was carried-out virtually, so we labeled the relative data as "virtual".
-
 Each experience and so the relative report faces up the main phenomena of the topic of inquiry.
-The topics of this year's course:
+The topics of that year's course:
 ## The Spectrometer
 This apparatus was used in conjunction with discharge lamps and spectral tubes to inquire about the peculiarities of the prism and the graticule.
 Each set of data has been stored differently. In [Spectrometer](./#1:Spettrometro) are visible all the sections and the relative data and the data analysis.
