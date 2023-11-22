@@ -7,23 +7,19 @@ The following process has been necessary to reach the intent:
 - **Data Analysis**
 - **Result Display**
 
-For each of these experiences, C++ scripts have been developed to meet the need.
-
-In some cases, part of the project was carried-out virtually, so we labeled the relative data as "virtual".
-
 Each experience and so the relative report faces up the main phenomena of the topic of inquiry.
-The topics of this year's course:
+The topics of that year's course:
 ## The Spectrometer
 This apparatus was used in conjunction with discharge lamps and spectral tubes to inquire about the peculiarities of the prism and the graticule.
-Each set of data has been stored differently. In [Spectrometer](./#1:Spettrometro) are visible all the sections and the relative data and the data analysis.
+Each set of data has been stored differently. In [Spectrometer](/Spectrometer) are visible all the sections and the relative data and the data analysis.
 
-The final product, with comments and hypotesis from our project group, is at [Pdf of report](./#1:Spettrometro/relazione_spettrometro.pdf); if the source is of any interest: [source of report](./#1:Spettrometro/relazione_spettrometro.tex).
+The final product, with comments and hypotesis from our project group, is at [Pdf of report](/Spectrometer/spectrometer_report.pdf); if the source is of any interest: [source of report](/Spectrometer/spectrometer_report.tex).
 
 ## The Interferometer
 Using the *PASCO scientific* laboratory equipment, we have implemented both the Michelson and the Fabry-Perot configurations.
-Each configuration's set of data has been stored differently. In [Interferometer](./#2:Interferometro) are visible all the sections and the relative data and the data analysis.
+Each configuration's set of data has been stored differently. In [Interferometer](/Interferometer) are visible all the sections and the relative data and the data analysis.
 
-The final product, with comments and hypotesis from our project group, is at [Pdf of report](./#2:Interferometro/relazione_interferometro.pdf); if the source is of any interest: [source of report](./#1:Interferometro/relazione_interferometro.tex).
+The final product, with comments and hypotesis from our project group, is at [Pdf of report](/Interferometer/interferometer_report.pdf); if the source is of any interest: [source of report](/Interferometer/interferometer_report.tex).
 
 ## The Microwaves
 The affected phenomena are polarization, reflection and refraction, with a look at Brewster's angle and the Bragg reflection.
