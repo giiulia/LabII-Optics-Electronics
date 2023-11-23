@@ -5,4 +5,4 @@ This apparatus was used in conjunction with discharge lamps and spectral tubes t
 - For the concrete experiment we got to use the spectrometer in real life using an **ignote source** and a know source for reference. We tracked the angles of each colored line we saw in the spectrometer for each source and identified the ignote one.
 - The experience with the graticule had to goal of **estimating the graticule pitch** traking the yellow doublet of a sodium lamp relatively to the center. Subsequently we identified the spectral lines of **sodium**.
 
-The final product, with comments and hypotesis from our project group, is at [Pdf of report](/Spectrometer/spectrometer_report.pdf); if the source is of any interest you can find it at: [source of report](/Spectrometer/spectrometer_report.tex).
+The final product, with comments and hypotesis from our project group, is at [PDF of report](/Spectrometer/spectrometer_report.pdf); if the source is of any interest you can find it at: [source of report](/Spectrometer/spectrometer_report.tex).
