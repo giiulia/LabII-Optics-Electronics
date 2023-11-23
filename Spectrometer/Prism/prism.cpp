@@ -1,4 +1,4 @@
-//c++ -o spettrometro_prisma spettrometro_prisma.cpp `root-config --glibs --cflags`
+//c++ -o prism prism.cpp `root-config --glibs --cflags`
 
 #include <iostream>
 #include <fstream> 
