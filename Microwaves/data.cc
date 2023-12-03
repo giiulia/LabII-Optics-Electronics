@@ -1,4 +1,4 @@
-#include "dati_microonde.h"
+#include "data.h"
 #include "clean_data.h"
 #include <cmath>
 #include <iostream>
@@ -12,7 +12,7 @@ void amplification(double* intensity, int amplify, int dimension){
 
 }
 
-double media(double * v, int size){
+double mean(double * v, int size){
     double sum = 0;
     for(int i = 0; i<size; i++){
         sum += + v[i];
@@ -20,10 +20,10 @@ double media(double * v, int size){
     return sum/static_cast<float>(size);
 }
 
-double deviazione_st(double * v, int size){
+double st_deviation(double * v, int size){
     double sum_sq = 0;
     for(int i = 0; i<size; i++){
-        sum_sq += + pow(v[i] - media(v, size), 2);
+        sum_sq += + pow(v[i] - mean(v, size), 2);
     }
     return sqrt(sum_sq/(static_cast<float>(size)-1))/sqrt(size);
 }

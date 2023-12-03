@@ -6,7 +6,7 @@
 #include <fstream>
 
 using namespace std;
-void NormalForm( int e[][3], double* u, int N ){ //vettore in entrata, vettore in uscita, dimensione del vettore di uscita
+void NormalForm( int e[][3], double* u, int N ){ //IN vector, OUT vector, OUT vector dimensions
     double somma;
     for(int i = 0; i<N; i++){
         somma = e[i][0] + e[i][1]/60. + e[i][2]/3600.;
@@ -23,68 +23,67 @@ void DegreeToRadiant( double* e, int N){
     }  
 }
 
-void Med_Var_Dev(double* const campione, double* risultati, int N){
-  double media, varianza, dev;
-  media = 0;
-  varianza = 0;
+void Med_Var_Dev(double* const sample, double* results, int N){
+  double mean, variance, dev;
+  mean = 0;
+  variance = 0;
   dev = 0;
   
   for(int i = 0; i < N; i++){
-    media = media + campione[i];
+    mean = mean + sample[i];
   }
-  media = media/N;
-  risultati[0] = media;
+  mean = mean/N;
+  results[0] = mean;
   for(int i = 0; i < N; i++){
-    varianza = varianza + pow(campione[i]-media, 2.);
+    variance = variance + pow(sample[i]-mean, 2.);
   }
 
-  varianza = varianza/(N-1.);
-  risultati[1] = varianza;
-  dev = sqrt(varianza/N);
+  variance = variance/(N-1.);
+  results[1] = variance;
+  dev = sqrt(variance/N);
 
-  risultati[2] = dev;
+  results[2] = dev;
 }
-void Diff(int deltaC[][3], int deltaX[][3], ofstream& file_angoli, int size, int sizeR){
+void Diff(int deltaC[][3], int deltaX[][3], ofstream& angles_file, int size, int sizeR){
   double deltaCNormal[5];
-  double mediaC[3];
+  double meanC[3];
 
   double deltaXNormal[5];
-  double mediaX[3];
+  double meanX[3];
 
   NormalForm( deltaC, deltaCNormal, size);
   DegreeToRadiant( deltaCNormal, size );
-  Med_Var_Dev(deltaCNormal, mediaC, size);
+  Med_Var_Dev(deltaCNormal, meanC, size);
 
   NormalForm( deltaX, deltaXNormal, sizeR);
   DegreeToRadiant( deltaXNormal, sizeR );
-  Med_Var_Dev(deltaXNormal, mediaX, sizeR);
+  Med_Var_Dev(deltaXNormal, meanX, sizeR);
 
 
-  double sigma_delta=sqrt(mediaX[2]*mediaX[2] + mediaC[2]*mediaC[2]);
+  double sigma_delta=sqrt(meanX[2]*meanX[2] + meanC[2]*meanC[2]);
 
-  file_angoli<<mediaX[0]-mediaC[0]<<"\t"<<sigma_delta<<endl;
-  //cout<<"Media: "<<mediaX[0]-media0[0]<<"\tDeviazione sulla Media: "<<sigma_delta<<"\n"<<std::endl;
+  angles_file<<meanX[0]-meanC[0]<<"\t"<<sigma_delta<<endl;
 }
 
-void DiffPunti(int deltaC[][3], int puntoX[][3], ofstream& file_punti, int size, int X){
+void DiffPoints(int deltaC[][3], int puntoX[][3], ofstream& file_punti, int size, int X){
   double deltaCNormal[5];
-  double mediaC[3];
+  double meanC[3];
   
   double deltaXNormal[5];
-  double mediaX[3];
+  double meanX[3];
 
   NormalForm( deltaC, deltaCNormal, size);
   DegreeToRadiant( deltaCNormal, size );
-  Med_Var_Dev(deltaCNormal, mediaC, size);
+  Med_Var_Dev(deltaCNormal, meanC, size);
 
 
   NormalForm( puntoX, deltaXNormal, size);
   DegreeToRadiant( deltaXNormal, size );
-  Med_Var_Dev(deltaXNormal, mediaX, size); 
+  Med_Var_Dev(deltaXNormal, meanX, size); 
 
-  double sigma_delta=sqrt(mediaX[2]*mediaX[2] + mediaC[2]*mediaC[2]);
-  file_punti<<X<<"\t\t"<<mediaX[0]-mediaC[0]<<"\t"<<sigma_delta<<endl;
-  //std::cout<<"Media: "<<mediaX[0]-media0[0]<<"\tDeviazione sulla Media: "<<sigma_delta<<"\n"<<std::endl;
+  double sigma_delta=sqrt(meanX[2]*meanX[2] + meanC[2]*meanC[2]);
+  file_punti<<X<<"\t\t"<<meanX[0]-meanC[0]<<"\t"<<sigma_delta<<endl;
+  //std::cout<<"Media: "<<meanX[0]-mean0[0]<<"\tDeviazione sulla Media: "<<sigma_delta<<"\n"<<std::endl;
 
 }
 
