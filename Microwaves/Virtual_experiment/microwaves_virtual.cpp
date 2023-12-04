@@ -16,14 +16,14 @@ using namespace std;
 int main(int argc, char *argv[]){
     TApplication TheApp("theApp", &argc, argv);
     ifstream file_dati;
-    file_dati.open("dati_virtuali.txt", ios::in );
+    file_dati.open("Data/virtual_data.txt", ios::in );
 
     gStyle->SetOptFit();
 
-    cout<<"FIT OPZIONE 1"<<endl;
+    cout<<"FIT OPTION 1"<<endl;
     TCanvas* c1 = new TCanvas();     
 
-    TGraphErrors *ge1 = new  TGraphErrors("dati_virtuali.txt" , "%lg %lg 0. 0.2"); 
+    TGraphErrors *ge1 = new  TGraphErrors("Data/virtual_data.txt" , "%lg %lg 0. 0.2"); 
     ge1->SetTitle("interpolazione con A#left| cos(#theta) #right|");
     ge1->GetXaxis()->SetTitle("angolo[gradi]");
     ge1->GetYaxis()->SetTitle("lettura[mA]");
@@ -37,19 +37,19 @@ int main(int argc, char *argv[]){
     ge1->SetMarkerStyle(20);
     ge1->Draw("AP");
 
-    TF1 *f1 = new TF1("opzione1", "[0]* sqrt( pow(cos(x*3.1415/180), 2) ) "); 
+    TF1 *f1 = new TF1("option1", "[0]* sqrt( pow(cos(x*3.1415/180), 2) ) "); 
 
-    ge1->Fit("opzione1");
-    c1->Print ("interpolazione_1.png", "png");
+    ge1->Fit("option1");
+    c1->Print ("interpolation_1.png", "png");
     TFitResult results1;
     results1.Print();
 
     delete c1;
 
-    cout<<"FIT OPZIONE 2"<<endl;
+    cout<<"FIT OPTION 2"<<endl;
     TCanvas* c2 = new TCanvas();     
 
-    TGraph *ge2 = new  TGraph("dati_virtuali.txt" , "%lg %lg 0. 0.2"); 
+    TGraph *ge2 = new  TGraph("Data/vrtual_data.txt" , "%lg %lg 0. 0.2"); 
     ge2->SetTitle("interpolazione con B cos(#theta)^{2}");
     ge2->GetXaxis()->SetTitle("angolo[gradi]");
     ge2->GetYaxis()->SetTitle("lettura[mA]");
@@ -63,19 +63,19 @@ int main(int argc, char *argv[]){
     ge2->SetMarkerStyle(20);
     ge2->Draw("AP");
 
-    TF1 *f2 = new TF1("opzione2", "[0]*pow( cos(x*3.1415/180) , 2)"); 
+    TF1 *f2 = new TF1("option2", "[0]*pow( cos(x*3.1415/180) , 2)"); 
 
-    ge2->Fit("opzione2");
-    c2->Print ("interpolazione_2.png", "png");
+    ge2->Fit("option2");
+    c2->Print ("interpolation_2.png", "png");
     TFitResult results2;
     results2.Print();
 
     delete c2;
 
-    cout<<"FIT OPZIONE 3"<<endl;
+    cout<<"FIT OPTION 3"<<endl;
     TCanvas* c3 = new TCanvas();     
     
-    TGraph *ge3 = new  TGraph("dati_virtuali.txt" , "%lg %lg 0. 0.2"); 
+    TGraph *ge3 = new  TGraph("Data/virtual_data.txt" , "%lg %lg 0. 0.2"); 
     ge3->SetTitle("interpolazione con A #left| cos(#theta) #right| + B cos(#theta)^{2}");
     ge3->GetXaxis()->SetTitle("angolo[gradi]");
     ge3->GetYaxis()->SetTitle("lettura[mA]");
@@ -89,10 +89,10 @@ int main(int argc, char *argv[]){
     ge3->SetMarkerStyle(20);
     ge3->Draw("AP");
 
-    TF1 *f3 = new TF1("opzione3", "[0]*pow( cos(x*3.1415/180) , 2) + [1]*sqrt( pow( cos(x*3.1415/180), 2) )"); 
+    TF1 *f3 = new TF1("option3", "[0]*pow( cos(x*3.1415/180) , 2) + [1]*sqrt( pow( cos(x*3.1415/180), 2) )"); 
 
-    ge3->Fit("opzione3");
-    c3->Print ("interpolazione_3.png", "png");
+    ge3->Fit("option3");
+    c3->Print ("interpolation_3.png", "png");
     TFitResult results3;
     results3.Print();
 
