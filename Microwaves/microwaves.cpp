@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
     TApplication TheApp("theApp", &argc, argv);
 
 //OSCILLATIONS
-    cout<<"OSCILLATIONS OF INTENSITY RESPECT TO DISTANCE"<<endl;
+    cout<<"INTENSITY AS THE DISTANCE VARIES"<<endl;
     ofstream oscillations_file;
 
     double dimension = (sizeof(intensity)/sizeof(intensity[0]));
@@ -26,19 +26,19 @@ int main(int argc, char *argv[]){
 
     amplification(intensity, 30, dimension);
 
-    oscillations_file.open("oscillations.txt", ios::out);
-    oscillations_file<<"#distanza\t intensity"<<endl;
+    oscillations_file.open("Data/oscillations.txt", ios::out);
+    oscillations_file<<"#distance \t intensity"<<endl;
 
     for(int i = 0; i<dimension; i++){
-        oscillations_file<<posiztion[i]<<" \t "<<intensity[i]<<endl;
+        oscillations_file<<position[i]<<" \t "<<intensity[i]<<endl;
     }
 
     TCanvas* c1 = new TCanvas();
 
-    TGraph *gr = new  TGraph("oscillations.txt" , "%lg %lg"); 
+    TGraph *gr = new  TGraph("Data/oscillations.txt" , "%lg %lg"); 
     gr->SetTitle(" ");
     gr->GetXaxis()->SetTitle("distanza[cm]");
-    gr->GetYaxis()->SetTitle("intensity[mA]");
+    gr->GetYaxis()->SetTitle("intensita[mA]");
 
     gr->GetXaxis()->SetTitleSize(0.055);
     gr->GetXaxis()->SetTitleOffset(0.8);
@@ -48,37 +48,37 @@ int main(int argc, char *argv[]){
 
     gr->SetMarkerStyle(20);
     gr->Draw("APL");
-    c1->Print("oscillazioni.png", "png");
+    c1->Print("Graphs/oscillations.png", "png");
 
 
 //REFLECTION WITH METAL FOIL
-    cout<<"RIFLESSIONE CON IL METALLO"<<endl;
+    cout<<"REFLECTION WITH METAL FOIL"<<endl;
 
-    double theta_rifl_medie[number_of_incident_angles][3];
-    double theta_trasmesso_40_media[3];
-    double theta_trasmesso_50_media[3];
+    double reflected_theta_mean[number_of_incident_angles][3];
+    double transmitted_theta_40_mean[3];
+    double transmitted_theta_50_mean[3];
 
     for(int i = 0; i<number_of_incident_angles; i++){
-        Med_Var_Dev(theta_rifl[i], theta_rifl_medie[i], numero_misure_angoli_rifl);
+        Med_Var_Dev(theta_rifl[i], reflected_theta_mean[i], number_of_reflected_theta);
 
-        cout<<"theta_inc[i]"<<theta_inc[i]<<" theta_rifl[i]: "<<theta_rifl_medie[i][0]<<" "<<theta_rifl_medie[i][2]<<endl;
+        cout<<"theta_inc[i]"<<theta_inc[i]<<" theta_rifl[i]: "<<reflected_theta_mean[i][0]<<" "<<reflected_theta_mean[i][2]<<endl;
     }
 
-    Med_Var_Dev(theta_trasmesso_40, theta_trasmesso_40_media, numero_misure_angoli_rifl);
-    cout<<"theta_trasmesso40: "<<theta_trasmesso_40_media[0]<<" "<<theta_trasmesso_40_media[2]<<endl;
+    Med_Var_Dev(transmitted_theta_40, transmitted_theta_40_mean, number_of_reflected_theta);
+    cout<<"theta_trasmesso40: "<<transmitted_theta_40_mean[0]<<" "<<transmitted_theta_40_mean[2]<<endl;
 
-    Med_Var_Dev(theta_trasmesso_50, theta_trasmesso_50_media, numero_misure_angoli_rifl);
-    cout<<"theta_trasmesso50: "<<theta_trasmesso_50_media[0]<<" "<<theta_trasmesso_50_media[2]<<endl;
+    Med_Var_Dev(transmitted_theta_50, transmitted_theta_50_mean, number_of_reflected_theta);
+    cout<<"theta_trasmesso50: "<<transmitted_theta_50_mean[0]<<" "<<transmitted_theta_50_mean[2]<<endl;
 
-    double intensity_reflected_wave_metallo_medie[number_of_incident_angles][3];
+    double intensity_reflected_wave_metal_medie[number_of_incident_angles][3];
     for(int i = 0; i<number_of_incident_angles; i++){
-        amplification(intensity_reflected_wave_metallo[i], 10, numero_misure_angoli_rifl);
+        amplification(intensity_reflected_wave_metal[i], 10, number_of_reflected_theta);
     }
     
     for(int i = 0; i<number_of_incident_angles; i++){
-        Med_Var_Dev(intensity_reflected_wave_metallo[i], intensity_reflected_wave_metallo_medie[i], numero_misure_angoli_rifl);
+        Med_Var_Dev(intensity_reflected_wave_metal[i], intensity_reflected_wave_metal_medie[i], number_of_reflected_theta);
 
-        cout<<"theta_inc[i]"<<theta_inc[i]<<" intensity riflessa[i]: "<<intensity_reflected_wave_metallo_medie[i][0]<<" "<<intensity_reflected_wave_metallo_medie[i][2]<<endl;
+        cout<<"theta_inc[i]"<<theta_inc[i]<<" intensity riflessa[i]: "<<intensity_reflected_wave_metal_medie[i][0]<<" "<<intensity_reflected_wave_metal_medie[i][2]<<endl;
     }
 
     cout<<"intensity transmitted40: "<<transmitted_wave_intensity_40*10<<endl;
@@ -91,8 +91,8 @@ int main(int argc, char *argv[]){
 
     double refraction_mean_theta_max_styrene[2];
 
-    refraction_mean_theta_max_styrene[0] = media(refraction_mean_theta_max_styrene, 2);
-    refraction_mean_theta_max_styrene[1] =  deviazione_st(refraction_mean_theta_max_styrene, 2);
+    refraction_mean_theta_max_styrene[0] = mean(refraction_mean_theta_max_styrene, 2);
+    refraction_mean_theta_max_styrene[1] =  st_deviation(refraction_mean_theta_max_styrene, 2);
 
     cout<<"refracted theta: (22 degrees to add)"<<refraction_mean_theta_max_styrene[0]<<" "<<refraction_mean_theta_max_styrene[1]<<endl;
     refraction_mean_theta_max_styrene[0] = (refraction_mean_theta_max_styrene[0]+22)*M_PI/180;
@@ -110,7 +110,7 @@ int main(int argc, char *argv[]){
     cout<<"refrcted wave intensity: "<<refracted_wave_mean_intensity<<endl;
     cout<<"reflected wave intensity: "<<reflected_wave_intensity*30<<endl;
 
-    cout<<"refraction index styrene: (expected: 1.546)"<<refraction_index_styrene[0]<<" "<<refraction_index_styrene[1]<<endl;
+    cout<<"refraction index styrene: (expected: 1.546) -> "<<refraction_index_styrene[0]<<" "<<refraction_index_styrene[1]<<endl;
 
 //POLARIZATION  
 
@@ -171,8 +171,8 @@ int main(int argc, char *argv[]){
     gr2->SetFillStyle(0);
     
     auto gr3 = new TGraph("polarization_dist3.txt" , "%lg %lg");
-    gr3->SetName("90 cm");
-    gr3->SetTitle("90 cm");
+    gr3->SetName("40 cm");
+    gr3->SetTitle("40 cm");
     gr3->SetMarkerStyle(20);
     gr3->SetMarkerColor(4);
     gr3->SetLineColor(4);
@@ -189,10 +189,10 @@ int main(int argc, char *argv[]){
     mg->GetYaxis()->SetTitle("intensità[mA]");
 
     mg->GetXaxis()->SetTitleSize(0.05);
-    mg->GetXaxis()->SetTitleOffset(0.9);
+    mg->GetXaxis()->SetTitleOffset(0.4);
 
     mg->GetYaxis()->SetTitleSize(0.05);
-    mg->GetYaxis()->SetTitleOffset(0.9);
+    mg->GetYaxis()->SetTitleOffset(0.4);
 
     
 // Change the axis limits
@@ -203,7 +203,7 @@ int main(int argc, char *argv[]){
 
     c2->BuildLegend();
 
-    c2->Print("polarization.png", "png");
+    c2->Print("Graphs/polarization.png", "png");
 
     oscillations_file.close();
     polarization_file_dist1.close();
@@ -212,7 +212,7 @@ int main(int argc, char *argv[]){
 
     delete c2;
     
-    TCanvas* c8 = new TCanvas();
+    TCanvas* c3 = new TCanvas();
     TF1* opz1 = new TF1("option", "[0]*cos(x*3.1415/180)", 0, 200);
     opz1->SetParameter(0, 17.4);
 
@@ -226,61 +226,24 @@ int main(int argc, char *argv[]){
     opz1->GetYaxis()->SetTitleSize(0.05);
     opz1->GetYaxis()->SetTitleOffset(0.6);
 
-    TMarker punto1(polarizer_angle1[0], intensity_polarized_wave_dist1[0], 20);
-    TMarker punto2(polarizer_angle1[1], intensity_polarized_wave_dist1[1], 20);
-    TMarker punto3(polarizer_angle1[2], intensity_polarized_wave_dist1[2], 20);
-    TMarker punto4(polarizer_angle1[3], intensity_polarized_wave_dist1[3], 20);
-    TMarker punto5(polarizer_angle1[4], intensity_polarized_wave_dist1[4], 20);
-    TMarker punto6(polarizer_angle1[5], intensity_polarized_wave_dist1[5], 20);
-    TMarker punto7(polarizer_angle1[6], intensity_polarized_wave_dist1[6], 20);
-    TMarker punto8(polarizer_angle1[7], intensity_polarized_wave_dist1[7], 20);
-    TMarker punto9(polarizer_angle1[8], intensity_polarized_wave_dist1[8], 20);
-    TMarker punto10(polarizer_angle1[9], intensity_polarized_wave_dist1[9], 20);
-    TMarker punto11(polarizer_angle1[10], intensity_polarized_wave_dist1[10], 20);
-    TMarker punto12(polarizer_angle1[11], intensity_polarized_wave_dist1[11], 20);
-    TMarker punto13(polarizer_angle1[12], intensity_polarized_wave_dist1[12], 20);
-    TMarker punto14(polarizer_angle1[13], intensity_polarized_wave_dist1[13], 20);
-    TMarker punto15(polarizer_angle1[14], intensity_polarized_wave_dist1[14], 20);
-    TMarker punto16(polarizer_angle1[15], intensity_polarized_wave_dist1[15], 20);
-    TMarker punto17(polarizer_angle1[16], intensity_polarized_wave_dist1[16], 20);
-    TMarker punto18(polarizer_angle1[17], intensity_polarized_wave_dist1[17], 20);
-    TMarker punto19(polarizer_angle1[18], intensity_polarized_wave_dist1[18], 20);
-    TMarker punto20(polarizer_angle1[19], intensity_polarized_wave_dist1[19], 20);
-    TMarker punto21(polarizer_angle1[20], intensity_polarized_wave_dist1[20], 20);
-    TMarker punto22(polarizer_angle1[21], intensity_polarized_wave_dist1[21], 20);
-    TMarker punto23(polarizer_angle1[22], intensity_polarized_wave_dist1[22], 20);
-
+    TMarker points[sizeof(polarizer_angle1)];
+  
     opz1->Draw();
-    punto1.Draw();
-    punto2.Draw();
-    punto3.Draw("P");
-    punto4.Draw("P");
-    punto5.Draw("P");
-    punto6.Draw("P");
-    punto7.Draw("P");
-    punto8.Draw("P");
-    punto9.Draw("P");
-    punto10.Draw("P");
-    punto11.Draw("P");
-    punto12.Draw("P");
-    punto13.Draw("P");
-    punto14.Draw("P");
-    punto15.Draw("P");
-    punto16.Draw("P");
-    punto17.Draw("P");
-    punto18.Draw("P");
-    punto19.Draw("P");
-    punto20.Draw("P");
-    punto21.Draw("P");
-    punto22.Draw("P");
-    punto23.Draw("P");
 
-    c8->Print("Meter reading and Malus law_opt1.png", "png");
+    for(int i = 0; i<sizeof(polarizer_angle1); i++){
+        TMarker * punto = new TMarker(polarizer_angle1[i], intensity_polarized_wave_dist1[i], 20);
+        points[i] = *punto;
+        points[i].Draw();
+        delete punto;
 
-    delete c8;
+    }
 
 
-    TCanvas* c9 = new TCanvas();
+//    c3->Print("Graphs/Meter_reading_and_Malus_law_opt1.png", "png");
+
+    delete c3;
+
+    TCanvas* c4 = new TCanvas();
     TF1* opz2 = new TF1("option2", "[0]*cos(x*3.1415/180)^{2}", 0, 200);
     opz2->SetParameter(0, 17.4);
 
@@ -296,49 +259,33 @@ int main(int argc, char *argv[]){
     opz2->GetYaxis()->SetTitleOffset(0.6);
 
     opz2->Draw();
-    punto1.Draw("P");
-    punto2.Draw("P");
-    punto3.Draw("P");
-    punto4.Draw("P");
-    punto5.Draw("P");
-    punto6.Draw("P");
-    punto7.Draw("P");
-    punto8.Draw("P");
-    punto9.Draw("P");
-    punto10.Draw("P");
-    punto11.Draw("P");
-    punto12.Draw("P");
-    punto13.Draw("P");
-    punto14.Draw("P");
-    punto15.Draw("P");
-    punto16.Draw("P");
-    punto17.Draw("P");
-    punto18.Draw("P");
-    punto19.Draw("P");
-    punto20.Draw("P");
-    punto21.Draw("P");
-    punto22.Draw("P");
-    punto23.Draw("P");
+    for(int i = 0; i<sizeof(polarizer_angle1); i++){
+        TMarker * punto = new TMarker(polarizer_angle1[i], intensity_polarized_wave_dist1[i], 20);
+        points[i] = *punto;
+        points[i].Draw();
+        delete punto;
 
-    c9->Print("Meter reading and Malus law_opt2.png", "png");
+    }
 
-    delete c9;
 
+ //   c4->Print("Graphs/Meter_reading_and_Malus_law_opt2.png", "png");
+
+    delete c4;
 
 
 //BREWSTER ANGLE
     ofstream file_Brewster_0;
 
-    amplification(intensity_reflected_wave_90, 10, number_of_incident_angles_Brewster);
+    amplification(intensity_reflected_wave_40, 10, number_of_incident_angles_Brewster);
 
     file_Brewster_0.open("Brewster.txt", ios::out);
     file_Brewster_0<<"#angle\t intensity"<<endl;
 
     for(int i = 0; i<number_of_incident_angles_Brewster; i++){
-        file_Brewster_0<<incidence_angle_Brewster[i]<<" \t "<<intensity_reflected_wave_90[i]<<endl;
+        file_Brewster_0<<incident_angle_Brewster[i]<<" \t "<<intensity_reflected_wave_40[i]<<endl;
     }
 
-    TCanvas* c4 = new TCanvas();
+    TCanvas* c5 = new TCanvas();
 
     TGraph *gr_0 = new  TGraph("Brewster.txt" , "%lg %lg"); 
     gr_0->SetTitle("research  of Brewster angle");
@@ -353,30 +300,28 @@ int main(int argc, char *argv[]){
 
     gr_0->SetMarkerStyle(20);
     gr_0->Draw("APL");
-    c4->Print("Brewster angle.png", "png");    
+    c5->Print("Graphs/Brewster_angle.png", "png");    
     
 
     file_Brewster_0.close();
 
-    delete c4;
-
-
+    delete c5;
 
 
 //DOUBLE SLIT
     cout<<"DOUBLE SLIT INTERFERENCE"<<endl;
     ofstream double_slit_file;
 
-    for(int i = 0; i <number_of_maximus; i++){
-        max_angle_double_slit[i] = (max_angle_double_slit[i])*M_PI/180.;
+    for(int i = 0; i <number_of_maximums_slit; i++){
+        maximum_angle_double_slit[i] = (maximum_angle_double_slit[i])*M_PI/180.;
     }
 
     double_slit_file.open("double_slit_interference", ios::out);
     double_slit_file<<"#max order \t sin(angle)  \t errSinAngle"<<endl;
 
-    for(int i = 0; i<number_of_maximus; i++){
-        cout<<ordine_massimo_doppia_fenditura[i]<<" \t "<<sin(max_angle_double_slit[i])<<" \t "<<cos(max_angle_double_slit[i])*M_PI/180<<endl; 
-        double_slit_file<<ordine_massimo_doppia_fenditura[i]<<" \t\t\t "<<sin(max_angle_double_slit[i])<<" \t "<<cos(max_angle_double_slit[i])*M_PI/180<<endl;
+    for(int i = 0; i<number_of_maximums_slit; i++){
+        cout<<order_of_maximum_double_slit[i]<<" \t "<<sin(maximum_angle_double_slit[i])<<" \t "<<cos(maximum_angle_double_slit[i])*M_PI/180<<endl; 
+        double_slit_file<<order_of_maximum_double_slit[i]<<" \t\t\t "<<sin(maximum_angle_double_slit[i])<<" \t "<<cos(maximum_angle_double_slit[i])*M_PI/180<<endl;
     }
 
     gStyle->SetOptFit();
@@ -406,7 +351,7 @@ int main(int argc, char *argv[]){
     stats2->SetX1NDC(0.12); stats2->SetX2NDC(0.32); stats2->SetY1NDC(0.75);
     c6->Modified();           
 
-    c6->Print ("interpolation_dpuble_slit.png", "png");
+    c6->Print ("Graphs/interpolation_dpuble_slit.png", "png");
 
     m2 = f2->GetParameter(0); 
     Errm2 = f2->GetParError(0);
@@ -415,6 +360,42 @@ int main(int argc, char *argv[]){
     lambdaDF[1] = Errm2*d;
     cout<<"wavelenght with double slit in cm: "<<lambdaDF[0]<<"  "<<lambdaDF[1]<<endl;
     delete c6;
+
+//BRAGG'S CUBE
+    ofstream Bragg_file;
+
+    amplification(reflected_wave_intensity_Bragg, 10, number_of_measures_Bragg);
+
+    Bragg_file.open("Bragg.txt", ios::out);
+    Bragg_file<<"#angle \t intensity"<<endl;
+
+    for(int i = 0; i<number_of_measures_Bragg; i++){
+        Bragg_file<<incident_angle_Bragg[i]<<" \t "<<reflected_wave_intensity_Bragg[i]<<endl;
+    }
+
+    TCanvas* c7 = new TCanvas();
+
+    TGraph *grb = new  TGraph("Bragg.txt" , "%lg %lg"); 
+    grb->SetTitle("ricerca del massimo");
+    grb->GetXaxis()->SetTitle("angolo rispetto ai piani[gradi]");
+    grb->GetYaxis()->SetTitle("intensita[mA]");
+
+    grb->GetXaxis()->SetTitleSize(0.05);
+    grb->GetXaxis()->SetTitleOffset(0.8);
+
+    grb->GetYaxis()->SetTitleSize(0.05);
+    grb->GetYaxis()->SetTitleOffset(0.6);
+
+    grb->SetMarkerStyle(20);
+    grb->Draw("APL");
+    c7->Print("Graphs/Bragg's_cube.png", "png");    
+    
+
+    Bragg_file.close();
+
+    delete c7;
+
+
 
     TheApp.Run();
 

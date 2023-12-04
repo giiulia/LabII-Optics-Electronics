@@ -83,7 +83,6 @@ void DiffPoints(int deltaC[][3], int puntoX[][3], ofstream& file_punti, int size
 
   double sigma_delta=sqrt(meanX[2]*meanX[2] + meanC[2]*meanC[2]);
   file_punti<<X<<"\t\t"<<meanX[0]-meanC[0]<<"\t"<<sigma_delta<<endl;
-  //std::cout<<"Media: "<<meanX[0]-mean0[0]<<"\tDeviazione sulla Media: "<<sigma_delta<<"\n"<<std::endl;
 
 }
 
