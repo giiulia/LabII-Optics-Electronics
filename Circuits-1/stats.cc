@@ -3,7 +3,7 @@
 #include <cmath>
 #include <iostream>
 
-void media_stdm(double * v_in, double * v_out, int size){
+void mean_stdm(double * v_in, double * v_out, int size){
     double sum = 0;
     double var;
     double sum_sq = 0;
