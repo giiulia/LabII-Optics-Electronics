@@ -126,21 +126,21 @@ int main(int argc, char *argv[]){
     amplification(intensity_polarized_wave_dist2, 10, dimension2);
     amplification(intensity_polarized_wave_dist3, 10, dimension2);
 
-    polarization_file_dist1.open("polarization_dist1.txt", ios::out);
+    polarization_file_dist1.open("Data/polarization_dist1.txt", ios::out);
     polarization_file_dist1<<"#angle\t intensity"<<endl;
 
     for(int i = 0; i<dimension1; i++){
         polarization_file_dist1<<polarizer_angle1[i]<<" \t "<<intensity_polarized_wave_dist1[i]<<endl;
     }
 
-    polarization_file_dist2.open("polarization_dist2.txt", ios::out);
+    polarization_file_dist2.open("Data/polarization_dist2.txt", ios::out);
     polarization_file_dist2<<"#angle\t intensity"<<endl;
 
     for(int i = 0; i<dimension2; i++){
         polarization_file_dist2<<polarizer_angle2[i]<<" \t "<<intensity_polarized_wave_dist2[i]<<endl;
     }
 
-    polarization_file_dist3.open("polarization_dist3.txt", ios::out);
+    polarization_file_dist3.open("Data/polarization_dist3.txt", ios::out);
     polarization_file_dist3<<"#angle\t intensity"<<endl;
 
     for(int i = 0; i<dimension2; i++){
@@ -151,7 +151,7 @@ int main(int argc, char *argv[]){
     
     auto mg = new TMultiGraph("verifica della legge di Malus","verifica della legge di Malus");
     
-    auto gr1 = new TGraph("polarization_dist1.txt" , "%lg %lg");
+    auto gr1 = new TGraph("Data/polarization_dist1.txt" , "%lg %lg");
     gr1->SetName("50 cm");
     gr1->SetTitle("50 cm");
     gr1->SetMarkerStyle(20);
@@ -160,7 +160,7 @@ int main(int argc, char *argv[]){
     gr1->SetLineWidth(2);
     gr1->SetFillStyle(0);
     
-    auto gr2 = new TGraph("polarization_dist2.txt" , "%lg %lg");
+    auto gr2 = new TGraph("Data/polarization_dist2.txt" , "%lg %lg");
     gr2->SetName("70 cm");
     gr2->SetTitle("70 cm");
     gr2->SetMarkerStyle(20);
@@ -170,7 +170,7 @@ int main(int argc, char *argv[]){
     gr2->SetLineWidth(2);
     gr2->SetFillStyle(0);
     
-    auto gr3 = new TGraph("polarization_dist3.txt" , "%lg %lg");
+    auto gr3 = new TGraph("Data/polarization_dist3.txt" , "%lg %lg");
     gr3->SetName("40 cm");
     gr3->SetTitle("40 cm");
     gr3->SetMarkerStyle(20);
@@ -278,7 +278,7 @@ int main(int argc, char *argv[]){
 
     amplification(intensity_reflected_wave_40, 10, number_of_incident_angles_Brewster);
 
-    file_Brewster_0.open("Brewster.txt", ios::out);
+    file_Brewster_0.open("Data/Brewster.txt", ios::out);
     file_Brewster_0<<"#angle\t intensity"<<endl;
 
     for(int i = 0; i<number_of_incident_angles_Brewster; i++){
@@ -287,7 +287,7 @@ int main(int argc, char *argv[]){
 
     TCanvas* c5 = new TCanvas();
 
-    TGraph *gr_0 = new  TGraph("Brewster.txt" , "%lg %lg"); 
+    TGraph *gr_0 = new  TGraph("Data/Brewster.txt" , "%lg %lg"); 
     gr_0->SetTitle("research  of Brewster angle");
     gr_0->GetXaxis()->SetTitle("angolo rispetto alla normale[gradi]");
     gr_0->GetYaxis()->SetTitle("intensità[mA]");
@@ -316,7 +316,7 @@ int main(int argc, char *argv[]){
         maximum_angle_double_slit[i] = (maximum_angle_double_slit[i])*M_PI/180.;
     }
 
-    double_slit_file.open("double_slit_interference", ios::out);
+    double_slit_file.open("Data/double_slit_interference.txt", ios::out);
     double_slit_file<<"#max order \t sin(angle)  \t errSinAngle"<<endl;
 
     for(int i = 0; i<number_of_maximums_slit; i++){
@@ -327,7 +327,7 @@ int main(int argc, char *argv[]){
     gStyle->SetOptFit();
     auto c6 = new TCanvas("c6","multigraph",700,500);
 
-    TGraphErrors *ge2 = new  TGraphErrors("double_slit_interference" , "%lg %lg %lg"); 
+    TGraphErrors *ge2 = new  TGraphErrors("Data/double_slit_interference.txt" , "%lg %lg %lg"); 
     ge2->SetTitle(" interpolazione per trovare la lunghezza d'onda ");
     ge2->GetXaxis()->SetTitle("ordine massimo[intero]");
     ge2->GetYaxis()->SetTitle("sin(#theta)");
@@ -366,7 +366,7 @@ int main(int argc, char *argv[]){
 
     amplification(reflected_wave_intensity_Bragg, 10, number_of_measures_Bragg);
 
-    Bragg_file.open("Bragg.txt", ios::out);
+    Bragg_file.open("Data/Bragg.txt", ios::out);
     Bragg_file<<"#angle \t intensity"<<endl;
 
     for(int i = 0; i<number_of_measures_Bragg; i++){
@@ -375,7 +375,7 @@ int main(int argc, char *argv[]){
 
     TCanvas* c7 = new TCanvas();
 
-    TGraph *grb = new  TGraph("Bragg.txt" , "%lg %lg"); 
+    TGraph *grb = new  TGraph("Data/Bragg.txt" , "%lg %lg"); 
     grb->SetTitle("ricerca del massimo");
     grb->GetXaxis()->SetTitle("angolo rispetto ai piani[gradi]");
     grb->GetYaxis()->SetTitle("intensita[mA]");
