@@ -10,11 +10,6 @@ The following process has been necessary to reach the intent:
 Each experience and so the relative report faces up the main phenomena of the topic of inquiry.
 The topics of that year's course:
 
-## Circuits 2
-
-In [Circuits 1](./#5:Circuiti_2) are visible the data and the data analysis.
-
-The final product, with comments and hypotesis from our project group, is at [Pdf of report](./#5:Circuiti_2/relazione_circuiti2.pdf); if the source is of any interest: [source of report](./#5:Circuiti_2/relazione_circuiti2.tex).
 
 ## Circuits 3
 
