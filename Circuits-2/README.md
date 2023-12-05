@@ -1,5 +1,6 @@
 ## Circuits 2
 
-In [Circuits 1](./#5:Circuiti_2) are visible the data and the data analysis.
-
-The final product, with comments and hypotesis from our project group, is at [Pdf of report](./#5:Circuiti_2/relazione_circuiti2.pdf); if the source is of any interest: [source of report](./#5:Circuiti_2/relazione_circuiti2.tex).
+- The first part of the report is focused on characterizing **RC and CR circuits** and the decrease/increase of tension as time passes.
+- The second part gets more interesting as **RLC circuits** are involved; we implemented studied the three damping regimes and drew the conclusions of each case.
+ 
+The final product, with comments and hypotesis from our project group, is at [Pdf of report](/Circuits-2/circuits2_report.pdf); if the source is of any interest: [source of report](/Circuits-2/circuits2_report.tex).
