@@ -1,6 +1,9 @@
 ## Circuits 1
-Ohm's law, voltage dividers, and diodes had been the center of interest in this project. 
-In [Circuits 1](./#4:Circuiti_1) are visible the data and the data analysis.
+This project revolved aroud three topics:
 
-The final product, with comments and hypotesis from our project group, is at [Pdf of report](./#4:Circuiti_1/relazione_circuiti1.pdf); if the source is of any interest: [source of report](./#4:Circuiti_1/relazione_circuiti1.tex).
+- **Internal resistences** of electronic instruments to be used and **Ohm's law**;
+- basic properties of **voltage dividers**;
+- and characteristic current-tension of **diodes**. 
+
+The final product, with comments and hypotesis from our project group, is at [Pdf of report](/Circuiti-1/circuits1_report.pdf); if the source is of any interest: [source of report](/Circuiti-1/circuits1_report.tex).
 
