@@ -14,5 +14,5 @@ That year's topics were:
 - Michelson's and Fabry Perot's [interferometer](/Interferometer) configurations.
 - [Microwaves](/Microwaves) and optical laws.
 - Internal resistences of [electronic instruments](/Circuits-1).
-- CR, LRC, RC [circuits](/Circuits-2).
+- CR, LR and LRC [circuits](/Circuits-2).
 - [Transfer functions](/Circuits-3) of the circuits previously studied.
